@@ -9,6 +9,7 @@ $focus-outline-color: rgba(46, 144, 250, 0.24);
 $error-color: rgba(217, 45, 32, 1);
 $border-error-color: rgba(253, 162, 155, 1);
 $focus-error-color: rgba(240, 68, 56, 0.24);
+$label-disabled-color: rgba(112, 112, 123, 1);
 
 .wrapper {
     width: 323px;
@@ -176,7 +177,6 @@ $focus-error-color: rgba(240, 68, 56, 0.24);
         & .labelWrapper {
             display: flex;
             align-items: center;
-
         }
 
         .inputWrapper input {
@@ -208,7 +208,7 @@ $focus-error-color: rgba(240, 68, 56, 0.24);
                 }
             }
 
-            & .promptWrapper .prompt {
+            & .helperTextWrapper .helperText {
                 color: $error-color;
             }
 
@@ -250,7 +250,6 @@ $focus-error-color: rgba(240, 68, 56, 0.24);
             &.outlineQuiet {
                 background-color: $outline-bg;
                 border: 1px solid transparent;
-
             }
 
 
@@ -260,6 +259,9 @@ $focus-error-color: rgba(240, 68, 56, 0.24);
                 padding: 0;
                 color: $text-color;
                 background-color: transparent;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
 
                 &::placeholder {
                     color: $placeholder-color;
@@ -293,7 +295,7 @@ $focus-error-color: rgba(240, 68, 56, 0.24);
             }
         }
 
-        & .promptWrapper .prompt {
+        & .helperTextWrapper .helperText {
             display: block;
             text-align: left;
             font-weight: 400;
@@ -301,7 +303,23 @@ $focus-error-color: rgba(240, 68, 56, 0.24);
             line-height: 20px;
             color: $prompt-color;
             margin-top: 4px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
+    }
+
+
+    &.disabled,
+    &.disabled * {
+        cursor: not-allowed;
+    }
+
+    &.disabled .labelWrapper .label {
+        color: $label-disabled-color;
+    }
+
+    &.disabled .inputWrapper {
+        border: 1px solid $border-color;
     }
 
 

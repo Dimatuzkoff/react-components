@@ -17,13 +17,13 @@ interface InputProps {
     quiet?: boolean;
     alignment?: "left" | "right";
     error?: boolean;
-    prompt?: string;
+    helperText?: string;
 }
 
 const Input: FC<InputProps> = ({
     placeholder,
     type = "text",
-    // disabled = false,
+    disabled = false,
     iconBefore,
     iconAfter,
     label,
@@ -33,7 +33,7 @@ const Input: FC<InputProps> = ({
     quiet = false,
     alignment = "left",
     error = false,
-    prompt = "",
+    helperText = "",
     iconBadge
 }) => {
     return (
@@ -42,6 +42,7 @@ const Input: FC<InputProps> = ({
                 [styles.labelPositionTop]: labelPosition === "top",
                 [styles.labelPositionSide]: labelPosition === "side",
                 [styles.noLabel]: !label,
+                [styles.disabled]: disabled,
                 //size
                 [styles.size24]: size === "24",
                 [styles.size32]: size === "32",
@@ -67,15 +68,16 @@ const Input: FC<InputProps> = ({
                         <input type={type} className={clsx(styles.input, {
                             [styles.leftAlignment]: alignment === "left",
                             [styles.rightAlignment]: alignment === "right",
-                        })} placeholder={placeholder} />
+                        })} placeholder={placeholder} disabled={disabled}
+                        />
                         {!error && iconAfter}
                         {(error && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
                         {iconBadge && <div className={clsx(styles.badge)}>
                             {iconBadge}
                         </div>}
                     </div>
-                    <div className={clsx(styles.promptWrapper)}>
-                        {prompt && <span className={clsx(styles.prompt)}>{prompt}</span>}
+                    <div className={clsx(styles.helperTextWrapper)}>
+                        {!disabled && helperText && <span className={clsx(styles.helperText)}>{helperText}</span>}
                     </div>
                 </div>
             </div>
