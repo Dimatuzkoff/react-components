@@ -1,0 +1,308 @@
+$placeholder-color: rgba(160, 160, 171, 1);
+$text-color: rgba(26, 26, 30, 1);
+$prompt-color: rgba(81, 82, 92, 1);
+$border-color: rgba(209, 209, 214, 1);
+$fill-bg: rgba(255, 255, 255, 1);
+$outline-bg: transparent;
+$focus-color: rgba(132, 202, 255, 1);
+$focus-outline-color: rgba(46, 144, 250, 0.24);
+$error-color: rgba(217, 45, 32, 1);
+$border-error-color: rgba(253, 162, 155, 1);
+$focus-error-color: rgba(240, 68, 56, 0.24);
+
+.wrapper {
+    width: 323px;
+    display: flex;
+    margin-bottom: 20px;
+
+
+
+    &.size24 {
+        & .inputWrapper .input {
+            height: 22px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        & .inputWrapper img {
+            width: 12px;
+            height: 12px;
+        }
+
+        & .labelWrapper .label {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        &.labelPositionTop {
+            gap: 4px;
+        }
+    }
+
+    &.size32 {
+
+        & .inputWrapper .input {
+            height: 30px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        & .inputWrapper img {
+            width: 12px;
+            height: 12px;
+        }
+
+        & .labelWrapper .label {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        &.labelPositionTop {
+            gap: 4px;
+        }
+    }
+
+    &.size36 {
+
+        & .inputWrapper .input {
+            height: 34px;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        & .inputWrapper img {
+            width: 12px;
+            height: 12px;
+        }
+
+        & .labelWrapper .label {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        &.labelPositionTop {
+            gap: 4px;
+        }
+    }
+
+    &.size40 {
+
+        & .inputWrapper .input {
+            height: 38px;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        & .inputWrapper img {
+            width: 15px;
+            height: 15px;
+        }
+
+        & .labelWrapper .label {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        &.labelPositionTop {
+            gap: 6px;
+        }
+
+
+
+    }
+
+    &.size44 {
+        & .inputWrapper .input {
+            height: 42px;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        & .inputWrapper img {
+            width: 15px;
+            height: 15px;
+        }
+
+        & .labelWrapper .label {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        &.labelPositionTop {
+            gap: 6px;
+        }
+    }
+
+    &.size48 {
+        & .inputWrapper .input {
+            height: 46px;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        & .inputWrapper img {
+            width: 15px;
+            height: 15px;
+        }
+
+        & .labelWrapper .label {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        &.labelPositionTop {
+            gap: 6px;
+        }
+    }
+
+
+    &.labelPositionTop {
+        flex-direction: column;
+
+        &.noLabel {
+            gap: 0;
+        }
+
+        .inputWrapper input {
+            width: 100%;
+        }
+
+    }
+
+    &.labelPositionSide {
+        flex-direction: row;
+        justify-content: space-between;
+
+        & .labelWrapper {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .inputWrapper input {
+            width: 38px;
+        }
+
+    }
+
+    & .labelWrapper {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    & .inputContainer {
+        display: flex;
+        flex-direction: column;
+
+        &.error {
+            & .inputWrapper {
+                border: 1px solid $border-error-color !important;
+
+                &:focus-within {
+                    border: 1px solid $border-error-color !important;
+                    outline: 4px solid $focus-error-color;
+                }
+
+                &:hover {
+                    border: 1px solid $border-error-color !important;
+                }
+            }
+
+            & .promptWrapper .prompt {
+                color: $error-color;
+            }
+
+        }
+
+        & .inputWrapper {
+            padding: 0 12px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            border-radius: 4px;
+
+            &:hover {
+                border: 1px solid $border-color !important;
+            }
+
+            &:focus-within {
+                border: 1px solid $focus-color !important;
+                outline: 4px solid $focus-outline-color;
+            }
+
+            &.fillNoQuiet {
+                background-color: $fill-bg;
+                border: 1px solid $border-color;
+            }
+
+            &.outlineNoQuiet {
+                background-color: $outline-bg;
+                border: 1px solid $border-color;
+            }
+
+            &.fillQuiet {
+                background-color: $fill-bg;
+                border: 1px solid transparent;
+            }
+
+            &.outlineQuiet {
+                background-color: $outline-bg;
+                border: 1px solid transparent;
+
+            }
+
+
+            & .input {
+                font-family: "Inter", sans-serif;
+                font-weight: 400;
+                padding: 0;
+                color: $text-color;
+                background-color: transparent;
+
+                &::placeholder {
+                    color: $placeholder-color;
+                }
+
+                &.leftAlignment {
+                    text-align: left;
+
+                    &::placeholder {
+                        text-align: left;
+                    }
+                }
+
+                &.rightAlignment {
+                    text-align: right;
+
+                    &::placeholder {
+                        text-align: right;
+                    }
+                }
+            }
+
+            & .badge {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 32px;
+                height: 20px;
+                border: 1px solid $border-color;
+                border-radius: 4px;
+            }
+        }
+
+        & .promptWrapper .prompt {
+            display: block;
+            text-align: left;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 20px;
+            color: $prompt-color;
+            margin-top: 4px;
+        }
+    }
+
+
+}

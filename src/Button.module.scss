@@ -1,0 +1,1102 @@
+$fill-disabled-bg: #f2f2f2;
+$fill-disabled-text: #d1d1d6;
+// fill-accent(bg)
+$accent-color: #2563eb;
+$accent-hover-color: #175cd3;
+$accent-active-color: #1849a9;
+$accent-focus-outline: #2e90fa26;
+// fill-primary(bg)
+$primary-color: rgba(38, 39, 43, 1);
+$primary-hover-color: rgba(63, 63, 70, 1);
+$primary-active-color: rgba(26, 26, 30, 1);
+$primary-focus-outline: rgba(38, 39, 43, 0.2);
+// fill-secondary(bg)
+$secondary-color: rgba(242, 242, 242, 1);
+$secondary-hover-color: rgba(228, 228, 231, 1);
+$secondary-active-color: rgba(209, 209, 214, 1);
+$secondary-focus-outline: rgba(228, 228, 231, 1);
+// fill-success(bg)
+$success-color: rgba(7, 148, 85, 1);
+$success-hover-color: rgba(6, 118, 71, 1);
+$success-active-color: rgba(8, 93, 58, 1);
+$success-focus-outline: rgba(7, 148, 85, 0.2);
+// fill-danger(bg)
+$danger-color: rgba(217, 45, 32, 1);
+$danger-hover-color: rgba(180, 35, 24, 1);
+$danger-active-color: rgba(145, 32, 24, 1);
+$danger-focus-outline: rgba(240, 68, 56, 0.24);
+// fill-warning(bg)
+$warning-color: rgba(220, 104, 3, 1);
+$warning-hover-color: rgba(181, 71, 8, 1);
+$warning-active-color: rgba(147, 55, 13, 1);
+$warning-focus-outline: rgba(240, 68, 56, 0.24);
+// outline-accent(bg)
+$outline-accent-color: rgba(255, 255, 255, 1);
+$outline-accent-hover-color: rgba(239, 248, 255, 1);
+$outline-accent-active-color: rgba(209, 233, 255, 1);
+$outline-accent-focus-outline: rgba(46, 144, 250, 0.15);
+// outline-primary(bg)
+$outline-primary-color: rgba(255, 255, 255, 1);
+$outline-primary-hover-color: rgba(250, 250, 250, 1);
+$outline-primary-active-color: rgba(242, 242, 242, 1);
+$outline-primary-focus-outline: rgba(38, 39, 43, 0.2);
+// outline-secondary(bg)
+$outline-secondary-color: rgba(255, 255, 255, 1);
+$outline-secondary-hover-color: rgba(250, 250, 250, 1);
+$outline-secondary-active-color: rgba(242, 242, 242, 1);
+$outline-secondary-focus-outline: rgba(152, 162, 179, 0.2);
+// outline-success(bg)
+$outline-success-color: rgba(255, 255, 255, 1);
+$outline-success-hover-color: rgba(236, 253, 243, 1);
+$outline-success-active-color: rgba(220, 250, 230, 1);
+$outline-success-focus-outline: rgba(7, 148, 85, 0.2);
+// outline-danger(bg)
+$outline-danger-color: rgba(255, 255, 255, 1);
+$outline-danger-hover-color: rgba(254, 243, 242, 1);
+$outline-danger-active-color: rgba(254, 228, 226, 1);
+$outline-danger-focus-outline: rgba(240, 68, 56, 0.24);
+// outline-warning(bg)
+$outline-warning-color: rgba(255, 255, 255, 1);
+$outline-warning-hover-color: rgba(255, 250, 235, 1);
+$outline-warning-active-color: rgba(254, 240, 199, 1);
+$outline-warning-focus-outline: rgba(240, 68, 56, 0.24);
+
+// ghost-accent(bg)
+$ghost-accent-color: transparent;
+$ghost-accent-hover-color: rgba(239, 248, 255, 1);
+$ghost-accent-active-color: rgba(209, 233, 255, 1);
+$ghost-accent-focus-outline: rgba(46, 144, 250, 0.15);
+// ghost-primary(bg)
+$ghost-primary-color: transparent;
+$ghost-primary-hover-color: rgba(38, 39, 43, 1);
+$ghost-primary-active-color: rgba(26, 26, 30, 1);
+$ghost-primary-focus-outline: rgba(38, 39, 43, 0.2);
+// ghost-secondary(bg)
+$ghost-secondary-color: transparent;
+$ghost-secondary-hover-color: rgba(242, 242, 242, 1);
+$ghost-secondary-active-color: rgba(228, 228, 231, 1);
+$ghost-secondary-focus-outline: rgba(152, 162, 179, 0.2);
+// ghost-success(bg)
+$ghost-success-color: transparent;
+$ghost-success-hover-color: rgba(236, 253, 243, 1);
+$ghost-success-active-color: rgba(220, 250, 230, 1);
+$ghost-success-focus-outline: rgba(7, 148, 85, 0.2);
+// ghost-danger(bg)
+$ghost-danger-color: transparent;
+$ghost-danger-hover-color: rgba(254, 243, 242, 1);
+$ghost-danger-active-color: rgba(254, 243, 242, 1);
+$ghost-danger-focus-outline: rgba(240, 68, 56, 0.24);
+// ghost-warning(bg)
+$ghost-warning-color: transparent;
+$ghost-warning-hover-color: rgba(255, 250, 235, 1);
+$ghost-warning-active-color: rgba(255, 250, 235, 1);
+$ghost-warning-focus-outline: rgba(247, 144, 9, 0.2);
+
+// text-accent(color)
+$text-accent-color: rgba(21, 112, 239, 1);
+$text-accent-hover-color: rgba(23, 92, 211, 1);
+$text-accent-active-color: rgba(24, 73, 169, 1);
+$text-accent-focus-outline: rgba(46, 144, 250, 0.15);
+// text-primary(color)
+$text-primary-color: rgba(26, 26, 30, 1);
+$text-primary-hover-color: rgba(112, 112, 123, 1);
+$text-primary-active-color: rgba(81, 82, 92, 1);
+$text-primary-focus-outline: rgba(38, 39, 43, 0.2);
+// text-secondary(color)
+$text-secondary-color: rgba(112, 112, 123, 1);
+$text-secondary-hover-color: rgba(81, 82, 92, 1);
+$text-secondary-active-color: rgba(63, 63, 70, 1);
+$text-secondary-focus-outline: rgba(152, 162, 179, 0.2);
+// text-success(color)
+$text-success-color: rgba(7, 148, 85, 1);
+$text-success-hover-color: rgba(6, 118, 71, 1);
+$text-success-active-color: rgba(8, 93, 58, 1);
+$text-success-focus-outline: rgba(7, 148, 85, 0.2);
+// text-danger(color)
+$text-danger-color: rgba(217, 45, 32, 1);
+$text-danger-hover-color: rgba(180, 35, 24, 1);
+$text-danger-active-color: rgba(145, 32, 24, 1);
+$text-danger-focus-outline: rgba(240, 68, 56, 0.24);
+// text-warning(color)
+$text-warning-color: rgba(220, 104, 3, 1);
+$text-warning-hover-color: rgba(181, 71, 8, 1);
+$text-warning-active-color: rgba(181, 71, 8, 1);
+$text-warning-focus-outline: rgba(247, 144, 9, 0.2);
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+
+    &.size32 {
+        font-size: 12px;
+        padding: 8px 14px;
+        line-height: 16px;
+        height: 32px;
+    }
+
+    &.size36 {
+        font-size: 13px;
+        padding: 8px 14px;
+        line-height: 20px;
+        height: 36px;
+    }
+
+    &.size40 {
+        font-size: 14px;
+        padding: 8px 14px;
+        line-height: 24px;
+        height: 40px;
+    }
+
+    &.size44 {
+        font-size: 14px;
+        padding: 10px 14px;
+        line-height: 24px;
+        height: 44px;
+    }
+
+    &.size48 {
+        font-size: 14px;
+        padding: 16px 22px;
+        line-height: 24px;
+        height: 48px;
+    }
+
+    &.size56 {
+        font-size: 14px;
+        padding: 8px 14px;
+        line-height: 24px;
+        height: 56px;
+    }
+
+    &.fillAccent {
+        color: white;
+        background-color: $accent-color;
+
+        &:hover {
+            background-color: $accent-hover-color;
+        }
+
+        &:active {
+            background-color: $accent-active-color;
+        }
+
+        &:focus {
+            background-color: $accent-hover-color;
+            outline: 4px solid $accent-focus-outline;
+        }
+
+        &.loading {
+            background-color: $accent-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: white;
+        }
+
+        & .icon {
+            border-color: white;
+        }
+    }
+
+    &.fillPrimary {
+        color: white;
+        background-color: $primary-color;
+
+        &:hover {
+            background-color: $primary-hover-color;
+        }
+
+        &:active {
+            background-color: $primary-active-color;
+        }
+
+        &:focus {
+            background-color: $primary-hover-color;
+            outline: 4px solid $primary-focus-outline;
+        }
+
+        &.loading {
+            background-color: $primary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: white;
+        }
+
+        & .icon {
+            border-color: white;
+        }
+    }
+
+    &.fillSecondary {
+        color: black;
+        background-color: $secondary-color;
+
+        &:hover {
+            background-color: $secondary-hover-color;
+        }
+
+        &:active {
+            background-color: $secondary-active-color;
+        }
+
+        &:focus {
+            background-color: $secondary-hover-color;
+            outline: none;
+        }
+
+        &.loading {
+            background-color: $secondary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: black;
+        }
+
+        & .icon {
+            border-color: black;
+        }
+    }
+
+    &.fillSuccess {
+        color: white;
+        background-color: $success-color;
+
+        &:hover {
+            background-color: $success-hover-color;
+        }
+
+        &:active {
+            background-color: $success-active-color;
+        }
+
+        &:focus {
+            background-color: $success-hover-color;
+            outline: 4px solid $success-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $success-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: white;
+        }
+
+        & .icon {
+            border-color: white;
+        }
+    }
+
+
+    &.fillDanger {
+        color: white;
+        background-color: $danger-color;
+
+        &:hover {
+            background-color: $danger-hover-color;
+        }
+
+        &:active {
+            background-color: $danger-active-color;
+        }
+
+        &:focus {
+            background-color: $danger-hover-color;
+            outline: 4px solid $danger-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $danger-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: white;
+        }
+
+        & .icon {
+            border-color: white;
+        }
+    }
+
+
+    &.fillWarning {
+        color: white;
+        background-color: $warning-color;
+
+        &:hover {
+            background-color: $warning-hover-color;
+        }
+
+        &:active {
+            background-color: $warning-active-color;
+        }
+
+        &:focus {
+            background-color: $warning-hover-color;
+            outline: 4px solid $warning-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $warning-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: white;
+        }
+
+        & .icon {
+            border-color: white;
+        }
+    }
+
+    &.outlineAccent {
+        color: rgba(21, 112, 239, 1);
+        background-color: $outline-accent-color;
+        border: 1px solid rgba(132, 202, 255, 1);
+
+        &:hover {
+            background-color: $outline-accent-hover-color;
+        }
+
+        &:active {
+            background-color: $outline-accent-active-color;
+        }
+
+        &:focus {
+            background-color: $outline-accent-hover-color;
+            outline: 4px solid $outline-accent-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $outline-accent-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(21, 112, 239, 1);
+        }
+
+        & .icon {
+            border-color: rgba(21, 112, 239, 1);
+        }
+    }
+
+    &.outlinePrimary {
+        color: rgba(38, 39, 43, 1);
+        background-color: $outline-primary-color;
+        border: 1px solid rgba(38, 39, 43, 1);
+
+        &:hover {
+            background-color: $outline-primary-hover-color;
+        }
+
+        &:active {
+            background-color: $outline-primary-active-color;
+        }
+
+        &:focus {
+            background-color: $outline-primary-hover-color;
+            outline: 4px solid $outline-primary-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $outline-primary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(38, 39, 43, 1);
+        }
+
+        & .icon {
+            border-color: rgba(38, 39, 43, 1);
+        }
+    }
+
+    &.outlineSecondary {
+        color: rgba(38, 39, 43, 1);
+        background-color: $outline-secondary-color;
+        border: 1px solid rgba(209, 209, 214, 1);
+
+        &:hover {
+            background-color: $outline-secondary-hover-color;
+        }
+
+        &:active {
+            background-color: $outline-secondary-active-color;
+        }
+
+        &:focus {
+            background-color: $outline-secondary-hover-color;
+            outline: 4px solid $outline-secondary-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $outline-secondary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(38, 39, 43, 1);
+        }
+
+        & .icon {
+            border-color: rgba(38, 39, 43, 1);
+        }
+    }
+
+    &.outlineSuccess {
+        color: rgba(6, 118, 71, 1);
+        background-color: $outline-success-color;
+        border: 1px solid rgba(117, 224, 167, 1);
+
+        &:hover {
+            background-color: $outline-success-hover-color;
+            color: rgba(6, 118, 71, 1);
+        }
+
+        &:active {
+            background-color: $outline-success-active-color;
+            color: rgba(8, 93, 58, 1);
+        }
+
+        &:focus {
+            background-color: $outline-success-hover-color;
+            outline: 4px solid $outline-success-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $outline-success-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(6, 118, 71, 1);
+        }
+
+        & .icon {
+            border-color: rgba(6, 118, 71, 1);
+        }
+    }
+
+    &.outlineDanger {
+        color: rgba(180, 35, 24, 1);
+        background-color: $outline-danger-color;
+        border: 1px solid rgba(253, 162, 155, 1);
+
+        &:hover {
+            background-color: $outline-danger-hover-color;
+        }
+
+        &:active {
+            background-color: $outline-danger-active-color;
+        }
+
+        &:focus {
+            background-color: $outline-danger-hover-color;
+            outline: 4px solid $outline-danger-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $outline-danger-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(180, 35, 24, 1);
+        }
+
+        & .icon {
+            border-color: rgba(180, 35, 24, 1);
+        }
+    }
+
+    &.outlineWarning {
+        color: rgba(220, 104, 3, 1);
+        background-color: $outline-warning-color;
+        border: 1px solid rgba(254, 200, 75, 1);
+
+        &:hover {
+            background-color: $outline-warning-hover-color;
+        }
+
+        &:active {
+            background-color: $outline-warning-active-color;
+        }
+
+        &:focus {
+            background-color: $outline-warning-hover-color;
+            outline: 4px solid $outline-warning-focus-outline;
+
+        }
+
+        &.loading {
+            background-color: $outline-warning-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(220, 104, 3, 1);
+        }
+
+        & .icon {
+            border-color: rgba(220, 104, 3, 1);
+        }
+    }
+
+    &.ghostAccent {
+        color: rgba(23, 92, 211, 1);
+        background-color: $ghost-accent-color;
+
+        &:hover {
+            background-color: $ghost-accent-hover-color;
+        }
+
+        &:active {
+            background-color: $ghost-accent-active-color;
+        }
+
+        &:focus {
+            background-color: $ghost-accent-hover-color;
+            outline: 4px solid $ghost-accent-focus-outline;
+        }
+
+        &.loading {
+            background-color: $ghost-accent-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(23, 92, 211, 1);
+        }
+
+        & .icon {
+            border-color: rgba(23, 92, 211, 1);
+        }
+    }
+
+    &.ghostPrimary {
+        color: rgba(26, 26, 30, 1);
+        background-color: $ghost-primary-color;
+
+        & .icon {
+            border-color: rgba(26, 26, 30, 1);
+        }
+
+        &:hover {
+            background-color: $ghost-primary-hover-color;
+            color: rgba(252, 252, 252, 1);
+
+            & .icon {
+                border-color: rgba(252, 252, 252, 1);
+
+            }
+        }
+
+        &:active {
+            background-color: $ghost-primary-active-color;
+            color: rgba(252, 252, 252, 1);
+
+            & .icon {
+                border-color: rgba(252, 252, 252, 1);
+            }
+        }
+
+        &:focus {
+            background-color: $ghost-primary-hover-color;
+            outline: 4px solid $ghost-primary-focus-outline;
+            color: rgba(252, 252, 252, 1);
+
+            & .icon {
+                border-color: rgba(252, 252, 252, 1);
+            }
+        }
+
+        &.loading {
+            background-color: $ghost-primary-color;
+            cursor: progress;
+            color: rgba(26, 26, 30, 1);
+
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(26, 26, 30, 1);
+        }
+
+
+    }
+
+    &.ghostSecondary {
+        color: rgba(38, 39, 43, 1);
+        background-color: $ghost-secondary-color;
+
+        &:hover {
+            background-color: $ghost-secondary-hover-color;
+        }
+
+        &:active {
+            background-color: $ghost-secondary-active-color;
+        }
+
+        &:focus {
+            background-color: $ghost-secondary-hover-color;
+            outline: 4px solid $ghost-secondary-focus-outline;
+        }
+
+        &.loading {
+            background-color: $ghost-secondary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(38, 39, 43, 1);
+        }
+
+        & .icon {
+            border-color: rgba(38, 39, 43, 1);
+        }
+    }
+
+    &.ghostSuccess {
+        color: rgba(6, 118, 71, 1);
+        background-color: $ghost-success-color;
+
+        &:hover {
+            background-color: $ghost-success-hover-color;
+        }
+
+        &:active {
+            background-color: $ghost-success-active-color;
+        }
+
+        &:focus {
+            background-color: $ghost-success-hover-color;
+            outline: 4px solid $ghost-success-focus-outline;
+        }
+
+        &.loading {
+            background-color: $ghost-success-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(6, 118, 71, 1);
+        }
+
+        & .icon {
+            border-color: rgba(6, 118, 71, 1);
+        }
+    }
+
+    &.ghostDanger {
+        color: rgba(145, 32, 24, 1);
+        background-color: $ghost-danger-color;
+
+        &:hover {
+            background-color: $ghost-danger-hover-color;
+        }
+
+        &:active {
+            background-color: $ghost-danger-active-color;
+        }
+
+        &:focus {
+            background-color: $ghost-danger-hover-color;
+            outline: 4px solid $ghost-danger-focus-outline;
+        }
+
+        &.loading {
+            background-color: $ghost-danger-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(145, 32, 24, 1);
+        }
+
+        & .icon {
+            border-color: rgba(145, 32, 24, 1);
+        }
+    }
+
+    &.ghostWarning {
+        color: rgba(147, 55, 13, 1);
+        background-color: $ghost-warning-color;
+
+        &:hover {
+            background-color: $ghost-warning-hover-color;
+        }
+
+        &:active {
+            background-color: $ghost-warning-active-color;
+        }
+
+        &:focus {
+            background-color: $ghost-warning-hover-color;
+            outline: 4px solid $ghost-warning-focus-outline;
+        }
+
+        &.loading {
+            background-color: $ghost-warning-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: rgba(147, 55, 13, 1);
+        }
+
+        & .icon {
+            border-color: rgba(147, 55, 13, 1);
+        }
+    }
+
+    &.textAccent {
+        background-color: transparent;
+        color: $text-accent-color;
+
+        & .icon {
+            border-color: $text-accent-color;
+        }
+
+        &:hover {
+            color: $text-accent-hover-color;
+
+            & .icon {
+                border-color: $text-accent-hover-color;
+            }
+        }
+
+        &:active {
+            color: $text-accent-active-color;
+
+            & .icon {
+                border-color: $text-accent-active-color;
+            }
+        }
+
+        &:focus {
+            color: $text-accent-hover-color;
+            outline: 4px solid $text-accent-focus-outline;
+
+            & .icon {
+                border-color: $text-accent-hover-color;
+            }
+        }
+
+        &.loading {
+            color: $text-accent-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: $text-accent-color;
+        }
+
+
+    }
+
+    &.textPrimary {
+        background-color: transparent;
+        color: $text-primary-color;
+
+        & .icon {
+            border-color: $text-primary-color;
+        }
+
+        &:hover {
+            color: $text-primary-hover-color;
+
+            & .icon {
+                border-color: $text-primary-hover-color;
+            }
+        }
+
+        &:active {
+            color: $text-primary-active-color;
+
+            & .icon {
+                border-color: $text-primary-active-color;
+            }
+        }
+
+        &:focus {
+            color: $text-primary-hover-color;
+            outline: 4px solid $text-primary-focus-outline;
+
+            & .icon {
+                border-color: $text-primary-hover-color;
+            }
+        }
+
+        &.loading {
+            color: $text-primary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: $text-primary-color;
+        }
+
+
+    }
+
+    &.textSecondary {
+        background-color: transparent;
+        color: $text-secondary-color;
+
+        & .icon {
+            border-color: $text-secondary-color;
+        }
+
+        &:hover {
+            color: $text-secondary-hover-color;
+
+            & .icon {
+                border-color: $text-secondary-hover-color;
+            }
+        }
+
+        &:active {
+            color: $text-secondary-active-color;
+
+            & .icon {
+                border-color: $text-secondary-active-color;
+            }
+        }
+
+        &:focus {
+            color: $text-secondary-hover-color;
+            outline: 4px solid $text-accent-focus-outline;
+
+            & .icon {
+                border-color: $text-secondary-hover-color;
+            }
+        }
+
+        &.loading {
+            color: $text-secondary-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: $text-secondary-color;
+        }
+
+
+    }
+
+    &.textSuccess {
+        background-color: transparent;
+        color: $text-success-color;
+
+        & .icon {
+            border-color: $text-success-color;
+        }
+
+        &:hover {
+            color: $text-success-hover-color;
+
+            & .icon {
+                border-color: $text-success-hover-color;
+            }
+        }
+
+        &:active {
+            color: $text-success-active-color;
+
+            & .icon {
+                border-color: $text-success-active-color;
+            }
+        }
+
+        &:focus {
+            color: $text-success-hover-color;
+            outline: 4px solid $text-success-focus-outline;
+
+            & .icon {
+                border-color: $text-success-hover-color;
+            }
+        }
+
+        &.loading {
+            color: $text-success-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: $text-success-color;
+        }
+
+
+    }
+
+    &.textDanger {
+        background-color: transparent;
+        color: $text-danger-color;
+
+        & .icon {
+            border-color: $text-danger-color;
+        }
+
+        &:hover {
+            color: $text-danger-hover-color;
+
+            & .icon {
+                border-color: $text-danger-hover-color;
+            }
+        }
+
+        &:active {
+            color: $text-danger-active-color;
+
+            & .icon {
+                border-color: $text-danger-active-color;
+            }
+        }
+
+        &:focus {
+            color: $text-danger-hover-color;
+            outline: 4px solid $text-danger-focus-outline;
+
+            & .icon {
+                border-color: $text-danger-hover-color;
+            }
+        }
+
+        &.loading {
+            color: $text-danger-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: $text-danger-color;
+        }
+
+
+    }
+
+    &.textWarning {
+        background-color: transparent;
+        color: $text-warning-color;
+
+        & .icon {
+            border-color: $text-warning-color;
+        }
+
+        &:hover {
+            color: $text-warning-hover-color;
+
+            & .icon {
+                border-color: $text-warning-hover-color;
+            }
+        }
+
+        &:active {
+            color: $text-warning-active-color;
+
+            & .icon {
+                border-color: $text-warning-active-color;
+            }
+        }
+
+        &:focus {
+            color: $text-warning-hover-color;
+            outline: 4px solid $text-warning-focus-outline;
+
+            & .icon {
+                border-color: $text-warning-hover-color;
+            }
+        }
+
+        &.loading {
+            color: $text-warning-color;
+            cursor: progress;
+        }
+
+        & .loadingIcon .dot {
+            background-color: $text-warning-color;
+        }
+
+
+    }
+
+
+
+    &:disabled {
+        background-color: $fill-disabled-bg;
+        color: $fill-disabled-text;
+        cursor: not-allowed;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+        border: 1.5px solid;
+        border-radius: 50%;
+    }
+}
+
+.loadingIcon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dot {
+    width: 3.33px;
+    height: 3.33px;
+    border-radius: 50%;
+    animation: blink 1.5s infinite ease-in-out;
+
+    &Fade {
+        opacity: 0.4;
+        animation-delay: 1s;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+// Формы кнопок
+$shapes: (
+    "Rectangle": 0px,
+    "Rounded": 4px,
+    "Pill": 9999px
+);
+
+@each $name, $radius in $shapes {
+    .shape#{$name} {
+        border-radius: $radius;
+    }
+}
