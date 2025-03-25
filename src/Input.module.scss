@@ -10,6 +10,7 @@ $error-color: rgba(217, 45, 32, 1);
 $border-error-color: rgba(253, 162, 155, 1);
 $focus-error-color: rgba(240, 68, 56, 0.24);
 $label-disabled-color: rgba(112, 112, 123, 1);
+$color-tooltip-background: rgba(19, 19, 22, 1);
 
 .wrapper {
     width: 323px;
@@ -188,6 +189,78 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     & .labelWrapper {
         display: flex;
         justify-content: flex-start;
+        align-items: center;
+
+
+
+        & .tooltipIcon {
+            position: relative;
+            margin-left: 4px;
+
+            & .tooltip {
+                max-width: 150px;
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: $color-tooltip-background;
+                color: $fill-bg;
+                padding: 8px 12px;
+                border-radius: 4px;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 20px;
+                white-space: nowrap;
+                visibility: visible;
+                opacity: 1;
+                transition: opacity 0.2s ease-in-out;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            & .tooltipArrow {
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-left: 6px solid transparent;
+                border-right: 6px solid transparent;
+                border-top: 6px solid $color-tooltip-background;
+            }
+        }
+
+        .tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: $color-tooltip-background;
+            color: $fill-bg;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 20px;
+            white-space: nowrap;
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+        }
+
+        .tooltipArrow {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid $color-tooltip-background;
+        }
     }
 
     & .inputContainer {

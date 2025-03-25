@@ -1,7 +1,9 @@
 import clsx from "clsx";
-import { ReactNode, FC } from "react";
+import { ReactNode, FC, useState } from "react";
 import styles from "./Input.module.scss";
 import ErrorSearchIcon from "./assets/icons/ErrorSearchIcon.svg";
+import inputInfoIcon from "./assets/icons/inputInfoIcon.svg";
+
 
 interface InputProps {
     placeholder?: string;
@@ -18,6 +20,7 @@ interface InputProps {
     alignment?: "left" | "right";
     error?: boolean;
     helperText?: string;
+    tooltipText?: string;
 }
 
 const Input: FC<InputProps> = ({
@@ -34,8 +37,10 @@ const Input: FC<InputProps> = ({
     alignment = "left",
     error = false,
     helperText = "",
-    iconBadge
+    iconBadge, tooltipText
 }) => {
+    const [isTooltipVisible, setTooltipVisible] = useState(false);
+
     return (
         <>
             <div className={clsx(styles.wrapper, {
@@ -53,6 +58,24 @@ const Input: FC<InputProps> = ({
             })}>
                 <div className={clsx(styles.labelWrapper)}>
                     <span className={clsx(styles.label)} >{label}</span>
+                    {tooltipText && (
+                        <span
+                            className={styles.tooltipIcon}
+                            onMouseEnter={() => setTooltipVisible(true)}
+                            onMouseLeave={() => setTooltipVisible(false)}
+                        >
+                            <img
+                                src={inputInfoIcon}
+                                alt="info"
+                            />
+                            {isTooltipVisible && (
+                                <span className={styles.tooltip}>
+                                    {tooltipText}
+                                    <span className={styles.tooltipArrow}></span>
+                                </span>
+                            )}
+                        </span>
+                    )}
                 </div>
                 <div className={clsx(styles.inputContainer, {
                     [styles.error]: error
