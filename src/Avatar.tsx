@@ -3,7 +3,7 @@ import { ReactNode, FC } from "react";
 import styles from "./Avatar.module.scss";
 
 interface AvatarProps {
-    image: ReactNode;
+    image?: ReactNode;
     indicator?: boolean;
     heading?: string;
     paragraph?: string;
@@ -24,7 +24,7 @@ const Avatar: FC<AvatarProps> = ({
     return (
         <>
             <div className={clsx(styles.avatarWrapper, {
-                [styles.paddingWrapper]: heading || paragraph,
+                [styles.paddingWrapper]: ((heading || paragraph) && background !== "default") || (background === "primary") || (background === "secondary"),
                 [styles.border]: border === true,
                 [styles.bgDefault]: background === "default",
                 [styles.bgPrimary]: background === "primary",
@@ -40,12 +40,17 @@ const Avatar: FC<AvatarProps> = ({
                 [styles.size48]: size === "48",
                 [styles.size56]: size === "56",
             })}>
-                <div className={clsx(styles.containerImg)}>
-                    {image}
+                <div className={clsx(styles.containerImg, {
+                    [styles.image]: image,
+                    [styles.imageBorder]: !heading && !paragraph && background === "default",
+                    [styles.empty]: !image,
+                })}>
+                    {image || (<span >OR</span>)}
                     {indicator && (<div className={clsx(styles.indicator)}></div>)}
                 </div>
                 <div className={clsx(styles.avatarInfo)}>
-                    <span className={clsx(styles.avatarHeading)}></span>
+                    <span className={clsx(styles.avatarHeading)}>
+                    </span>
                     <span className={clsx(styles.avatar)}></span>
                 </div>
             </div>
