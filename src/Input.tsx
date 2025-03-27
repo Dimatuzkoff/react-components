@@ -1,14 +1,14 @@
 import clsx from "clsx";
-import { ReactNode, FC, useState } from "react";
+import { ReactNode, FC, } from "react";
 import styles from "./Input.module.scss";
 import ErrorSearchIcon from "./assets/icons/ErrorSearchIcon.svg";
-import inputInfoIcon from "./assets/icons/inputInfoIcon.svg";
+import InfoTooltip from "./InfoTooltip";
 
 
 interface InputProps {
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
-    disabled?: boolean;
+    isDisabled?: boolean;
     iconBefore?: ReactNode;
     iconAfter?: ReactNode;
     iconBadge?: ReactNode;
@@ -16,9 +16,9 @@ interface InputProps {
     labelPosition?: "top" | "side";
     size?: "24" | "32" | "36" | "40" | "44" | "48";
     uiType?: "fill" | "outline";
-    quiet?: boolean;
+    isQuiet?: boolean;
     alignment?: "left" | "right";
-    error?: boolean;
+    isError?: boolean;
     helperText?: string;
     tooltipText?: string;
 }
@@ -26,20 +26,20 @@ interface InputProps {
 const Input: FC<InputProps> = ({
     placeholder,
     type = "text",
-    disabled = false,
+    isDisabled = false,
     iconBefore,
     iconAfter,
     label,
     labelPosition = "top",
     size = "36",
     uiType = "fill",
-    quiet = false,
+    isQuiet = false,
     alignment = "left",
-    error = false,
+    isError = false,
     helperText = "",
-    iconBadge, tooltipText
+    iconBadge,
+    tooltipText
 }) => {
-    const [isTooltipVisible, setTooltipVisible] = useState(false);
 
     return (
         <>
@@ -47,7 +47,7 @@ const Input: FC<InputProps> = ({
                 [styles.labelPositionTop]: labelPosition === "top",
                 [styles.labelPositionSide]: labelPosition === "side",
                 [styles.noLabel]: !label,
-                [styles.disabled]: disabled,
+                [styles.disabled]: isDisabled,
                 //size
                 [styles.size24]: size === "24",
                 [styles.size32]: size === "32",
@@ -58,49 +58,32 @@ const Input: FC<InputProps> = ({
             })}>
                 <div className={clsx(styles.labelWrapper)}>
                     <span className={clsx(styles.label)} >{label}</span>
-                    {tooltipText && (
-                        <span
-                            className={styles.tooltipIcon}
-                            onMouseEnter={() => setTooltipVisible(true)}
-                            onMouseLeave={() => setTooltipVisible(false)}
-                        >
-                            <img
-                                src={inputInfoIcon}
-                                alt="info"
-                            />
-                            {isTooltipVisible && (
-                                <span className={styles.tooltip}>
-                                    {tooltipText}
-                                    <span className={styles.tooltipArrow}></span>
-                                </span>
-                            )}
-                        </span>
-                    )}
+                    {tooltipText && <InfoTooltip>{tooltipText}</InfoTooltip>}
                 </div>
                 <div className={clsx(styles.inputContainer, {
-                    [styles.error]: error
+                    [styles.error]: isError
                 })}>
                     <div className={clsx(styles.inputWrapper, {
-                        [styles.fillNoQuiet]: uiType === "fill" && !quiet,
-                        [styles.outlineNoQuiet]: uiType === "outline" && !quiet,
-                        [styles.fillQuiet]: uiType === "fill" && quiet,
-                        [styles.outlineQuiet]: uiType === "outline" && quiet,
+                        [styles.fillNoQuiet]: uiType === "fill" && !isQuiet,
+                        [styles.outlineNoQuiet]: uiType === "outline" && !isQuiet,
+                        [styles.fillQuiet]: uiType === "fill" && isQuiet,
+                        [styles.outlineQuiet]: uiType === "outline" && isQuiet,
                     })}>
-                        {!error && iconBefore}
-                        {(error && iconBefore) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
+                        {!isError && iconBefore}
+                        {(isError && iconBefore) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
                         <input type={type} className={clsx(styles.input, {
                             [styles.leftAlignment]: alignment === "left",
                             [styles.rightAlignment]: alignment === "right",
-                        })} placeholder={placeholder} disabled={disabled}
+                        })} placeholder={placeholder} disabled={isDisabled}
                         />
-                        {!error && iconAfter}
-                        {(error && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
+                        {!isError && iconAfter}
+                        {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
                         {iconBadge && <div className={clsx(styles.badge)}>
                             {iconBadge}
                         </div>}
                     </div>
                     <div className={clsx(styles.helperTextWrapper)}>
-                        {!disabled && helperText && <span className={clsx(styles.helperText)}>{helperText}</span>}
+                        {!isDisabled && helperText && <span className={clsx(styles.helperText)}>{helperText}</span>}
                     </div>
                 </div>
             </div>
