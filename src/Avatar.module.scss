@@ -21,6 +21,10 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
 
     &.bgDefault {
         background-color: transparent;
+
+        &:focus .containerImg {
+            outline: 4px solid $focus-border-color;
+        }
     }
 
     &.bgPrimary {
@@ -29,17 +33,39 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
         &.border {
             border: 1px solid $border-color;
         }
+
+        &:hover {
+            background-color: $bg-secondary-color;
+        }
     }
 
     &.bgSecondary {
         background-color: $bg-secondary-color;
+
+        &:hover {
+            background-color: $bg-primary-color;
+        }
     }
 
-
+    &.paddingWrapper {
+        &:focus {
+            outline: 4px solid $focus-border-color;
+        }
+    }
 
     &.size16 .avatarInfo {
         width: 94px;
         margin-left: 6px;
+
+        & .avatarHeading {
+            font-size: 10px;
+            line-height: 16px;
+        }
+
+        & .avatarParagraph {
+            font-size: 8px;
+            line-height: 14px;
+        }
     }
 
     &.paddingWrapper.size16 {
@@ -49,6 +75,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size24 .avatarInfo {
         width: 118px;
         margin-left: 8px;
+
+        & .avatarHeading {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        & .avatarParagraph {
+            font-size: 10px;
+            line-height: 18px;
+        }
     }
 
     &.paddingWrapper.size24 {
@@ -58,6 +94,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size28 .avatarInfo {
         width: 130px;
         margin-left: 8px;
+
+        & .avatarHeading {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        & .avatarParagraph {
+            font-size: 10px;
+            line-height: 18px;
+        }
     }
 
     &.paddingWrapper.size28 {
@@ -67,6 +113,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size32 .avatarInfo {
         width: 143px;
         margin-left: 10px;
+
+        & .avatarHeading {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        & .avatarParagraph {
+            font-size: 12px;
+            line-height: 20px;
+        }
     }
 
     &.paddingWrapper.size32 {
@@ -76,6 +132,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size36 .avatarInfo {
         width: 155px;
         margin-left: 10px;
+
+        & .avatarHeading {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        & .avatarParagraph {
+            font-size: 12px;
+            line-height: 20px;
+        }
     }
 
     &.paddingWrapper.size36 {
@@ -84,8 +150,17 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
 
     &.size40 .avatarInfo {
         width: 166px;
-        height: 48px; //убрать і налазіт на індикатор
         margin-left: 12px;
+
+        & .avatarHeading {
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        & .avatarParagraph {
+            font-size: 14px;
+            line-height: 24px;
+        }
 
     }
 
@@ -96,6 +171,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size44 .avatarInfo {
         width: 178px;
         margin-left: 12px;
+
+        & .avatarHeading {
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        & .avatarParagraph {
+            font-size: 16px;
+            line-height: 24px;
+        }
     }
 
     &.paddingWrapper.size44 {
@@ -105,6 +190,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size48 .avatarInfo {
         width: 190px;
         margin-left: 12px;
+
+        & .avatarHeading {
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        & .avatarParagraph {
+            font-size: 16px;
+            line-height: 24px;
+        }
     }
 
     &.paddingWrapper.size48 {
@@ -114,6 +209,16 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     &.size56 .avatarInfo {
         width: 190px;
         margin-left: 16px;
+
+        & .avatarHeading {
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+        & .avatarParagraph {
+            font-size: 16px;
+            line-height: 24px;
+        }
     }
 
     &.paddingWrapper.size56 {

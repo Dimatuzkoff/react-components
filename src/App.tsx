@@ -16,8 +16,18 @@ function App() {
             <Input placeholder="Input..." type='text' quiet alignment="right" />
             <Input placeholder="Input..." iconBefore={iconBefore} type='email' label="Email" uiType="outline" quiet tooltipText="This is a tooltip This is a tooltip This is a tooltip This is a tooltip " />
             <Input placeholder="Input..." type='text' alignment="left" label="Name" labelPosition="side" />
-            <h2>avatar</h2>
-            <Avatar image={avatar} indicator background="primary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <br />
+            <Avatar />
+            <br />
+            <Avatar image={avatar} indicator />
+            <br />
+            <Avatar indicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <br />
+            <Avatar image={avatar} indicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <br />
+            <Avatar image={avatar} indicator size="56" background="primary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <br />
+            <Avatar image={avatar} indicator size="56" background="secondary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
 
         </>
     )
