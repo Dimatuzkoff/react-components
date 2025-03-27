@@ -3,15 +3,15 @@ import { ReactNode, FC, } from "react";
 import styles from "./Input.module.scss";
 import ErrorSearchIcon from "./assets/icons/ErrorSearchIcon.svg";
 import InfoTooltip from "./InfoTooltip";
-
-
+import { getCurrentOs } from "./getCurrentOs"
+import { keyboardShortcutInputRef } from "./keyboardShortcutInputRef"
 interface InputProps {
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
     isDisabled?: boolean;
     iconBefore?: ReactNode;
     iconAfter?: ReactNode;
-    iconBadge?: ReactNode;
+    isBadge?: boolean;
     label?: string;
     labelPosition?: "top" | "side";
     size?: "24" | "32" | "36" | "40" | "44" | "48";
@@ -37,9 +37,11 @@ const Input: FC<InputProps> = ({
     alignment = "left",
     isError = false,
     helperText = "",
-    iconBadge,
+    isBadge = false,
     tooltipText
 }) => {
+    console.log('rendering Input');
+    const inputRef = isBadge ? keyboardShortcutInputRef() : null;
 
     return (
         <>
@@ -71,15 +73,15 @@ const Input: FC<InputProps> = ({
                     })}>
                         {!isError && iconBefore}
                         {(isError && iconBefore) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
-                        <input type={type} className={clsx(styles.input, {
+                        <input ref={isBadge ? inputRef : null} type={type} className={clsx(styles.input, {
                             [styles.leftAlignment]: alignment === "left",
                             [styles.rightAlignment]: alignment === "right",
                         })} placeholder={placeholder} disabled={isDisabled}
                         />
                         {!isError && iconAfter}
                         {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
-                        {iconBadge && <div className={clsx(styles.badge)}>
-                            {iconBadge}
+                        {isBadge && <div className={clsx(styles.badge)}>
+                            {getCurrentOs()}
                         </div>}
                     </div>
                     <div className={clsx(styles.helperTextWrapper)}>
