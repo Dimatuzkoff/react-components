@@ -48,10 +48,15 @@ const Avatar: FC<AvatarProps> = ({
                     {image || (<span >OR</span>)}
                     {indicator && (<div className={clsx(styles.indicator)}></div>)}
                 </div>
-                <div className={clsx(styles.avatarInfo)}>
+                <div className={clsx({
+                    [styles.avatarInfo]: (heading || paragraph) || (background === "primary") || (background === "secondary"),
+                })}>
                     <span className={clsx(styles.avatarHeading)}>
+                        {heading}
                     </span>
-                    <span className={clsx(styles.avatar)}></span>
+                    <span className={clsx(styles.avatarParagraph)}>
+                        {paragraph}
+                    </span>
                 </div>
             </div>
         </>
