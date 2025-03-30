@@ -4,7 +4,7 @@ import styles from "./Input.module.scss";
 import ErrorSearchIcon from "./assets/icons/ErrorSearchIcon.svg";
 import InfoTooltip from "./InfoTooltip";
 import { getCurrentOs } from "./getCurrentOs"
-import { keyboardShortcutInputRef } from "./keyboardShortcutInputRef"
+import { useKeyboardInputRef } from "./useKeyboardInputRef"
 interface InputProps {
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
@@ -40,8 +40,12 @@ const Input: FC<InputProps> = ({
     isBadge = false,
     tooltipText
 }) => {
-    console.log('rendering Input');
-    const inputRef = isBadge ? keyboardShortcutInputRef() : null;
+    const inputRef = useKeyboardInputRef("k", () => {
+        if (isBadge) {
+            inputRef.current?.focus();
+        }
+    });
+
 
     return (
         <>

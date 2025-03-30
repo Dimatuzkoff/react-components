@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export const keyboardShortcutInputRef = () => {
+export const useKeyboardInputRef = (nameButton: string, callback?: () => void) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     useEffect(() => {
@@ -10,11 +10,11 @@ export const keyboardShortcutInputRef = () => {
             const isWindows = userAgent.includes("win");
 
             if (
-                (isMac && event.metaKey && event.key.toLowerCase() === "k") ||
-                (isWindows && event.ctrlKey && event.key.toLowerCase() === "k")
+                (isMac && event.metaKey && event.key.toLowerCase() === nameButton.toLowerCase()) ||
+                (isWindows && event.ctrlKey && event.key.toLowerCase() === nameButton.toLowerCase())
             ) {
                 event.preventDefault();
-                inputRef.current?.focus();
+                if (callback) callback();
             }
         };
 
