@@ -3,8 +3,8 @@ import { ReactNode, FC, } from "react";
 import styles from "./Input.module.scss";
 import ErrorSearchIcon from "./assets/icons/ErrorSearchIcon.svg";
 import InfoTooltip from "./InfoTooltip";
-import { getCurrentOs } from "./getCurrentOs"
-import { useKeyboardInputRef } from "./useKeyboardInputRef"
+import { getCurrentOsForBadgeIcon } from "./helpers/getCurrentOsForBadgeIcon"
+import { useKeyboardInputRef } from "./hooks/useKeyboardInputRef"
 interface InputProps {
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
@@ -85,7 +85,7 @@ const Input: FC<InputProps> = ({
                         {!isError && iconAfter}
                         {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
                         {isBadge && <div className={clsx(styles.badge)}>
-                            {getCurrentOs()}
+                            {getCurrentOsForBadgeIcon()}
                         </div>}
                     </div>
                     <div className={clsx(styles.helperTextWrapper)}>
