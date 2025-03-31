@@ -40,7 +40,7 @@ const Input: FC<InputProps> = ({
     isBadge = false,
     tooltipText
 }) => {
-    const inputRef = useKeyboardInputRef("k", () => {
+    const inputRef = useKeyboardInputRef(isBadge ? "k" : "", () => {
         if (isBadge) {
             inputRef.current?.focus();
         }
