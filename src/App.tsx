@@ -23,13 +23,13 @@ function App() {
             <br />
             <AvatarWithInfo image={avatar} size="24" isOnlineIndicator />
             <br />
-            <AvatarWithInfo isOnlineIndicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo isOnlineIndicator lastName="Harris" email="nicolaharris@rubikui.com" />
             <br />
-            <AvatarWithInfo image={avatar} isOnlineIndicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo image={avatar} isOnlineIndicator firstName="Nicola" />
             <br />
-            <AvatarWithInfo image={avatar} isOnlineIndicator isBorder background="primary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo image={avatar} isOnlineIndicator isBorder background="primary" lastName="Harris" firstName="Nicola" email="nicolaharris@rubikui.com" />
             <br />
-            <AvatarWithInfo isOnlineIndicator size="32" background="secondary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo isOnlineIndicator size="32" background="secondary" firstName="Nicola" lastName="Harris" email="nicolaharris@rubikui.com" />
 
         </>
     )

@@ -6,8 +6,9 @@ import Avatar from "./Avatar";
 interface AvatarWithInfoProps {
     image?: ReactNode;
     isOnlineIndicator?: boolean;
-    heading?: string;
-    paragraph?: string;
+    firstName?: string;
+    lastName?: string;
+    email?: string;
     size?: "16" | "24" | "28" | "32" | "36" | "40" | "44" | "48" | "56";
     background?: "default" | "primary" | "secondary";
     isBorder?: boolean;
@@ -16,8 +17,9 @@ interface AvatarWithInfoProps {
 const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
     image,
     isOnlineIndicator = false,
-    heading,
-    paragraph,
+    firstName,
+    lastName,
+    email,
     size = "40",
     background = "default",
     isBorder = false
@@ -25,7 +27,7 @@ const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
     return (
         <>
             <div className={clsx(styles.avatarWrapper, {
-                [styles.paddingWrapper]: ((heading || paragraph) && background !== "default") || (background === "primary") || (background === "secondary"),
+                [styles.paddingWrapper]: (((firstName || lastName) || email) && background !== "default") || (background === "primary") || (background === "secondary"),
                 [styles.border]: isBorder === true,
                 [styles.bgDefault]: background === "default",
                 [styles.bgPrimary]: background === "primary",
@@ -43,13 +45,13 @@ const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
             })}>
                 <Avatar image={image} isOnlineIndicator={isOnlineIndicator} size={size}></Avatar>
                 <div className={clsx({
-                    [styles.avatarInfo]: (heading || paragraph) || (background === "primary") || (background === "secondary"),
+                    [styles.avatarInfo]: ((firstName || lastName) || email) || (background === "primary") || (background === "secondary"),
                 })}>
                     <span className={clsx(styles.avatarHeading)}>
-                        {heading}
+                        {firstName} {lastName}
                     </span>
                     <span className={clsx(styles.avatarParagraph)}>
-                        {paragraph}
+                        {email}
                     </span>
                 </div>
             </div>
