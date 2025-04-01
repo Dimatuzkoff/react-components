@@ -23,7 +23,7 @@ function App() {
             <br />
             <AvatarWithInfo image={avatar} size="24" isOnlineIndicator />
             <br />
-            <AvatarWithInfo isOnlineIndicator lastName="Harris" email="nicolaharris@rubikui.com" />
+            <AvatarWithInfo lastName="Harris" email="nicolaharris@rubikui.com" />
             <br />
             <AvatarWithInfo image={avatar} isOnlineIndicator firstName="Nicola" />
             <br />

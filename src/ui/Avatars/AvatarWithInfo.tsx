@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { ReactNode, FC } from "react";
 import styles from "./AvatarWithInfo.module.scss";
 import Avatar from "./Avatar";
+import { getInitials } from "../../helpers/getInitials"
 
 interface AvatarWithInfoProps {
     image?: ReactNode;
@@ -43,7 +44,7 @@ const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
                 [styles.size48]: size === "48",
                 [styles.size56]: size === "56",
             })}>
-                <Avatar image={image} isOnlineIndicator={isOnlineIndicator} size={size}></Avatar>
+                <Avatar image={image} initials={getInitials(firstName, lastName)} isOnlineIndicator={isOnlineIndicator} size={size}></Avatar>
                 <div className={clsx({
                     [styles.avatarInfo]: ((firstName || lastName) || email) || (background === "primary") || (background === "secondary"),
                 })}>

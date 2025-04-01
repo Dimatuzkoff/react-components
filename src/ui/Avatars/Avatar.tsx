@@ -4,12 +4,14 @@ import styles from "./Avatar.module.scss";
 
 interface AvatarProps {
     image?: ReactNode;
+    initials?: string;
     isOnlineIndicator?: boolean;
     size?: "16" | "24" | "28" | "32" | "36" | "40" | "44" | "48" | "56";
 }
 
 const Avatar: FC<AvatarProps> = ({
     image,
+    initials,
     isOnlineIndicator = false,
     size = "40",
 }) => {
@@ -28,7 +30,7 @@ const Avatar: FC<AvatarProps> = ({
                 [styles.size48]: size === "48",
                 [styles.size56]: size === "56",
             })}>
-                {image || (<span >OR</span>)}
+                {image || (<span >{initials || "?"}</span>)}
                 {isOnlineIndicator && (<div className={clsx(styles.indicator)}></div>)}
             </div>
         </>
