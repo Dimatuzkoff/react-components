@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { ReactNode, FC } from "react";
-import styles from "./Avatar.module.scss";
+import styles from "./AvatarWithInfo.module.scss";
 
 interface AvatarProps {
     image?: ReactNode;
