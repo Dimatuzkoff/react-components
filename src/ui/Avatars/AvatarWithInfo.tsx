@@ -1,31 +1,32 @@
 import clsx from "clsx";
 import { ReactNode, FC } from "react";
 import styles from "./AvatarWithInfo.module.scss";
+import Avatar from "./Avatar";
 
-interface AvatarProps {
+interface AvatarWithInfoProps {
     image?: ReactNode;
-    indicator?: boolean;
+    isOnlineIndicator?: boolean;
     heading?: string;
     paragraph?: string;
     size?: "16" | "24" | "28" | "32" | "36" | "40" | "44" | "48" | "56";
     background?: "default" | "primary" | "secondary";
-    border?: boolean;
+    isBorder?: boolean;
 }
 
-const Avatar: FC<AvatarProps> = ({
+const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
     image,
-    indicator = false,
+    isOnlineIndicator = false,
     heading,
     paragraph,
     size = "40",
     background = "default",
-    border = false
+    isBorder = false
 }) => {
     return (
         <>
             <div className={clsx(styles.avatarWrapper, {
                 [styles.paddingWrapper]: ((heading || paragraph) && background !== "default") || (background === "primary") || (background === "secondary"),
-                [styles.border]: border === true,
+                [styles.border]: isBorder === true,
                 [styles.bgDefault]: background === "default",
                 [styles.bgPrimary]: background === "primary",
                 [styles.bgSecondary]: background === "secondary",
@@ -40,14 +41,7 @@ const Avatar: FC<AvatarProps> = ({
                 [styles.size48]: size === "48",
                 [styles.size56]: size === "56",
             })}>
-                <div className={clsx(styles.containerImg, {
-                    [styles.image]: image,
-                    [styles.imageBorder]: !heading && !paragraph && background === "default",
-                    [styles.empty]: !image,
-                })}>
-                    {image || (<span >OR</span>)}
-                    {indicator && (<div className={clsx(styles.indicator)}></div>)}
-                </div>
+                <Avatar image={image} isOnlineIndicator={isOnlineIndicator} size={size}></Avatar>
                 <div className={clsx({
                     [styles.avatarInfo]: (heading || paragraph) || (background === "primary") || (background === "secondary"),
                 })}>
@@ -63,4 +57,4 @@ const Avatar: FC<AvatarProps> = ({
     )
 }
 
-export default Avatar;
+export default AvatarWithInfo;

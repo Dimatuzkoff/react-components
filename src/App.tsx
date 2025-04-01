@@ -3,7 +3,7 @@ import Input from "./ui/Inputs/Input";
 import AvatarWithInfo from "./ui/Avatars/AvatarWithInfo";
 import SearchIcon from "./assets/icons/SearchIcon.svg";
 import girl from "./assets/img/girl.png"
-
+import Avatar from "./ui/Avatars/Avatar"
 function App() {
     const iconBefore = <img src={SearchIcon} alt="search" />;
     const avatar = <img src={girl} alt="avatar" />
@@ -17,17 +17,19 @@ function App() {
             <Input placeholder="Input..." iconBefore={iconBefore} type='email' label="Email" uiType="outline" isQuiet tooltipText="This is a tooltip This is a tooltip This is a tooltip This is a tooltip " />
             <Input placeholder="Input..." type='text' alignment="left" label="Name" labelPosition="side" />
             <br />
-            <AvatarWithInfo />
+            <Avatar image={avatar} isOnlineIndicator ></Avatar>
             <br />
-            <AvatarWithInfo image={avatar} indicator />
+            <Avatar />
             <br />
-            <AvatarWithInfo indicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo image={avatar} size="24" isOnlineIndicator />
             <br />
-            <AvatarWithInfo image={avatar} indicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo isOnlineIndicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
             <br />
-            <AvatarWithInfo image={avatar} indicator size="56" background="primary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo image={avatar} isOnlineIndicator heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
             <br />
-            <AvatarWithInfo image={avatar} indicator size="56" background="secondary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <AvatarWithInfo image={avatar} isOnlineIndicator isBorder background="primary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
+            <br />
+            <AvatarWithInfo isOnlineIndicator size="32" background="secondary" heading="Nicola Harris" paragraph="nicolaharris@rubikui.com" />
 
         </>
     )

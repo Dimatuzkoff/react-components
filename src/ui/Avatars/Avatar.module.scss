@@ -1,0 +1,151 @@
+$border-color: rgba(209, 209, 214, 1);
+$avatar-text-empty-color: rgba(112, 112, 123, 1);
+$avatar-bg-empty-color: rgba(242, 242, 242, 1);
+$avatar-bg-image-color: rgba(221, 208, 190, 1);
+$avatar-border-image-color: rgb(192, 181, 166);
+$focus-border-color: rgba(46, 144, 250, 0.24);
+$indicator-bg-color: rgba(23, 178, 106, 1);
+
+.containerImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-weight: 600;
+    border-radius: 50%;
+
+    &.empty {
+        background-color: $avatar-bg-empty-color;
+        color: $avatar-text-empty-color;
+        border: 1px solid $border-color;
+    }
+
+    &.image {
+        background-color: $avatar-bg-image-color;
+        border: none;
+
+    }
+
+    & .indicator {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: $indicator-bg-color;
+        border-radius: 50%;
+        outline: 2px solid white;
+    }
+
+    &.size16 {
+        width: 16px;
+        height: 16px;
+        font-size: 12px;
+        line-height: 20px;
+
+        & .indicator {
+            width: 4px;
+            height: 4px;
+        }
+    }
+
+    &.size24 {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+        line-height: 20px;
+
+        & .indicator {
+            width: 6px;
+            height: 6px;
+        }
+    }
+
+    &.size28 {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        line-height: 20px;
+
+        & .indicator {
+            width: 6px;
+            height: 6px;
+        }
+    }
+
+    &.size32 {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        line-height: 24px;
+
+        & .indicator {
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    &.size36 {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        line-height: 24px;
+
+        & .indicator {
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    &.size40 {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        line-height: 24px;
+
+        & .indicator {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    &.size44 {
+        width: 44px;
+        height: 44px;
+        font-size: 16px;
+        line-height: 24px;
+
+        & .indicator {
+            width: 10px;
+            height: 10px;
+        }
+    }
+
+    &.size48 {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+        line-height: 28px;
+
+        & .indicator {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    &.size56 {
+        width: 56px;
+        height: 56px;
+        font-size: 20px;
+        line-height: 28px;
+
+        & .indicator {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    & img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+}
