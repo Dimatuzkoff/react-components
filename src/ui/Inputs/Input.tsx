@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { ReactNode, FC, } from "react";
 import styles from "./Input.module.scss";
 import ErrorSearchIcon from "../../assets/icons/ErrorSearchIcon.svg";
-import InfoTooltip from "../../InfoTooltip";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import { getCurrentOsForBadgeIcon } from "../../helpers/getCurrentOsForBadgeIcon"
 import { useKeyboardInputRef } from "../../hooks/useKeyboardInputRef"
 interface InputProps {

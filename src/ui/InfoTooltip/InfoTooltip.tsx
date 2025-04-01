@@ -1,6 +1,6 @@
 import { ReactNode, FC, useState } from "react";
 import styles from "./InfoTooltip.module.scss";
-import icon from "./assets/icons/inputInfoIcon.svg";
+import icon from "../../assets/icons/inputInfoIcon.svg";
 
 interface InfoTooltipProps {
     children: ReactNode;
