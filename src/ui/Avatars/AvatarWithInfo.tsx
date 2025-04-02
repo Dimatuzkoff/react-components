@@ -43,8 +43,10 @@ const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
                 [styles.size44]: size === "44",
                 [styles.size48]: size === "48",
                 [styles.size56]: size === "56",
-            })}>
-                <Avatar image={image} initials={getInitials(firstName, lastName)} isOnlineIndicator={isOnlineIndicator} size={size}></Avatar>
+            })} tabIndex={0} >
+                <div className={clsx(styles.avatar)} tabIndex={1}>
+                    <Avatar isFocusOnParent image={image} initials={getInitials(firstName, lastName)} isOnlineIndicator={isOnlineIndicator} size={size}></Avatar>
+                </div>
                 <div className={clsx({
                     [styles.avatarInfo]: ((firstName || lastName) || email) || (background === "primary") || (background === "secondary"),
                 })}>
