@@ -18,6 +18,9 @@ $paragraph-text-color: rgba(81, 82, 92, 1);
     border-radius: 8px;
     font-family: "Inter", sans-serif;
 
+    &.clickable {
+        cursor: pointer;
+    }
 
     &.bgDefault {
         background-color: transparent;

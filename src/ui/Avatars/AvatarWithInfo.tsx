@@ -13,6 +13,7 @@ interface AvatarWithInfoProps {
     size?: "16" | "24" | "28" | "32" | "36" | "40" | "44" | "48" | "56";
     background?: "default" | "primary" | "secondary";
     isBorder?: boolean;
+    isClickable?: boolean;
 }
 
 const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
@@ -23,7 +24,8 @@ const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
     email,
     size = "40",
     background = "default",
-    isBorder = false
+    isBorder = false,
+    isClickable = false,
 }) => {
     return (
         <>
@@ -33,6 +35,7 @@ const AvatarWithInfo: FC<AvatarWithInfoProps> = ({
                 [styles.bgDefault]: background === "default",
                 [styles.bgPrimary]: background === "primary",
                 [styles.bgSecondary]: background === "secondary",
+                [styles.clickable]: isClickable === true,
                 //size
                 [styles.size16]: size === "16",
                 [styles.size24]: size === "24",
