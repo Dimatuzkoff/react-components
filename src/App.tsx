@@ -32,7 +32,7 @@ function App() {
             <br />
             <AvatarWithInfo isOnlineIndicator size="32" background="secondary" firstName="Nicola" lastName="Harris" email="nicolaharris@rubikui.com" />
             <br /> */}
-            <VerificationInput amountInputs={3} size="80" />
+            <VerificationInput amountInputs={4} size="80" label="Secure code" helperText="This is a hint text to help user." />
         </>
     )
 }

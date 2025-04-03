@@ -7,13 +7,17 @@ interface VerificationInputProps {
     amountInputs?: number;
     maxInputLength?: number;
     placeholder?: string;
+    helperText?: string;
+    label?: string
 }
 
 const VerificationInput: FC<VerificationInputProps> = ({
     size = "64",
     amountInputs = 6,
     maxInputLength = 1,
-    placeholder = "0"
+    placeholder = "0",
+    helperText,
+    label
 }) => {
     const inputsRef = useRef<Array<HTMLInputElement | null>>(Array(amountInputs).fill(null));
     const [values, setValues] = useState<string[]>(Array(amountInputs).fill(""));
@@ -36,31 +40,38 @@ const VerificationInput: FC<VerificationInputProps> = ({
     };
 
     return (
-        <div
-            className={clsx(styles.verificationInputWrapper, {
-                [styles.size64]: size === "64",
-                [styles.size80]: size === "80",
-                [styles.size96]: size === "96",
-            })}
-        >
-            {values.map((val, index) => (
-                <input
-                    key={index}
-                    value={val}
-                    onChange={(e) => onValueChange(index, e)}
-                    onKeyDown={(e) => handleKeyDown(index, e)}
-                    ref={(el) => {
-                        inputsRef.current[index] = el;
-                    }}
-                    maxLength={maxInputLength}
-                    placeholder={placeholder}
-                    className={clsx(styles.singleVerificationInput, {
-                        [styles.filled]: val.length > 0,
+        <>
+            <div className={clsx(styles.verificationInputWrapper)}>
+                {label && <div className={clsx(styles.label)}>{label}</div>}
+                <div
+                    className={clsx(styles.inputContainer, {
+                        [styles.size64]: size === "64",
+                        [styles.size80]: size === "80",
+                        [styles.size96]: size === "96",
                     })}
-                    type="text"
-                />
-            ))}
-        </div>
+                >
+                    {values.map((val, index) => (
+                        <input
+                            key={index}
+                            value={val}
+                            onChange={(e) => onValueChange(index, e)}
+                            onKeyDown={(e) => handleKeyDown(index, e)}
+                            ref={(el) => {
+                                inputsRef.current[index] = el;
+                            }}
+                            maxLength={maxInputLength}
+                            placeholder={placeholder}
+                            className={clsx(styles.singleVerificationInput, {
+                                [styles.filled]: val.length > 0,
+                            })}
+                            type="text"
+                        />
+                    ))}
+                </div>
+                {helperText && <div className={clsx(styles.helperText)}>{helperText}</div>}
+
+            </div>
+        </>
     );
 };
 
