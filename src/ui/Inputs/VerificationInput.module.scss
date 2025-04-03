@@ -1,0 +1,70 @@
+$label-text-color: rgba(63, 63, 70, 1);
+$helper-text-color: rgba(81, 82, 92, 1);
+$focus-color: rgba(21, 112, 239, 1);
+$text-input-color: rgba(209, 209, 214, 1);
+
+
+.verificationInputWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    font-family: "Inter", sans-serif;
+
+    & .singleVerificationInput {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        color: $text-input-color;
+        border: 1px solid $text-input-color;
+        font-weight: 500;
+
+        &::placeholder {
+            color: $text-input-color;
+        }
+
+        &:focus {
+            color: $focus-color;
+            border: 2px solid $focus-color;
+            outline: 4px solid rgba(46, 144, 250, 0.24);
+        }
+
+        &.filled {
+            border: 2px solid $focus-color;
+            color: $focus-color;
+        }
+    }
+
+    &.size64 {
+        & .singleVerificationInput {
+            width: 64px;
+            height: 64px;
+            font-size: 48px;
+            border-radius: 10px;
+            line-height: 60px;
+
+        }
+    }
+
+    &.size80 {
+        & .singleVerificationInput {
+            width: 80px;
+            height: 80px;
+            font-size: 48px;
+            border-radius: 10px;
+            line-height: 60px;
+
+        }
+    }
+
+    &.size96 {
+        & .singleVerificationInput {
+            width: 96px;
+            height: 96px;
+            font-size: 60px;
+            border-radius: 12px;
+            line-height: 72px;
+        }
+    }
+}
