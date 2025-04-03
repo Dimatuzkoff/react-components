@@ -23,7 +23,7 @@ const VerificationInput: FC<VerificationInputProps> = ({
     const [values, setValues] = useState<string[]>(Array(amountInputs).fill(""));
 
     const onValueChange = (index: number, e: ChangeEvent<HTMLInputElement>) => {
-        const value = e.target.value;
+        const value = e.target.value.replace(/\D/g, "");
         const newValues = [...values];
         newValues[index] = value;
         setValues(newValues);
