@@ -59,11 +59,7 @@ const Input: FC<InputProps> = ({
         setIsOpenDropdown(true);
         const value = e.target.value;
         setSelected(value);
-        setSearchValue(e.target.value);
-
-        console.log(selected);
-
-
+        setSearchValue(value);
     }
 
     function clearValue() {
@@ -77,13 +73,10 @@ const Input: FC<InputProps> = ({
         );
     }, [searchValue]);
 
-
     return (
         <>
             <div className={clsx(styles.selectWrapper, {
-                // [styles.noLabel]: !label,
                 [styles.disabled]: isDisabled,
-                //size
                 [styles.size32]: size === "32",
                 [styles.size36]: size === "36",
                 [styles.size40]: size === "40",
@@ -92,7 +85,6 @@ const Input: FC<InputProps> = ({
             })}>
                 <div className={clsx(styles.labelWrapper)}>
                     <span className={clsx(styles.label)} >{label}</span>
-                    {/* {tooltipText && <InfoTooltip>{tooltipText}</InfoTooltip>} */}
                 </div>
                 <div className={clsx(styles.inputContainer, {
                     [styles.error]: isError
@@ -112,35 +104,29 @@ const Input: FC<InputProps> = ({
                         <input type={type} value={selected} onChange={(e) => changeValue(e)}
                             className={clsx(styles.input)} placeholder={placeholder} disabled={isDisabled}
                         />
-                        {/* {!isError && iconAfter}
-                        {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
-                       */}
                         <span className={clsx(styles.iconDropdown)}>
                             {selected && <img className={clsx(styles.clearButton)} onClick={() => clearValue()} src={CloseIcon} alt="CloseIcon" />}
-
                             <img src={IconDropdown} alt="Dropdown" onClick={() => setIsOpenDropdown(!isOpenDropdown)} />
                         </span>
                     </div>
-                    {/* <div className={clsx(styles.helperTextWrapper)}>
-                        {!isDisabled && helperText && <span className={clsx(styles.helperText)}>{helperText}</span>}
-                    </div> */}
-                    {isOpenDropdown && <div className={clsx(styles.dropdown)} >
-                        <ul>
-                            {filteredColors.map((color) => {
-                                return (
-                                    <li key={color.colorName} onClick={() => changeColor(color.colorName)} className={clsx(styles.colorItem)} >
-                                        <div className={clsx(styles.colorItem)}>
-                                            <span>  {color.colorName}</span>
-                                            {selected === color.colorName && <img src={SelectedIcon} alt="SelectedIcon" />}
-
-                                        </div>
-                                    </li>
-                                )
-                            })}
-
-                        </ul>
-
-                    </div>}
+                    {isOpenDropdown && (
+                        <div className={clsx(styles.dropdown)}>
+                            <ul>
+                                {filteredColors.length > 0 ? (
+                                    filteredColors.map((color) => (
+                                        <li key={color.colorName} onClick={() => changeColor(color.colorName)} className={clsx(styles.colorItem)}>
+                                            <div className={clsx(styles.colorItem)}>
+                                                <span>{color.colorName}</span>
+                                                {selected === color.colorName && <img src={SelectedIcon} alt="SelectedIcon" />}
+                                            </div>
+                                        </li>
+                                    ))
+                                ) : (
+                                    <div className={clsx(styles.noResult)}>not found ...</div>
+                                )}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </>
