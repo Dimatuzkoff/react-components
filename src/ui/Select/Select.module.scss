@@ -12,7 +12,7 @@ $error-color: rgba(217, 45, 32, 1);
 $border-error-color: rgba(253, 162, 155, 1);
 $focus-error-color: rgba(240, 68, 56, 0.24);
 $label-disabled-color: rgba(112, 112, 123, 1);
-
+$dropdown-bg-active-color: rgba(250, 250, 250, 1);
 
 .selectWrapper {
     width: 323px;
@@ -36,84 +36,126 @@ $label-disabled-color: rgba(112, 112, 123, 1);
 
 
         & .dropdown {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2px 4px;
             width: 100%;
-            height: 200px;
             margin-top: 4px;
             background-color: $fill-bg;
             border-radius: 4px;
             border: 1px solid $border-color;
-
-        }
-    }
-
-
-
-    & .inputWrapper {
-        padding: 0px 10px 0px 14px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-
-
-        border-radius: 4px;
-
-        &:hover {
-            border: 1px solid $border-color !important;
-        }
-
-        &:focus-within {
-            border: 1px solid $focus-color !important;
-            outline: 4px solid $focus-outline-color;
-        }
-
-        &.fillNoQuiet {
-            background-color: $fill-bg;
-            border: 1px solid $border-color;
-        }
-
-        &.outlineNoQuiet {
-            background-color: $outline-bg;
-            border: 1px solid $border-color;
-        }
-
-        &.fillQuiet {
-            background-color: $fill-bg;
-            border: 1px solid transparent;
-        }
-
-        &.outlineQuiet {
-            background-color: $outline-bg;
-            border: 1px solid transparent;
-        }
-
-        & img {
-            margin-right: 10px;
-        }
-
-        & .input {
-            font-weight: 400;
-            padding: 0;
             color: $text-color;
-            background-color: transparent;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            // overflow-y: scroll;
+            // z-index: 1;
 
-            &::placeholder {
-                color: $placeholder-color;
+            ul {
+                width: 100%;
             }
 
+            & .colorItem {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 2px;
+                cursor: pointer;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0px 12px;
+                height: 100%;
+                font-weight: 500;
+                border-radius: 4px;
 
 
+                & :hover {
+                    background-color: $dropdown-bg-active-color;
+                }
+
+
+            }
 
         }
 
+        & .inputWrapper {
+            padding: 0px 10px 0px 14px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
 
+
+            border-radius: 4px;
+
+            &:hover {
+                border: 1px solid $border-color !important;
+            }
+
+            &:focus-within {
+                border: 1px solid $focus-color !important;
+                outline: 4px solid $focus-outline-color;
+            }
+
+            &.fillNoQuiet {
+                background-color: $fill-bg;
+                border: 1px solid $border-color;
+            }
+
+            &.outlineNoQuiet {
+                background-color: $outline-bg;
+                border: 1px solid $border-color;
+            }
+
+            &.fillQuiet {
+                background-color: $fill-bg;
+                border: 1px solid transparent;
+            }
+
+            &.outlineQuiet {
+                background-color: $outline-bg;
+                border: 1px solid transparent;
+            }
+
+            & img {
+                width: 100%;
+                height: 100%;
+            }
+
+            & .iconBefore {
+                margin-right: 10px;
+            }
+
+            & .input {
+                font-weight: 400;
+                padding: 0;
+                color: $text-color;
+                background-color: transparent;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                &::placeholder {
+                    color: $placeholder-color;
+                }
+            }
+
+            & .iconDropdown {
+
+                & img {
+                    cursor: pointer;
+
+                }
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                & .clearButton {
+                    margin-right: 12px;
+                }
+            }
+        }
     }
-
-
-
 
     & .inputWrapper .input {
         width: 100%;
@@ -128,7 +170,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             line-height: 20px;
         }
 
-        & .inputWrapper img {
+        & .inputWrapper .iconBefore {
             width: 12px;
             height: 12px;
         }
@@ -136,6 +178,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         & .labelWrapper .label {
             font-size: 12px;
             line-height: 20px;
+        }
+
+        & .dropdown .colorItem {
+            height: 32px;
+            line-height: 20px;
+            font-size: 12px;
         }
     }
 
@@ -147,7 +195,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             line-height: 20px;
         }
 
-        & .inputWrapper img {
+        & .inputWrapper .iconBefore {
             width: 12px;
             height: 12px;
         }
@@ -155,6 +203,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         & .labelWrapper .label {
             font-size: 12px;
             line-height: 20px;
+        }
+
+        & .dropdown .colorItem {
+            height: 36px;
+            line-height: 20px;
+            font-size: 12px;
         }
     }
 
@@ -166,7 +220,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             line-height: 24px;
         }
 
-        & .inputWrapper img {
+        & .inputWrapper .iconBefore {
             width: 15px;
             height: 15px;
         }
@@ -174,6 +228,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         & .labelWrapper .label {
             font-size: 14px;
             line-height: 24px;
+        }
+
+        & .dropdown .colorItem {
+            height: 40px;
+            line-height: 24px;
+            font-size: 14px;
         }
     }
 
@@ -184,7 +244,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             line-height: 24px;
         }
 
-        & .inputWrapper img {
+        & .inputWrapper .iconBefore {
             width: 15px;
             height: 15px;
         }
@@ -192,6 +252,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         & .labelWrapper .label {
             font-size: 14px;
             line-height: 24px;
+        }
+
+        & .dropdown .colorItem {
+            height: 44px;
+            line-height: 24px;
+            font-size: 14px;
         }
     }
 
@@ -202,7 +268,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             line-height: 24px;
         }
 
-        & .inputWrapper img {
+        & .inputWrapper .iconBefore {
             width: 15px;
             height: 15px;
         }
@@ -211,8 +277,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             font-size: 14px;
             line-height: 24px;
         }
+
+        & .dropdown .colorItem {
+            height: 48px;
+            line-height: 24px;
+            font-size: 14px;
+        }
     }
-
-
 
 }

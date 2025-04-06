@@ -1,7 +1,10 @@
 import clsx from "clsx";
-import { ReactNode, FC, useState } from "react";
+import { ReactNode, FC, useState, useMemo } from "react";
 import styles from "./Select.module.scss";
 // import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
+import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
+import CloseIcon from "../../assets/icons/CloseIcon.svg"
 
 interface InputProps {
     placeholder?: string;
@@ -19,6 +22,14 @@ interface InputProps {
     tooltipText?: string;
 }
 
+const colors = [
+    { colorName: "Midnight Blue" },
+    { colorName: "Crimson Sky " },
+    { colorName: " Electric Lime" },
+    { colorName: " Golden Sun" },
+    { colorName: "Sapphire Sea " },
+    { colorName: " Ruby Rose" }]
+
 const Input: FC<InputProps> = ({
     placeholder,
     type = "text",
@@ -33,7 +44,39 @@ const Input: FC<InputProps> = ({
     // helperText = "",
     // tooltipText,
 }) => {
-    const [isOpenDropdown, setOpenDropdown] = useState(true);
+    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const [selected, setSelected] = useState("");
+    const [searchValue, setSearchValue] = useState("");
+    console.log("render select");
+
+    function changeColor(color: string) {
+        setSelected(color);
+        setIsOpenDropdown(false);
+        setSearchValue("");
+    }
+
+    function changeValue(e: React.ChangeEvent<HTMLInputElement>) {
+        setIsOpenDropdown(true);
+        const value = e.target.value;
+        setSelected(value);
+        setSearchValue(e.target.value);
+
+        console.log(selected);
+
+
+    }
+
+    function clearValue() {
+        setSelected("");
+        setSearchValue("");
+    }
+
+    const filteredColors = useMemo(() => {
+        return colors.filter(c =>
+            c.colorName.toLowerCase().includes(searchValue.toLowerCase())
+        );
+    }, [searchValue]);
+
 
     return (
         <>
@@ -60,17 +103,44 @@ const Input: FC<InputProps> = ({
                         [styles.fillQuiet]: uiType === "fill" && isQuiet,
                         [styles.outlineQuiet]: uiType === "outline" && isQuiet,
                     })}>
-                        {!isError && iconBefore}
-                        <input type={type} className={clsx(styles.input)} placeholder={placeholder} disabled={isDisabled}
+                        {!isError && iconBefore && (
+                            <span className={clsx(styles.iconBefore)}>
+                                {iconBefore}
+                            </span>
+                        )}
+
+                        <input type={type} value={selected} onChange={(e) => changeValue(e)}
+                            className={clsx(styles.input)} placeholder={placeholder} disabled={isDisabled}
                         />
                         {/* {!isError && iconAfter}
                         {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
                        */}
+                        <span className={clsx(styles.iconDropdown)}>
+                            {selected && <img className={clsx(styles.clearButton)} onClick={() => clearValue()} src={CloseIcon} alt="CloseIcon" />}
+
+                            <img src={IconDropdown} alt="Dropdown" onClick={() => setIsOpenDropdown(!isOpenDropdown)} />
+                        </span>
                     </div>
                     {/* <div className={clsx(styles.helperTextWrapper)}>
                         {!isDisabled && helperText && <span className={clsx(styles.helperText)}>{helperText}</span>}
                     </div> */}
-                    {isOpenDropdown && <div className={clsx(styles.dropdown)} ></div>}
+                    {isOpenDropdown && <div className={clsx(styles.dropdown)} >
+                        <ul>
+                            {filteredColors.map((color) => {
+                                return (
+                                    <li key={color.colorName} onClick={() => changeColor(color.colorName)} className={clsx(styles.colorItem)} >
+                                        <div className={clsx(styles.colorItem)}>
+                                            <span>  {color.colorName}</span>
+                                            {selected === color.colorName && <img src={SelectedIcon} alt="SelectedIcon" />}
+
+                                        </div>
+                                    </li>
+                                )
+                            })}
+
+                        </ul>
+
+                    </div>}
                 </div>
             </div>
         </>

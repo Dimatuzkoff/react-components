@@ -4,6 +4,8 @@ import SearchIcon from "./assets/icons/SearchIcon.svg";
 
 function App() {
     const iconBefore = <img src={SearchIcon} alt="search" />;
+    console.log('render app');
+
     return (
         <>
             <Select placeholder='Select...' isQuiet iconBefore={iconBefore} label="What color do you like?" />
