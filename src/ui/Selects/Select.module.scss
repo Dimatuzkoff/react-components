@@ -1,4 +1,10 @@
+$fill-bg: rgba(255, 255, 255, 1);
+$border-color: rgba(209, 209, 214, 1);
+$text-color: rgba(26, 26, 30, 1);
+
 .selectWrapper {
+    position: relative;
+    width: 323px;
 
     &.size32 {
 
@@ -38,5 +44,37 @@
             width: 15px;
             height: 15px;
         }
+    }
+
+    & .selectTools {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 36px;
+        height: 16px;
+
+        & img {
+            cursor: pointer;
+        }
+
+        & .closeIcon {
+            height: 8px;
+            width: 8px;
+        }
+
+        & .dropdownIcon {
+            height: 6px;
+            width: 12px;
+        }
+    }
+
+    & .dropdownWrapper {
+        position: absolute;
+        bottom: -4px;
+        transform: translateY(100%);
+        z-index: 1;
+        width: 100%;
+
     }
 }

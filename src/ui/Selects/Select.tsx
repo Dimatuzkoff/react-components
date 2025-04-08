@@ -1,15 +1,12 @@
 import clsx from "clsx";
-import { ReactNode, FC } from "react";
+import { FC, useState } from "react";
 import styles from "./Select.module.scss";
-// import InfoTooltip from "../InfoTooltip/InfoTooltip";
-// import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
-// import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
-// import CloseIcon from "../../assets/icons/CloseIcon.svg"
+import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
+import CloseIcon from "../../assets/icons/CloseIcon.svg"
 import Input from "../Inputs/Input"
-
+import { Dropdown } from "./Dropdown"
 interface SelectProps {
     iconBefore?: string;
-    iconAfter?: ReactNode;
     placeholder?: string;
     size?: "32" | "36" | "40" | "44" | "48";
     label?: string;
@@ -25,7 +22,6 @@ interface SelectProps {
 
 export const Select: FC<SelectProps> = ({
     iconBefore,
-    iconAfter,
     placeholder,
     size = '40',
     label,
@@ -37,8 +33,19 @@ export const Select: FC<SelectProps> = ({
 
 
 }) => {
-    const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
+    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const toggleDropdown = () => {
 
+        setIsOpenDropdown(!isOpenDropdown);
+    }
+
+    const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
+    const selectTools = (
+        <div className={clsx(styles.selectTools)}>
+            <img className={clsx(styles.closeIcon)} src={CloseIcon} alt="icon" />
+            <img onClick={toggleDropdown} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
+        </div>
+    )
     return (
         <>
             <div className={clsx(styles.selectWrapper, {
@@ -50,7 +57,7 @@ export const Select: FC<SelectProps> = ({
             })}>
                 <Input
                     iconBefore={selectIconBefore}
-                    iconAfter={iconAfter}
+                    iconAfter={selectTools}
                     placeholder={placeholder}
                     size={size}
                     label={label}
@@ -60,6 +67,10 @@ export const Select: FC<SelectProps> = ({
                     helperText={helperText}
                     isError={isError}
                 />
+                {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
+                    <Dropdown /></div>}
+                {/* {isOpenDropdown &&
+                    <Dropdown />} */}
             </div>
 
         </>

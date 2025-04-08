@@ -19,6 +19,10 @@ $label-disabled-color: rgba(112, 112, 123, 1);
 
 
     &.size24 {
+        & .inputContainer {
+            height: 24px;
+        }
+
         & .inputWrapper .input {
             height: 22px;
             font-size: 12px;
@@ -41,6 +45,9 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     }
 
     &.size32 {
+        & .inputContainer {
+            height: 32px;
+        }
 
         & .inputWrapper .input {
             height: 30px;
@@ -65,6 +72,9 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     }
 
     &.size36 {
+        & .inputContainer {
+            height: 36px;
+        }
 
         & .inputWrapper .input {
             height: 34px;
@@ -88,6 +98,9 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     }
 
     &.size40 {
+        & .inputContainer {
+            height: 40px;
+        }
 
         & .inputWrapper .input {
             height: 38px;
@@ -112,6 +125,10 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     }
 
     &.size44 {
+        & .inputContainer {
+            height: 44px;
+        }
+
         & .inputWrapper .input {
             height: 42px;
             font-size: 14px;
@@ -134,6 +151,10 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     }
 
     &.size48 {
+        & .inputContainer {
+            height: 48px;
+        }
+
         & .inputWrapper .input {
             height: 46px;
             font-size: 14px;

@@ -3,7 +3,6 @@ import { Select } from "./ui/Selects/Select"
 import SearchIcon from "./assets/icons/SearchIcon.svg";
 
 function App() {
-    const iconBefore = <img src={SearchIcon} alt="search" />;
     console.log('render app');
 
     return (
@@ -12,7 +11,7 @@ function App() {
                 label="What color you like?"
                 tooltipText="Tooltip text"
                 helperText="Helper text"
-                iconAfter={iconBefore} iconBefore={SearchIcon} />
+                iconBefore={SearchIcon} />
 
         </>
     )
