@@ -1,1 +1,42 @@
-.selectWrapper {}
+.selectWrapper {
+
+    &.size32 {
+
+        & .iconBefore {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    &.size36 {
+
+        & .iconBefore {
+            width: 12px;
+            height: 12px;
+        }
+    }
+
+    &.size40 {
+
+        & .iconBefore {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    &.size44 {
+
+        & .iconBefore {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    &.size48 {
+
+        & .iconBefore {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}

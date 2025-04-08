@@ -1,6 +1,5 @@
 import clsx from "clsx";
-import { FC } from "react";
-// import { ReactNode, FC, useState, useMemo } from "react";
+import { ReactNode, FC } from "react";
 import styles from "./Select.module.scss";
 // import InfoTooltip from "../InfoTooltip/InfoTooltip";
 // import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
@@ -9,6 +8,8 @@ import styles from "./Select.module.scss";
 import Input from "../Inputs/Input"
 
 interface SelectProps {
+    iconBefore?: string;
+    iconAfter?: ReactNode;
     placeholder?: string;
     size?: "32" | "36" | "40" | "44" | "48";
     label?: string;
@@ -23,6 +24,8 @@ interface SelectProps {
 
 
 export const Select: FC<SelectProps> = ({
+    iconBefore,
+    iconAfter,
     placeholder,
     size = '40',
     label,
@@ -34,10 +37,20 @@ export const Select: FC<SelectProps> = ({
 
 
 }) => {
+    const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
+
     return (
         <>
-            <div className={clsx(styles.selectWrapper)}>
+            <div className={clsx(styles.selectWrapper, {
+                [styles.size32]: size === "32",
+                [styles.size36]: size === "36",
+                [styles.size40]: size === "40",
+                [styles.size44]: size === "44",
+                [styles.size48]: size === "48",
+            })}>
                 <Input
+                    iconBefore={selectIconBefore}
+                    iconAfter={iconAfter}
                     placeholder={placeholder}
                     size={size}
                     label={label}
