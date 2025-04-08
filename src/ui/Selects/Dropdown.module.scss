@@ -1,9 +1,11 @@
 $fill-bg: rgba(255, 255, 255, 1);
 $border-color: rgba(209, 209, 214, 1);
 $text-color: rgba(26, 26, 30, 1);
+$dropdown-bg-active-color: rgba(250, 250, 250, 1);
 
 .dropdown {
     overflow-y: auto;
+    font-family: "Inter", sans-serif;
     height: 160px;
     display: flex;
     // max-height: 160px;
@@ -18,4 +20,84 @@ $text-color: rgba(26, 26, 30, 1);
     color: $text-color;
     overflow-y: auto;
     scrollbar-color: rgba(228, 228, 231, 1) transparent;
+
+    ul {
+        width: 100%;
+    }
+
+    & .colorItem {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 2px;
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0px 12px;
+        height: 100%;
+        font-weight: 500;
+        border-radius: 4px;
+
+        & :hover {
+            background-color: $dropdown-bg-active-color;
+        }
+    }
+
+    & .noResult {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        margin-left: 12px;
+    }
+
+    &.size32 {
+
+        & .colorItem,
+        & .noResult {
+            height: 32px;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    }
+
+    &.size36 {
+
+        & .colorItem,
+        & .noResult {
+            height: 36px;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    }
+
+    &.size40 {
+
+        & .colorItem,
+        & .noResult {
+            height: 40px;
+            line-height: 24px;
+            font-size: 14px;
+        }
+    }
+
+    &.size44 {
+
+        & .colorItem,
+        & .noResult {
+            height: 44px;
+            line-height: 24px;
+            font-size: 14px;
+        }
+    }
+
+    &.size48 {
+
+        & .colorItem,
+        & .noResult {
+            height: 48px;
+            line-height: 24px;
+            font-size: 14px;
+        }
+    }
 }

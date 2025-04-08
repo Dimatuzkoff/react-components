@@ -15,6 +15,7 @@ interface SelectProps {
     isQuiet?: boolean;
     isDisabled?: boolean;
     isError?: boolean;
+    dropdownContent?: [];
 }
 
 
@@ -29,7 +30,8 @@ export const Select: FC<SelectProps> = ({
     helperText = "",
     isQuiet = false,
     isDisabled = false,
-    isError = false
+    isError = false,
+    dropdownContent
 
 
 }) => {
@@ -63,7 +65,7 @@ export const Select: FC<SelectProps> = ({
                     isError={isError}
                 />
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
-                    <Dropdown /></div>}
+                    <Dropdown size={size} dropdownContent={dropdownContent} /></div>}
             </div>
 
         </>
