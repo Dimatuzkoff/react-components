@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { ReactNode, FC, useState, useMemo } from "react";
-import styles from "./Select.module.scss";
+import styles from "./SelectOld.module.scss";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
 import SelectedIcon from "../../assets/icons/SelectedIcon.svg"

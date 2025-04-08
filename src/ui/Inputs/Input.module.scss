@@ -38,6 +38,11 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         &.labelPositionTop {
             gap: 4px;
         }
+
+        & .helperTextWrapper .helperText {
+            font-size: 12px;
+            line-height: 20px;
+        }
     }
 
     &.size32 {
@@ -61,6 +66,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         &.labelPositionTop {
             gap: 4px;
         }
+
+        & .helperTextWrapper .helperText {
+            font-size: 12px;
+            line-height: 20px;
+        }
+
     }
 
     &.size36 {
@@ -83,6 +94,11 @@ $label-disabled-color: rgba(112, 112, 123, 1);
 
         &.labelPositionTop {
             gap: 4px;
+        }
+
+        & .helperTextWrapper .helperText {
+            font-size: 12px;
+            line-height: 20px;
         }
     }
 
@@ -108,7 +124,10 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             gap: 6px;
         }
 
-
+        & .helperTextWrapper .helperText {
+            font-size: 14px;
+            line-height: 24px;
+        }
 
     }
 
@@ -132,6 +151,11 @@ $label-disabled-color: rgba(112, 112, 123, 1);
         &.labelPositionTop {
             gap: 6px;
         }
+
+        & .helperTextWrapper .helperText {
+            font-size: 14px;
+            line-height: 24px;
+        }
     }
 
     &.size48 {
@@ -153,6 +177,11 @@ $label-disabled-color: rgba(112, 112, 123, 1);
 
         &.labelPositionTop {
             gap: 6px;
+        }
+
+        & .helperTextWrapper .helperText {
+            font-size: 14px;
+            line-height: 24px;
         }
     }
 
@@ -303,8 +332,6 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             display: block;
             text-align: left;
             font-weight: 400;
-            font-size: 12px;
-            line-height: 20px;
             color: $prompt-color;
             margin-top: 4px;
             word-wrap: break-word;
