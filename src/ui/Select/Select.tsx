@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { ReactNode, FC, useState, useMemo } from "react";
 import styles from "./Select.module.scss";
-// import InfoTooltip from "../InfoTooltip/InfoTooltip";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
 import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
 import CloseIcon from "../../assets/icons/CloseIcon.svg"
@@ -11,8 +11,6 @@ interface InputProps {
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
     isDisabled?: boolean;
     iconBefore?: ReactNode;
-    // iconAfter?: ReactNode;
-
     label?: string;
     size?: "32" | "36" | "40" | "44" | "48";
     uiType?: "fill" | "outline";
@@ -35,14 +33,13 @@ const Input: FC<InputProps> = ({
     type = "text",
     isDisabled = false,
     iconBefore,
-    // iconAfter,
     label,
     size = "40",
     uiType = "fill",
     isQuiet = false,
     isError = false,
-    // helperText = "",
-    // tooltipText,
+    helperText = "",
+    tooltipText,
 }) => {
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
     const [selected, setSelected] = useState("");
@@ -85,6 +82,7 @@ const Input: FC<InputProps> = ({
             })}>
                 <div className={clsx(styles.labelWrapper)}>
                     <span className={clsx(styles.label)} >{label}</span>
+                    {tooltipText && <InfoTooltip>{tooltipText}</InfoTooltip>}
                 </div>
                 <div className={clsx(styles.inputContainer, {
                     [styles.error]: isError
@@ -100,7 +98,6 @@ const Input: FC<InputProps> = ({
                                 {iconBefore}
                             </span>
                         )}
-
                         <input type={type} value={selected} onChange={(e) => changeValue(e)}
                             className={clsx(styles.input)} placeholder={placeholder} disabled={isDisabled}
                         />
@@ -109,6 +106,7 @@ const Input: FC<InputProps> = ({
                             <img src={IconDropdown} alt="Dropdown" onClick={() => setIsOpenDropdown(!isOpenDropdown)} />
                         </span>
                     </div>
+
                     {isOpenDropdown && (
                         <div className={clsx(styles.dropdown)}>
                             <ul>
@@ -127,6 +125,9 @@ const Input: FC<InputProps> = ({
                             </ul>
                         </div>
                     )}
+                </div>
+                <div className={clsx(styles.helperTextWrapper)}>
+                    {!isOpenDropdown && helperText && <span className={clsx(styles.helperText)}>{helperText}</span>}
                 </div>
             </div>
         </>
