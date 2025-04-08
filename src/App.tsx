@@ -9,6 +9,8 @@ function App() {
     return (
         <>
             <Select size="44" tooltipText="This is a tooltip" placeholder='Select...' isQuiet iconBefore={iconBefore} helperText="This is a helper text" label="What color do you like?" />
+            <Select isError size="44" tooltipText="This is a tooltip" placeholder='Select...' isQuiet iconBefore={iconBefore} helperText="This is a helper text" label="What color do you like?" />
+
         </>
     )
 }

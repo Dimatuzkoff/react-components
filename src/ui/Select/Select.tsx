@@ -79,14 +79,13 @@ const Input: FC<InputProps> = ({
                 [styles.size40]: size === "40",
                 [styles.size44]: size === "44",
                 [styles.size48]: size === "48",
+                [styles.error]: isError
             })}>
                 <div className={clsx(styles.labelWrapper)}>
                     <span className={clsx(styles.label)} >{label}</span>
                     {tooltipText && <InfoTooltip>{tooltipText}</InfoTooltip>}
                 </div>
-                <div className={clsx(styles.inputContainer, {
-                    [styles.error]: isError
-                })}>
+                <div className={clsx(styles.inputContainer)}>
                     <div className={clsx(styles.inputWrapper, {
                         [styles.fillNoQuiet]: uiType === "fill" && !isQuiet,
                         [styles.outlineNoQuiet]: uiType === "outline" && !isQuiet,
