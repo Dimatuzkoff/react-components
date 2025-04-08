@@ -34,16 +34,11 @@ export const Select: FC<SelectProps> = ({
 
 }) => {
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-    const toggleDropdown = () => {
-
-        setIsOpenDropdown(!isOpenDropdown);
-    }
-
     const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
         <div className={clsx(styles.selectTools)}>
             <img className={clsx(styles.closeIcon)} src={CloseIcon} alt="icon" />
-            <img onClick={toggleDropdown} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
+            <img onClick={() => setIsOpenDropdown(!isOpenDropdown)} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
         </div>
     )
     return (
@@ -69,8 +64,6 @@ export const Select: FC<SelectProps> = ({
                 />
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
                     <Dropdown /></div>}
-                {/* {isOpenDropdown &&
-                    <Dropdown />} */}
             </div>
 
         </>
