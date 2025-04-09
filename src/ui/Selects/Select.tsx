@@ -63,8 +63,8 @@ export const Select: FC<SelectProps> = ({
     }
 
     const filteredDropdownItems = useMemo(() => {
-        return dropdownContent.filter(c =>
-            c.value.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
+        return dropdownContent.filter(elem =>
+            elem.value.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
         );
     }, [inputValue]);
 
