@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import { FC, useState } from "react";
+import CloseIcon from "../../assets/icons/CloseIcon.svg";
+import IconDropdown from "../../assets/icons/SelectDropdownIcon.png";
+import Input from "../Inputs/Input";
+import { Dropdown } from "./Dropdown";
 import styles from "./Select.module.scss";
-import IconDropdown from "../../assets/icons/SelectDropdownIcon.png"
-import CloseIcon from "../../assets/icons/CloseIcon.svg"
-import Input from "../Inputs/Input"
-import { Dropdown } from "./Dropdown"
 interface SelectProps {
     iconBefore?: string;
     placeholder?: string;
@@ -36,6 +36,9 @@ export const Select: FC<SelectProps> = ({
 
 }) => {
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const [inputValue, setInputValue] = useState("");
+    const [selectedSingleItem, setSelectedSingleItem] = useState("");
+
     const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
         <div className={clsx(styles.selectTools)}>
@@ -63,9 +66,17 @@ export const Select: FC<SelectProps> = ({
                     isDisabled={isDisabled}
                     helperText={helperText}
                     isError={isError}
+                    onChange={(value) => setInputValue(value)}
+                    onClick={() => setIsOpenDropdown(true)}
+                    value={inputValue}
+
                 />
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
-                    <Dropdown size={size} dropdownContent={dropdownContent} /></div>}
+                    <Dropdown size={size}
+                        dropdownContent={dropdownContent}
+                        selectedSingleItem={selectedSingleItem}
+                        onChange={(value) => (setSelectedSingleItem(value), setInputValue(value))}
+                    /></div>}
             </div>
 
         </>

@@ -6,6 +6,8 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import { getCurrentOsForBadgeIcon } from "../../helpers/getCurrentOsForBadgeIcon"
 import { useKeyboardInputRef } from "../../hooks/useKeyboardInputRef"
 interface InputProps {
+    onChange?: (value: string) => void;
+    onClick?: () => void;
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
     isDisabled?: boolean;
@@ -21,9 +23,12 @@ interface InputProps {
     isError?: boolean;
     helperText?: string;
     tooltipText?: string;
+    value?: string
 }
 
 const Input: FC<InputProps> = ({
+    onChange,
+    onClick,
     placeholder,
     type = "text",
     isDisabled = false,
@@ -38,7 +43,8 @@ const Input: FC<InputProps> = ({
     isError = false,
     helperText = "",
     isBadge = false,
-    tooltipText
+    tooltipText,
+    value
 }) => {
     const inputRef = useKeyboardInputRef(isBadge ? "k" : "", () => {
         if (isBadge) {
@@ -77,10 +83,14 @@ const Input: FC<InputProps> = ({
                     })}>
                         {!isError && iconBefore}
                         {(isError && iconBefore) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
-                        <input ref={isBadge ? inputRef : null} type={type} className={clsx(styles.input, {
-                            [styles.leftAlignment]: alignment === "left",
-                            [styles.rightAlignment]: alignment === "right",
-                        })} placeholder={placeholder} disabled={isDisabled}
+                        <input ref={isBadge ? inputRef : null}
+                            onChange={(event) => onChange(event.target.value)}
+                            onClick={onClick} value={value}
+                            type={type}
+                            className={clsx(styles.input, {
+                                [styles.leftAlignment]: alignment === "left",
+                                [styles.rightAlignment]: alignment === "right",
+                            })} placeholder={placeholder} disabled={isDisabled}
                         />
                         {!isError && iconAfter}
                         {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
