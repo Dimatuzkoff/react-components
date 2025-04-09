@@ -33,16 +33,23 @@ export const Dropdown: FC<DropdownProps> = ({
     selectedMultipleItems
 }) => {
     const filteredDropdownItems = useMemo(() => {
+        const items = dropdownContent ?? [];
+
+        if (mode === "multiple") {
+            return items
+                .filter(elem => !selectedMultipleItems?.includes(elem.value))
+                .filter(elem => elem.value.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? ""));
+        }
+
         if (mode === "single") {
-            return dropdownContent.filter(elem =>
-                elem.value.toLowerCase().trim().includes(searchSingleValue?.toLowerCase().trim())
+            return items.filter(elem =>
+                elem.value.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? "")
             );
         }
 
-        if (mode === "multiple") {
-            return dropdownContent.filter(elem => !selectedMultipleItems?.includes(elem.value));
-        }
-    }, [searchSingleValue, dropdownContent, selectedMultipleItems]);
+        return items;
+    }, [dropdownContent, selectedMultipleItems, searchSingleValue, mode]);
+
 
 
     useEffect(() => {

@@ -50,6 +50,7 @@ export const Select: FC<SelectProps> = ({
         setInputValue("");
         setSearchValue("");
         setSelectedSingleItem("");
+        setSelectedMultipleItems([]);
     };
 
     const selectDropdownItem = (value: string) => {
