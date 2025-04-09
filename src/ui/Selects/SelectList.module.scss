@@ -1,0 +1,52 @@
+$border-color: rgba(209, 209, 214, 1);
+
+
+.selectedList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: "Inter", sans-serif;
+    max-width: 130px;
+    gap: 2px;
+    overflow-y: scroll;
+
+    &.size32 {
+        height: 30px;
+    }
+
+    &.size36 {
+        height: 32px;
+    }
+
+    &.size40 {
+        height: 36px;
+    }
+
+    &.size44 {
+        height: 40px;
+    }
+
+    &.size48 {
+        height: 44px;
+    }
+
+    & .selectedItem {
+        display: flex;
+        align-items: center;
+        width: 60px;
+        height: 14px;
+        padding: 1px;
+        font-size: 12px;
+        line-height: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border: 1px solid $border-color;
+        border-radius: 2px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgb(218, 187, 187);
+        }
+    }
+}

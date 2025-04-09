@@ -6,6 +6,7 @@ import Input from "../Inputs/Input";
 import { Dropdown } from "./Dropdown";
 import styles from "./Select.module.scss";
 import { useClickOutside } from "../../hooks/useClickOutside"
+import { SelectList } from "./SelectList"
 interface SelectProps {
     mode?: "single" | "multiple";
     iconBefore?: string;
@@ -57,12 +58,15 @@ export const Select: FC<SelectProps> = ({
         if (mode === "single") {
             setSelectedSingleItem(value);
             setInputValue(value);
-            setSearchValue("");
-            setIsOpenDropdown(false)
         }
+
         if (mode === "multiple") {
             setSelectedMultipleItems([...selectedMultipleItems, value]);
+            setInputValue("");
+
         }
+        setSearchValue("");
+        setIsOpenDropdown(false)
     };
 
     const getInputValue = (value: string) => {
@@ -81,6 +85,11 @@ export const Select: FC<SelectProps> = ({
             <img onClick={() => setIsOpenDropdown(!isOpenDropdown)} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
         </div>
     )
+
+    const selectedList = (
+        <SelectList selectedItems={selectedMultipleItems} />
+    )
+    const currentIconBefore = mode === "multiple" ? selectedList : selectIconBefore
     return (
         <>
             <div ref={divClickOutsideRef} className={clsx(styles.selectWrapper, {
@@ -91,7 +100,7 @@ export const Select: FC<SelectProps> = ({
                 [styles.size48]: size === "48",
             })}>
                 <Input
-                    iconBefore={selectIconBefore}
+                    iconBefore={currentIconBefore}
                     iconAfter={selectTools}
                     placeholder={placeholder}
                     size={size}

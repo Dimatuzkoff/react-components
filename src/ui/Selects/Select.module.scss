@@ -51,7 +51,7 @@ $text-color: rgba(26, 26, 30, 1);
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 36px;
+        min-width: 36px;
         height: 16px;
 
         & img {
