@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, useState } from "react";
+import { FC, useState, useMemo } from "react";
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
 import IconDropdown from "../../assets/icons/SelectDropdownIcon.png";
 import Input from "../Inputs/Input";
@@ -38,11 +38,35 @@ export const Select: FC<SelectProps> = ({
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [selectedSingleItem, setSelectedSingleItem] = useState("");
+    const [searchValue, setSearchValue] = useState("");
+
+    const clearValue = () => {
+        setInputValue("");
+        setSearchValue("");
+        setSelectedSingleItem("");
+    };
+    const selectDropdownItem = (value: string) => {
+        setSelectedSingleItem(value);
+        setInputValue(value);
+        setSearchValue("");
+        setIsOpenDropdown(false)
+    };
+
+    const getInputValue = (value: string) => {
+        setInputValue(value);
+        setSearchValue(value)
+    }
+
+    const filteredDropdownItems = useMemo(() => {
+        return dropdownContent.filter(c =>
+            c.value.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
+        );
+    }, [inputValue]);
 
     const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
         <div className={clsx(styles.selectTools)}>
-            <img className={clsx(styles.closeIcon)} src={CloseIcon} alt="icon" />
+            <img onClick={clearValue} className={clsx(styles.closeIcon)} src={CloseIcon} alt="icon" />
             <img onClick={() => setIsOpenDropdown(!isOpenDropdown)} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
         </div>
     )
@@ -66,16 +90,16 @@ export const Select: FC<SelectProps> = ({
                     isDisabled={isDisabled}
                     helperText={helperText}
                     isError={isError}
-                    onChange={(value) => setInputValue(value)}
-                    onClick={() => setIsOpenDropdown(true)}
+                    onChange={(value) => getInputValue(value)}
+                    onClick={() => (setIsOpenDropdown(true))}
                     value={inputValue}
 
                 />
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
                     <Dropdown size={size}
-                        dropdownContent={dropdownContent}
+                        dropdownContent={filteredDropdownItems}
                         selectedSingleItem={selectedSingleItem}
-                        onChange={(value) => (setSelectedSingleItem(value), setInputValue(value))}
+                        onChange={(value) => selectDropdownItem(value)}
                     /></div>}
             </div>
 

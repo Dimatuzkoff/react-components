@@ -6,12 +6,12 @@ function App() {
     console.log('render app');
 
     const colors = [
-        { colorName: "Midnight Blue" },
-        { colorName: "Crimson Sky " },
-        { colorName: " Electric Lime" },
-        { colorName: " Golden Sun" },
-        { colorName: "Sapphire Sea " },
-        { colorName: " Ruby Rose" }]
+        { value: "Midnight Blue" },
+        { value: "Crimson Sky " },
+        { value: " Electric Lime" },
+        { value: " Golden Sun" },
+        { value: "Sapphire Sea " },
+        { value: " Ruby Rose" }]
 
     return (
         <>

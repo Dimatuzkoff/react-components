@@ -18,9 +18,6 @@ interface DropdownProps {
     selectedSingleItem?: string
 }
 
-
-
-
 export const Dropdown: FC<DropdownProps> = ({
     onChange,
     dropdownContent,
@@ -39,10 +36,10 @@ export const Dropdown: FC<DropdownProps> = ({
                 <ul>
                     {dropdownContent.length > 0 ? (
                         dropdownContent.map((item) => (
-                            <li key={item.colorName} onClick={() => onChange(item.colorName)} className={clsx(styles.colorItem)}>
+                            <li key={item.value} onClick={() => onChange(item.value)} className={clsx(styles.colorItem)}>
                                 <div className={clsx(styles.colorItem)}>
-                                    <span>{item.colorName}</span>
-                                    {(selectedSingleItem?.trim() === item.colorName.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
+                                    <span>{item.value}</span>
+                                    {(selectedSingleItem?.trim() === item.value.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
                                 </div>
                             </li>
                         ))
