@@ -1,10 +1,12 @@
 import clsx from "clsx";
-import { FC } from "react";
+import { FC, useMemo, useEffect } from "react";
 import styles from "./Dropdown.module.scss";
 import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
 
 interface DropdownProps {
+    mode?: "single" | "multiple";
     onChange?: (value: string) => void
+    changeHelperText?: (value: string) => void
     iconBefore?: string;
     placeholder?: string;
     size?: "32" | "36" | "40" | "44" | "48";
@@ -15,15 +17,43 @@ interface DropdownProps {
     isDisabled?: boolean;
     isError?: boolean;
     dropdownContent?: [],
-    selectedSingleItem?: string
+    selectedSingleItem?: string,
+    searchSingleValue?: string,
+    selectedMultipleItems?: string[]
 }
 
 export const Dropdown: FC<DropdownProps> = ({
+    mode = "multiple",
     onChange,
+    changeHelperText,
     dropdownContent,
     size = "40",
-    selectedSingleItem
+    selectedSingleItem,
+    searchSingleValue,
+    selectedMultipleItems
 }) => {
+    const filteredDropdownItems = useMemo(() => {
+        if (mode === "single") {
+            return dropdownContent.filter(elem =>
+                elem.value.toLowerCase().trim().includes(searchSingleValue?.toLowerCase().trim())
+            );
+        }
+
+        if (mode === "multiple") {
+            return dropdownContent.filter(elem => !selectedMultipleItems?.includes(elem.value));
+        }
+    }, [searchSingleValue, dropdownContent, selectedMultipleItems]);
+
+
+    useEffect(() => {
+        if (filteredDropdownItems.length === 0) {
+            changeHelperText?.("Not found");
+        } else {
+            changeHelperText?.("Helper text");
+        }
+    }, [filteredDropdownItems, searchSingleValue]);
+    console.log('render dropdown');
+
     return (
         <>
             <div className={clsx(styles.dropdown, {
@@ -32,10 +62,10 @@ export const Dropdown: FC<DropdownProps> = ({
                 [styles.size40]: size === "40",
                 [styles.size44]: size === "44",
                 [styles.size48]: size === "48",
-                [styles.notFound]: dropdownContent.length === 0,
+                [styles.notFound]: filteredDropdownItems.length === 0,
             })}>
                 <ul>
-                    {dropdownContent.map((item) => (
+                    {filteredDropdownItems.map((item) => (
                         <li key={item.value} onClick={() => onChange(item.value)} className={clsx(styles.colorItem)}>
                             <div className={clsx(styles.colorItem)}>
                                 <span>{item.value}</span>

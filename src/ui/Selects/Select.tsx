@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, useState, useMemo, useRef, useEffect } from "react";
+import { FC, useState, useRef } from "react";
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
 import IconDropdown from "../../assets/icons/SelectDropdownIcon.png";
 import Input from "../Inputs/Input";
@@ -7,6 +7,7 @@ import { Dropdown } from "./Dropdown";
 import styles from "./Select.module.scss";
 import { useClickOutside } from "../../hooks/useClickOutside"
 interface SelectProps {
+    mode?: "single" | "multiple";
     iconBefore?: string;
     placeholder?: string;
     size?: "32" | "36" | "40" | "44" | "48";
@@ -23,6 +24,7 @@ interface SelectProps {
 
 
 export const Select: FC<SelectProps> = ({
+    mode = "multiple",
     iconBefore,
     placeholder,
     size = '40',
@@ -39,10 +41,10 @@ export const Select: FC<SelectProps> = ({
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
     const [inputValue, setInputValue] = useState("");
     const [selectedSingleItem, setSelectedSingleItem] = useState("");
+    const [selectedMultipleItems, setSelectedMultipleItems] = useState<string[]>([]);
     const [searchValue, setSearchValue] = useState("");
     const [inputHelperText, setInputHelperText] = useState(helperText);
     const divClickOutsideRef = useRef<HTMLDivElement | null>(null);
-
     useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
     const clearValue = () => {
         setInputValue("");
@@ -51,10 +53,15 @@ export const Select: FC<SelectProps> = ({
     };
 
     const selectDropdownItem = (value: string) => {
-        setSelectedSingleItem(value);
-        setInputValue(value);
-        setSearchValue("");
-        setIsOpenDropdown(false)
+        if (mode === "single") {
+            setSelectedSingleItem(value);
+            setInputValue(value);
+            setSearchValue("");
+            setIsOpenDropdown(false)
+        }
+        if (mode === "multiple") {
+            setSelectedMultipleItems([...selectedMultipleItems, value]);
+        }
     };
 
     const getInputValue = (value: string) => {
@@ -62,19 +69,9 @@ export const Select: FC<SelectProps> = ({
         setSearchValue(value)
     }
 
-    const filteredDropdownItems = useMemo(() => {
-        return dropdownContent.filter(elem =>
-            elem.value.toLowerCase().trim().includes(searchValue.toLowerCase().trim())
-        );
-    }, [inputValue]);
-
-    useEffect(() => {
-        if (filteredDropdownItems.length === 0) {
-            setInputHelperText("Not found");
-        } else {
-            setInputHelperText(helperText);
-        }
-    }, [filteredDropdownItems, helperText, searchValue]);
+    const changeHelperText = (value: string) => {
+        setInputHelperText(value);
+    }
 
     const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
@@ -110,9 +107,13 @@ export const Select: FC<SelectProps> = ({
                 />
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
                     <Dropdown size={size}
-                        dropdownContent={filteredDropdownItems}
+                        dropdownContent={dropdownContent}
                         selectedSingleItem={selectedSingleItem}
                         onChange={(value) => selectDropdownItem(value)}
+                        searchSingleValue={searchValue}
+                        changeHelperText={changeHelperText}
+                        mode={mode}
+                        selectedMultipleItems={selectedMultipleItems}
                     /></div>}
             </div>
 
