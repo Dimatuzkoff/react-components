@@ -32,20 +32,17 @@ export const Dropdown: FC<DropdownProps> = ({
                 [styles.size40]: size === "40",
                 [styles.size44]: size === "44",
                 [styles.size48]: size === "48",
+                [styles.notFound]: dropdownContent.length === 0,
             })}>
                 <ul>
-                    {dropdownContent.length > 0 ? (
-                        dropdownContent.map((item) => (
-                            <li key={item.value} onClick={() => onChange(item.value)} className={clsx(styles.colorItem)}>
-                                <div className={clsx(styles.colorItem)}>
-                                    <span>{item.value}</span>
-                                    {(selectedSingleItem?.trim() === item.value.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
-                                </div>
-                            </li>
-                        ))
-                    ) : (
-                        <div className={clsx(styles.noResult)}>not found ...</div>
-                    )}
+                    {dropdownContent.map((item) => (
+                        <li key={item.value} onClick={() => onChange(item.value)} className={clsx(styles.colorItem)}>
+                            <div className={clsx(styles.colorItem)}>
+                                <span>{item.value}</span>
+                                {(selectedSingleItem?.trim() === item.value.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
+                            </div>
+                        </li>
+                    ))}
                 </ul>
             </div>
         </>

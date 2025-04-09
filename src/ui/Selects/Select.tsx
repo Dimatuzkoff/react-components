@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { FC, useState, useMemo } from "react";
+import { FC, useState, useMemo, useRef, useEffect } from "react";
 import CloseIcon from "../../assets/icons/CloseIcon.svg";
 import IconDropdown from "../../assets/icons/SelectDropdownIcon.png";
 import Input from "../Inputs/Input";
 import { Dropdown } from "./Dropdown";
 import styles from "./Select.module.scss";
+import { useClickOutside } from "../../hooks/useClickOutside"
 interface SelectProps {
     iconBefore?: string;
     placeholder?: string;
@@ -39,12 +40,16 @@ export const Select: FC<SelectProps> = ({
     const [inputValue, setInputValue] = useState("");
     const [selectedSingleItem, setSelectedSingleItem] = useState("");
     const [searchValue, setSearchValue] = useState("");
+    const [inputHelperText, setInputHelperText] = useState(helperText);
+    const divClickOutsideRef = useRef<HTMLDivElement | null>(null);
 
+    useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
     const clearValue = () => {
         setInputValue("");
         setSearchValue("");
         setSelectedSingleItem("");
     };
+
     const selectDropdownItem = (value: string) => {
         setSelectedSingleItem(value);
         setInputValue(value);
@@ -63,6 +68,14 @@ export const Select: FC<SelectProps> = ({
         );
     }, [inputValue]);
 
+    useEffect(() => {
+        if (filteredDropdownItems.length === 0) {
+            setInputHelperText("Not found");
+        } else {
+            setInputHelperText(helperText);
+        }
+    }, [filteredDropdownItems, helperText, searchValue]);
+
     const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
         <div className={clsx(styles.selectTools)}>
@@ -72,7 +85,7 @@ export const Select: FC<SelectProps> = ({
     )
     return (
         <>
-            <div className={clsx(styles.selectWrapper, {
+            <div ref={divClickOutsideRef} className={clsx(styles.selectWrapper, {
                 [styles.size32]: size === "32",
                 [styles.size36]: size === "36",
                 [styles.size40]: size === "40",
@@ -88,7 +101,7 @@ export const Select: FC<SelectProps> = ({
                     tooltipText={tooltipText}
                     isQuiet={isQuiet}
                     isDisabled={isDisabled}
-                    helperText={helperText}
+                    helperText={inputHelperText}
                     isError={isError}
                     onChange={(value) => getInputValue(value)}
                     onClick={() => (setIsOpenDropdown(true))}

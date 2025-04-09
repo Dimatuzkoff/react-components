@@ -43,17 +43,9 @@ $dropdown-bg-active-color: rgba(250, 250, 250, 1);
         }
     }
 
-    & .noResult {
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        margin-left: 12px;
-    }
-
     &.size32 {
 
-        & .colorItem,
-        & .noResult {
+        & .colorItem {
             height: 32px;
             line-height: 20px;
             font-size: 12px;
@@ -62,8 +54,7 @@ $dropdown-bg-active-color: rgba(250, 250, 250, 1);
 
     &.size36 {
 
-        & .colorItem,
-        & .noResult {
+        & .colorItem {
             height: 36px;
             line-height: 20px;
             font-size: 12px;
@@ -72,8 +63,7 @@ $dropdown-bg-active-color: rgba(250, 250, 250, 1);
 
     &.size40 {
 
-        & .colorItem,
-        & .noResult {
+        & .colorItem {
             height: 40px;
             line-height: 24px;
             font-size: 14px;
@@ -82,8 +72,7 @@ $dropdown-bg-active-color: rgba(250, 250, 250, 1);
 
     &.size44 {
 
-        & .colorItem,
-        & .noResult {
+        & .colorItem {
             height: 44px;
             line-height: 24px;
             font-size: 14px;
@@ -92,11 +81,15 @@ $dropdown-bg-active-color: rgba(250, 250, 250, 1);
 
     &.size48 {
 
-        & .colorItem,
-        & .noResult {
+        & .colorItem {
             height: 48px;
             line-height: 24px;
             font-size: 14px;
         }
+    }
+
+    &.notFound {
+        width: 0;
+        padding: 0;
     }
 }
