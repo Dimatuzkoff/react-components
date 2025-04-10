@@ -1,5 +1,8 @@
-import clsx from "clsx";
+//react
 import { FC } from "react";
+//libs
+import clsx from "clsx";
+//styles
 import styles from "./SelectList.module.scss";
 
 

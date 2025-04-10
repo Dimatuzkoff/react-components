@@ -1,12 +1,19 @@
-import clsx from "clsx";
+//react
 import { FC, useState, useRef } from "react";
-import CloseIcon from "../../assets/icons/CloseIcon.svg";
-import IconDropdown from "../../assets/icons/SelectDropdownIcon.png";
+//libs
+import clsx from "clsx";
+//hooks
+import { useClickOutside } from "../../hooks/useClickOutside"
+//ui
 import Input from "../Inputs/Input";
 import { Dropdown } from "./Dropdown";
-import styles from "./Select.module.scss";
-import { useClickOutside } from "../../hooks/useClickOutside"
 import { SelectList } from "./SelectList"
+//assets
+import IconClose from "../../assets/icons/IconClose.svg";
+import IconDropdown from "../../assets/icons/SelectDropdownIcon.svg";
+//styles
+import styles from "./Select.module.scss";
+
 interface SelectProps {
     mode?: "single" | "multiple";
     iconBefore?: string;
@@ -85,7 +92,7 @@ export const Select: FC<SelectProps> = ({
     const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
         <div className={clsx(styles.selectTools)}>
-            <img onClick={clearValue} className={clsx(styles.closeIcon)} src={CloseIcon} alt="icon" />
+            <img onClick={clearValue} className={clsx(styles.closeIcon)} src={IconClose} alt="icon" />
             <img onClick={() => setIsOpenDropdown(!isOpenDropdown)} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
         </div>
     )
@@ -114,7 +121,7 @@ export const Select: FC<SelectProps> = ({
                     isDisabled={isDisabled}
                     helperText={inputHelperText}
                     isError={isError}
-                    onChange={(value) => getInputValue(value)}
+                    onChange={getInputValue}
                     onClick={() => (setIsOpenDropdown(true))}
                     value={inputValue}
 
