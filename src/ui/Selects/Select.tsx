@@ -25,7 +25,7 @@ interface SelectProps {
 
 
 export const Select: FC<SelectProps> = ({
-    mode = "multiple",
+    mode = "single",
     iconBefore,
     placeholder,
     size = '40',
@@ -63,11 +63,15 @@ export const Select: FC<SelectProps> = ({
         if (mode === "multiple") {
             setSelectedMultipleItems([...selectedMultipleItems, value]);
             setInputValue("");
-
         }
+
         setSearchValue("");
         setIsOpenDropdown(false)
     };
+
+    const removeSelectedItem = (value: string) => {
+        setSelectedMultipleItems(selectedMultipleItems.filter(item => item !== value));
+    }
 
     const getInputValue = (value: string) => {
         setInputValue(value);
@@ -87,7 +91,7 @@ export const Select: FC<SelectProps> = ({
     )
 
     const selectedList = (
-        <SelectList selectedItems={selectedMultipleItems} />
+        <SelectList onClick={removeSelectedItem} selectedItems={selectedMultipleItems} />
     )
     const currentIconBefore = mode === "multiple" ? selectedList : selectIconBefore
     return (

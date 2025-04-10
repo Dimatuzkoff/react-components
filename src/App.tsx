@@ -15,13 +15,21 @@ function App() {
 
     return (
         <>
+            <h2>Single select</h2>
             <Select placeholder="Select ..."
                 label="What color you like?"
                 tooltipText="Tooltip text"
                 helperText="Helper text"
                 iconBefore={SearchIcon}
                 dropdownContent={colors} />
-
+            <h2>Multiple select</h2>
+            <Select placeholder="Select ..."
+                label="What color you like?"
+                tooltipText="Tooltip text"
+                helperText="Helper text"
+                dropdownContent={colors}
+                mode="multiple"
+                size="48" />
         </>
     )
 }

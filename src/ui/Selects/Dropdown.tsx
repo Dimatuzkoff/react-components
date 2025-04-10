@@ -73,7 +73,7 @@ export const Dropdown: FC<DropdownProps> = ({
             })}>
                 <ul>
                     {filteredDropdownItems.map((item) => (
-                        <li key={item.value} onClick={() => onChange(item.value)} className={clsx(styles.colorItem)}>
+                        <li key={item.value} onClick={() => onChange?.(item.value)} className={clsx(styles.colorItem)}>
                             <div className={clsx(styles.colorItem)}>
                                 <span>{item.value}</span>
                                 {(selectedSingleItem?.trim() === item.value.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
