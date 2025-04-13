@@ -21,8 +21,8 @@ export const SelectOptionItem: FC<SelectOptionItemProps> = ({
 }) => {
     return (
         <>
-            <li onClick={() => onChange?.(option.label)} className={clsx(styles.optionItem)}>
-                <div className={clsx(styles.colorItem)}>
+            <li onClick={() => onChange?.(option.label)} className={clsx(styles.optionItemWrapper)}>
+                <div className={clsx(styles.optionItem)}>
                     <span>{option.label}</span>
                     {(selectedSingleItem?.trim() === option.label.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
                 </div>
