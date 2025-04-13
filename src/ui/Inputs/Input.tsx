@@ -8,6 +8,7 @@ import { useKeyboardInputRef } from "../../hooks/useKeyboardInputRef"
 interface InputProps {
     onChange?: (value: string) => void;
     onClick?: () => void;
+    children?: React.ReactNode;
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
     isDisabled?: boolean;
@@ -29,6 +30,7 @@ interface InputProps {
 const Input: FC<InputProps> = ({
     onChange,
     onClick,
+    children,
     placeholder,
     type = "text",
     isDisabled = false,
@@ -80,9 +82,14 @@ const Input: FC<InputProps> = ({
                         [styles.outlineNoQuiet]: uiType === "outline" && !isQuiet,
                         [styles.fillQuiet]: uiType === "fill" && isQuiet,
                         [styles.outlineQuiet]: uiType === "outline" && isQuiet,
+                        [styles.multipleSelect]: children,
                     })}>
-                        {!isError && iconBefore}
-                        {(isError && iconBefore) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
+                        {!children && iconBefore && (
+                            isError
+                                ? <img src={ErrorSearchIcon} alt="Error" />
+                                : iconBefore
+                        )}
+                        {children && children}
                         <input ref={isBadge ? inputRef : null}
                             onChange={(event) => onChange(event.target.value)}
                             onClick={onClick} value={value}

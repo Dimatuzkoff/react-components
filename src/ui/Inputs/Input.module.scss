@@ -17,9 +17,6 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     margin-bottom: 20px;
     font-family: "Inter", sans-serif;
 
-
-
-
     &.size24 {
         & .inputContainer {
             height: 24px;
@@ -70,7 +67,6 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             font-size: 12px;
             line-height: 20px;
         }
-
     }
 
     &.size36 {
@@ -188,9 +184,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
 
         .inputWrapper input {
             width: 100%;
-            // min-width: 50px;
         }
-
     }
 
     &.labelPositionSide {
@@ -318,7 +312,12 @@ $label-disabled-color: rgba(112, 112, 123, 1);
                 border-radius: 4px;
                 font-size: 12px;
                 line-height: 20px;
+            }
 
+            &.multipleSelect {
+                & .input {
+                    width: 135px;
+                }
             }
         }
 

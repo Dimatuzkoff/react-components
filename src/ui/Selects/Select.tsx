@@ -89,18 +89,18 @@ export const Select: FC<SelectProps> = ({
         setInputHelperText(value);
     }
 
-    const selectIconBefore = <img src={iconBefore} className={clsx(styles.iconBefore)} alt="search" />
     const selectTools = (
         <div className={clsx(styles.selectTools)}>
             <img onClick={clearValue} className={clsx(styles.closeIcon)} src={IconClose} alt="icon" />
             <img onClick={() => setIsOpenDropdown(!isOpenDropdown)} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
         </div>
     )
-
-    const selectedList = (
-        <SelectList onClick={removeSelectedItem} selectedItems={selectedMultipleItems} />
+    const icon = (
+        <img
+            src={iconBefore}
+            alt="icon"
+        />
     )
-    const currentIconBefore = mode === "multiple" ? selectedList : selectIconBefore
     return (
         <>
             <div ref={divClickOutsideRef} className={clsx(styles.selectWrapper, {
@@ -111,7 +111,7 @@ export const Select: FC<SelectProps> = ({
                 [styles.size48]: size === "48",
             })}>
                 <Input
-                    iconBefore={currentIconBefore}
+                    iconBefore={icon}
                     iconAfter={selectTools}
                     placeholder={placeholder}
                     size={size}
@@ -124,8 +124,9 @@ export const Select: FC<SelectProps> = ({
                     onChange={getInputValue}
                     onClick={() => (setIsOpenDropdown(true))}
                     value={inputValue}
-
-                />
+                >
+                    {mode === "multiple" && <SelectList onClick={removeSelectedItem} selectedItems={selectedMultipleItems} />}
+                </Input>
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
                     <Dropdown size={size}
                         dropdownContent={dropdownContent}
@@ -137,7 +138,6 @@ export const Select: FC<SelectProps> = ({
                         selectedMultipleItems={selectedMultipleItems}
                     /></div>}
             </div>
-
         </>
     )
 };

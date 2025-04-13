@@ -6,9 +6,9 @@ $border-color: rgba(209, 209, 214, 1);
     flex-direction: row;
     flex-wrap: wrap;
     font-family: "Inter", sans-serif;
-    max-width: 130px;
+    width: 100%;
     gap: 2px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     &.size32 {
         height: 30px;
@@ -33,7 +33,7 @@ $border-color: rgba(209, 209, 214, 1);
     & .selectedItem {
         display: flex;
         align-items: center;
-        width: 60px;
+        width: 45px;
         height: 14px;
         padding: 1px;
         font-size: 12px;
