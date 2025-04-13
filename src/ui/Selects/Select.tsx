@@ -7,7 +7,8 @@ import { useClickOutside } from "../../hooks/useClickOutside"
 //ui
 import { Input } from "../Inputs/Input";
 import { Dropdown } from "./Dropdown";
-import { SelectList } from "./SelectList"
+import { SelectList } from "./SelectList";
+import { SelectOptionList } from "./SelectOptionList";
 //styles
 import styles from "./Select.module.scss";
 
@@ -125,15 +126,15 @@ export const Select: FC<SelectProps> = ({
                 >
                     {mode === "multiple" && <SelectList onClick={removeSelectedItem} selectedItems={selectedItems} />}
                 </Input>
-                {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
-                    <Dropdown size={size}
+                <Dropdown isOpen={isOpenDropdown}>
+                    <SelectOptionList size={size}
                         options={options}
                         selectedSingleItem={selectedItems[0]}
                         onChange={onSelectOption}
                         searchSingleValue={searchValue}
                         mode={mode}
-                        selectedMultipleItems={selectedItems}
-                    /></div>}
+                        selectedMultipleItems={selectedItems} />
+                </Dropdown>
             </div>
         </>
     )

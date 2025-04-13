@@ -1,78 +1,25 @@
+//react
+import { FC } from "react";
+//libs
 import clsx from "clsx";
-import { FC, useMemo } from "react";
+//styles
 import styles from "./Dropdown.module.scss";
-import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
 
 interface DropdownProps {
-    mode?: "single" | "multiple";
-    onChange?: (value: string) => void
-    iconBefore?: string;
-    placeholder?: string;
-    size?: "32" | "36" | "40" | "44" | "48";
-    label?: string;
-    tooltipText?: string;
-    helperText?: string
-    isQuiet?: boolean;
-    isDisabled?: boolean;
-    isError?: boolean;
-    options?: { label: string }[],
-    selectedSingleItem?: string,
-    searchSingleValue?: string,
-    selectedMultipleItems?: string[]
+    isOpen?: boolean,
+    children?: React.ReactNode
 }
 
+
 export const Dropdown: FC<DropdownProps> = ({
-    mode = "multiple",
-    onChange,
-    options,
-    size = "40",
-    selectedSingleItem,
-    searchSingleValue,
-    selectedMultipleItems
+    isOpen,
+    children
 }) => {
-    const filteredDropdownItems = useMemo(() => {
-        const items = options ?? [];
-
-        if (mode === "multiple") {
-            return items
-                .filter(elem => !selectedMultipleItems?.includes(elem.label))
-                .filter(elem => elem.label.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? ""));
-        }
-
-        if (mode === "single") {
-            return items.filter(elem =>
-                elem.label.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? "")
-            );
-        }
-
-        return items;
-    }, [options, selectedMultipleItems, searchSingleValue, mode]);
-
-
-
-    console.log('render dropdown');
-
     return (
         <>
-            <div className={clsx(styles.dropdown, {
-                [styles.size32]: size === "32",
-                [styles.size36]: size === "36",
-                [styles.size40]: size === "40",
-                [styles.size44]: size === "44",
-                [styles.size48]: size === "48",
-                [styles.notFound]: filteredDropdownItems.length === 0,
-            })}>
-                <ul>
-                    {filteredDropdownItems.map((item) => (
-                        <li key={item.label} onClick={() => onChange?.(item.label)} className={clsx(styles.colorItem)}>
-                            <div className={clsx(styles.colorItem)}>
-                                <span>{item.label}</span>
-                                {(selectedSingleItem?.trim() === item.label.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {isOpen && (<div className={clsx(styles.dropdownWrapper)}>
+                {children}
+            </div>)}
         </>
     )
-};
+}
