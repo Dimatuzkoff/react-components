@@ -1,7 +1,11 @@
-import clsx from "clsx";
+//react
 import { FC, useMemo } from "react";
+//libs
+import clsx from "clsx";
+//ui
+import { SelectOptionItem } from "./SelectOptionItem";
+//styles
 import styles from "./SelectOptionList.module.scss";
-import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
 
 interface SelectOptionListProps {
     mode?: "single" | "multiple";
@@ -51,12 +55,11 @@ export const SelectOptionList: FC<SelectOptionListProps> = ({
             })}>
                 <ul>
                     {filteredDropdownItems.map((item) => (
-                        <li key={item.label} onClick={() => onChange?.(item.label)} className={clsx(styles.colorItem)}>
-                            <div className={clsx(styles.colorItem)}>
-                                <span>{item.label}</span>
-                                {(selectedSingleItem?.trim() === item.label.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
-                            </div>
-                        </li>
+                        <SelectOptionItem
+                            key={item.label}
+                            option={item}
+                            selectedSingleItem={selectedSingleItem}
+                            onChange={onChange} />
                     ))}
                 </ul>
             </div>

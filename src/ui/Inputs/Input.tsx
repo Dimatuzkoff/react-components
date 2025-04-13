@@ -3,7 +3,7 @@ import { ReactNode, FC, } from "react";
 //helpers
 import { getCurrentOsForBadgeIcon } from "../../helpers/getCurrentOsForBadgeIcon"
 //hooks
-import { useKeyboardInputRef } from "../../hooks/useKeyboardInputRef"
+import { useShortcutFocus } from "../../hooks/useShortcutFocus"
 //libs
 import clsx from "clsx";
 //ui
@@ -62,13 +62,7 @@ export const Input: FC<InputProps> = ({
     tooltipText,
     value
 }) => {
-    const inputRef = useKeyboardInputRef(isBadge ? "k" : "", () => {
-        if (isBadge) {
-            inputRef.current?.focus();
-        }
-    });
-
-
+    const inputRef = useShortcutFocus();
     return (
         <>
             <div className={clsx(styles.wrapper, {
@@ -105,7 +99,7 @@ export const Input: FC<InputProps> = ({
                         )}
                         {children && children}
                         <input ref={isBadge ? inputRef : null}
-                            onChange={(event) => onChange(event.target.value)}
+                            onChange={(event) => onChange?.(event.target.value)}
                             onClick={onClick} value={value}
                             type={type}
                             className={clsx(styles.input, {
