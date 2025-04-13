@@ -1,18 +1,20 @@
 import "./App.scss";
+import { useState } from "react";
 import { Select } from "./ui/Selects/Select"
 import SearchIcon from "./assets/icons/SearchIcon.svg";
+import { optionsData } from "./ui/Selects/optionsData"
 
 function App() {
     console.log('render app');
+    const getSingleSelectValue = (value: string[]) => {
+        console.log("Single", value);
+        return value
+    };
 
-    const colors = [
-        { value: "Midnight Blue" },
-        { value: "Crimson Sky " },
-        { value: " Electric Lime" },
-        { value: " Golden Sun" },
-        { value: "Sapphire Sea " },
-        { value: " Ruby Rose" }]
-
+    const getMultipleSelectValue = (value: string[]) => {
+        console.log("Multiple", value);
+        return value
+    };
     return (
         <>
             <h2>Single select</h2>
@@ -21,15 +23,17 @@ function App() {
                 tooltipText="Tooltip text"
                 helperText="Helper text"
                 iconBefore={SearchIcon}
-                dropdownContent={colors} />
+                options={optionsData}
+                changeValue={getSingleSelectValue} />
             <h2>Multiple select</h2>
             <Select placeholder="Select ..."
                 label="What color you like?"
                 tooltipText="Tooltip text"
                 helperText="Helper text"
-                dropdownContent={colors}
+                options={optionsData}
                 mode="multiple"
-                size="48" />
+                size="48"
+                changeValue={getMultipleSelectValue} />
         </>
     )
 }

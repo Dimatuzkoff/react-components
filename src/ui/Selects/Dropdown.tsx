@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { FC, useMemo, useEffect } from "react";
+import { FC, useMemo } from "react";
 import styles from "./Dropdown.module.scss";
 import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
 
@@ -15,7 +15,7 @@ interface DropdownProps {
     isQuiet?: boolean;
     isDisabled?: boolean;
     isError?: boolean;
-    dropdownContent?: [],
+    options?: [],
     selectedSingleItem?: string,
     searchSingleValue?: string,
     selectedMultipleItems?: string[]
@@ -24,14 +24,14 @@ interface DropdownProps {
 export const Dropdown: FC<DropdownProps> = ({
     mode = "multiple",
     onChange,
-    dropdownContent,
+    options,
     size = "40",
     selectedSingleItem,
     searchSingleValue,
     selectedMultipleItems
 }) => {
     const filteredDropdownItems = useMemo(() => {
-        const items = dropdownContent ?? [];
+        const items = options ?? [];
 
         if (mode === "multiple") {
             return items
@@ -46,7 +46,7 @@ export const Dropdown: FC<DropdownProps> = ({
         }
 
         return items;
-    }, [dropdownContent, selectedMultipleItems, searchSingleValue, mode]);
+    }, [options, selectedMultipleItems, searchSingleValue, mode]);
 
 
 

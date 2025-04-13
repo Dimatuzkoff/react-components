@@ -12,6 +12,7 @@ import { SelectList } from "./SelectList"
 import styles from "./Select.module.scss";
 
 interface SelectProps {
+    onChangeValue?: (value: string[]) => void
     mode?: "single" | "multiple";
     iconBefore?: string;
     placeholder?: string;
@@ -22,11 +23,12 @@ interface SelectProps {
     isQuiet?: boolean;
     isDisabled?: boolean;
     isError?: boolean;
-    dropdownContent?: [];
+    options?: [];
 }
 
 
 export const Select: FC<SelectProps> = ({
+    onChangeValue,
     mode = "single",
     iconBefore,
     placeholder,
@@ -37,7 +39,7 @@ export const Select: FC<SelectProps> = ({
     isQuiet = false,
     isDisabled = false,
     isError = false,
-    dropdownContent
+    options
 
 
 }) => {
@@ -57,16 +59,18 @@ export const Select: FC<SelectProps> = ({
         setSelectedItems([]);
     };
 
-    const selectDropdownItem = (value: string) => {
+    const selectedDropdownItem = (value: string) => {
         if (mode === "single") {
             setInputValue(value);
             setSelectedItems([value]);
+            onChangeValue?.([value]);
 
         }
 
         if (mode === "multiple") {
             setSelectedItems([...selectedItems, value]);
             setInputValue("");
+            onChangeValue?.([...selectedItems, value]);
         }
 
         setSearchValue("");
@@ -75,6 +79,7 @@ export const Select: FC<SelectProps> = ({
 
     const removeSelectedItem = (value: string) => {
         setSelectedItems(selectedItems.filter(item => item !== value));
+        onChangeValue?.(selectedItems.filter(item => item !== value));
     }
 
     const getInputValue = (value: string) => {
@@ -123,9 +128,9 @@ export const Select: FC<SelectProps> = ({
                 </Input>
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
                     <Dropdown size={size}
-                        dropdownContent={dropdownContent}
+                        options={options}
                         selectedSingleItem={selectedItems[0]}
-                        onChange={selectDropdownItem}
+                        onChange={selectedDropdownItem}
                         searchSingleValue={searchValue}
                         mode={mode}
                         selectedMultipleItems={selectedItems}
