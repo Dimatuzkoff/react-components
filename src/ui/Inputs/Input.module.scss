@@ -319,6 +319,29 @@ $label-disabled-color: rgba(112, 112, 123, 1);
                     width: 135px;
                 }
             }
+
+            & .selectTools {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                min-width: 36px;
+                height: 16px;
+
+                & img {
+                    cursor: pointer;
+                }
+
+                & .closeIcon {
+                    height: 8px;
+                    width: 8px;
+                }
+
+                & .dropdownIcon {
+                    height: 6px;
+                    width: 12px;
+                }
+            }
         }
 
         & .helperTextWrapper .helperText {

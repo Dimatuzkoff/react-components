@@ -5,12 +5,9 @@ import clsx from "clsx";
 //hooks
 import { useClickOutside } from "../../hooks/useClickOutside"
 //ui
-import Input from "../Inputs/Input";
+import { Input } from "../Inputs/Input";
 import { Dropdown } from "./Dropdown";
 import { SelectList } from "./SelectList"
-//assets
-import IconClose from "../../assets/icons/IconClose.svg";
-import IconDropdown from "../../assets/icons/SelectDropdownIcon.svg";
 //styles
 import styles from "./Select.module.scss";
 
@@ -27,8 +24,6 @@ interface SelectProps {
     isError?: boolean;
     dropdownContent?: [];
 }
-
-
 
 
 export const Select: FC<SelectProps> = ({
@@ -85,22 +80,14 @@ export const Select: FC<SelectProps> = ({
         setSearchValue(value)
     }
 
+    const toggleDropdown = () => {
+        setIsOpenDropdown(!isOpenDropdown);
+    }
+
     const changeHelperText = (value: string) => {
         setInputHelperText(value);
     }
 
-    const selectTools = (
-        <div className={clsx(styles.selectTools)}>
-            <img onClick={clearValue} className={clsx(styles.closeIcon)} src={IconClose} alt="icon" />
-            <img onClick={() => setIsOpenDropdown(!isOpenDropdown)} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
-        </div>
-    )
-    const icon = (
-        <img
-            src={iconBefore}
-            alt="icon"
-        />
-    )
     return (
         <>
             <div ref={divClickOutsideRef} className={clsx(styles.selectWrapper, {
@@ -111,8 +98,12 @@ export const Select: FC<SelectProps> = ({
                 [styles.size48]: size === "48",
             })}>
                 <Input
-                    iconBefore={icon}
-                    iconAfter={selectTools}
+                    iconBefore={(
+                        <img
+                            src={iconBefore}
+                            alt="icon"
+                        />
+                    )}
                     placeholder={placeholder}
                     size={size}
                     label={label}
@@ -124,6 +115,8 @@ export const Select: FC<SelectProps> = ({
                     onChange={getInputValue}
                     onClick={() => (setIsOpenDropdown(true))}
                     value={inputValue}
+                    clearSelectedValue={clearValue}
+                    toggleSelectDropdown={toggleDropdown}
                 >
                     {mode === "multiple" && <SelectList onClick={removeSelectedItem} selectedItems={selectedMultipleItems} />}
                 </Input>

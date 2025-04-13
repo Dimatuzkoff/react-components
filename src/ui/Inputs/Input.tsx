@@ -1,13 +1,25 @@
-import clsx from "clsx";
+//react
 import { ReactNode, FC, } from "react";
-import styles from "./Input.module.scss";
-import ErrorSearchIcon from "../../assets/icons/ErrorSearchIcon.svg";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
+//helpers
 import { getCurrentOsForBadgeIcon } from "../../helpers/getCurrentOsForBadgeIcon"
+//hooks
 import { useKeyboardInputRef } from "../../hooks/useKeyboardInputRef"
+//libs
+import clsx from "clsx";
+//ui
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
+//assets
+import ErrorSearchIcon from "../../assets/icons/ErrorSearchIcon.svg";
+import IconClose from "../../assets/icons/IconClose.svg";
+import IconDropdown from "../../assets/icons/SelectDropdownIcon.svg";
+//styles
+import styles from "./Input.module.scss";
+
 interface InputProps {
     onChange?: (value: string) => void;
     onClick?: () => void;
+    clearSelectedValue?: () => void;
+    toggleSelectDropdown?: () => void;
     children?: React.ReactNode;
     placeholder?: string;
     type?: "text" | "password" | "email" | "number" | "tel" | "url" | "search";
@@ -27,9 +39,11 @@ interface InputProps {
     value?: string
 }
 
-const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
     onChange,
     onClick,
+    clearSelectedValue,
+    toggleSelectDropdown,
     children,
     placeholder,
     type = "text",
@@ -99,6 +113,10 @@ const Input: FC<InputProps> = ({
                                 [styles.rightAlignment]: alignment === "right",
                             })} placeholder={placeholder} disabled={isDisabled}
                         />
+                        {children && (<div className={clsx(styles.selectTools)}>
+                            <img onClick={clearSelectedValue} className={clsx(styles.closeIcon)} src={IconClose} alt="icon" />
+                            <img onClick={toggleSelectDropdown} className={clsx(styles.dropdownIcon)} src={IconDropdown} alt="icon" />
+                        </div>)}
                         {!isError && iconAfter}
                         {(isError && iconAfter) ? <img src={ErrorSearchIcon} alt="Error" /> : null}
                         {isBadge && <div className={clsx(styles.badge)}>
@@ -113,5 +131,3 @@ const Input: FC<InputProps> = ({
         </>
     );
 }
-
-export default Input

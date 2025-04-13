@@ -46,29 +46,6 @@ $text-color: rgba(26, 26, 30, 1);
         }
     }
 
-    & .selectTools {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        min-width: 36px;
-        height: 16px;
-
-        & img {
-            cursor: pointer;
-        }
-
-        & .closeIcon {
-            height: 8px;
-            width: 8px;
-        }
-
-        & .dropdownIcon {
-            height: 6px;
-            width: 12px;
-        }
-    }
-
     & .dropdownWrapper {
         position: absolute;
         bottom: -4px;
