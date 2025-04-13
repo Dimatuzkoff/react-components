@@ -6,7 +6,6 @@ import SelectedIcon from "../../assets/icons/SelectedIcon.svg"
 interface DropdownProps {
     mode?: "single" | "multiple";
     onChange?: (value: string) => void
-    changeHelperText?: (value: string) => void
     iconBefore?: string;
     placeholder?: string;
     size?: "32" | "36" | "40" | "44" | "48";
@@ -25,7 +24,6 @@ interface DropdownProps {
 export const Dropdown: FC<DropdownProps> = ({
     mode = "multiple",
     onChange,
-    changeHelperText,
     dropdownContent,
     size = "40",
     selectedSingleItem,
@@ -52,13 +50,6 @@ export const Dropdown: FC<DropdownProps> = ({
 
 
 
-    useEffect(() => {
-        if (filteredDropdownItems.length === 0) {
-            changeHelperText?.("Not found");
-        } else {
-            changeHelperText?.("Helper text");
-        }
-    }, [filteredDropdownItems, searchSingleValue]);
     console.log('render dropdown');
 
     return (

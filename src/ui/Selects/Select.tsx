@@ -42,28 +42,30 @@ export const Select: FC<SelectProps> = ({
 
 }) => {
     const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+
     const [inputValue, setInputValue] = useState("");
-    const [selectedSingleItem, setSelectedSingleItem] = useState("");
-    const [selectedMultipleItems, setSelectedMultipleItems] = useState<string[]>([]);
+
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
     const [searchValue, setSearchValue] = useState("");
-    const [inputHelperText, setInputHelperText] = useState(helperText);
+
     const divClickOutsideRef = useRef<HTMLDivElement | null>(null);
     useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
     const clearValue = () => {
         setInputValue("");
         setSearchValue("");
-        setSelectedSingleItem("");
-        setSelectedMultipleItems([]);
+        setSelectedItems([]);
     };
 
     const selectDropdownItem = (value: string) => {
         if (mode === "single") {
-            setSelectedSingleItem(value);
             setInputValue(value);
+            setSelectedItems([value]);
+
         }
 
         if (mode === "multiple") {
-            setSelectedMultipleItems([...selectedMultipleItems, value]);
+            setSelectedItems([...selectedItems, value]);
             setInputValue("");
         }
 
@@ -72,7 +74,7 @@ export const Select: FC<SelectProps> = ({
     };
 
     const removeSelectedItem = (value: string) => {
-        setSelectedMultipleItems(selectedMultipleItems.filter(item => item !== value));
+        setSelectedItems(selectedItems.filter(item => item !== value));
     }
 
     const getInputValue = (value: string) => {
@@ -83,9 +85,8 @@ export const Select: FC<SelectProps> = ({
     const toggleDropdown = () => {
         setIsOpenDropdown(!isOpenDropdown);
     }
-
-    const changeHelperText = (value: string) => {
-        setInputHelperText(value);
+    const openDropdown = () => {
+        setIsOpenDropdown(true);
     }
 
     return (
@@ -110,25 +111,24 @@ export const Select: FC<SelectProps> = ({
                     tooltipText={tooltipText}
                     isQuiet={isQuiet}
                     isDisabled={isDisabled}
-                    helperText={inputHelperText}
+                    helperText={helperText}
                     isError={isError}
                     onChange={getInputValue}
-                    onClick={() => (setIsOpenDropdown(true))}
+                    onClick={openDropdown}
                     value={inputValue}
                     clearSelectedValue={clearValue}
                     toggleSelectDropdown={toggleDropdown}
                 >
-                    {mode === "multiple" && <SelectList onClick={removeSelectedItem} selectedItems={selectedMultipleItems} />}
+                    {mode === "multiple" && <SelectList onClick={removeSelectedItem} selectedItems={selectedItems} />}
                 </Input>
                 {isOpenDropdown && <div className={clsx(styles.dropdownWrapper)}>
                     <Dropdown size={size}
                         dropdownContent={dropdownContent}
-                        selectedSingleItem={selectedSingleItem}
-                        onChange={(value) => selectDropdownItem(value)}
+                        selectedSingleItem={selectedItems[0]}
+                        onChange={selectDropdownItem}
                         searchSingleValue={searchValue}
-                        changeHelperText={changeHelperText}
                         mode={mode}
-                        selectedMultipleItems={selectedMultipleItems}
+                        selectedMultipleItems={selectedItems}
                     /></div>}
             </div>
         </>
