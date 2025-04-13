@@ -59,12 +59,11 @@ export const Select: FC<SelectProps> = ({
         setSelectedItems([]);
     };
 
-    const selectedDropdownItem = (value: string) => {
+    const onSelectOption = (value: string) => {
         if (mode === "single") {
             setInputValue(value);
             setSelectedItems([value]);
             onChangeValue?.([value]);
-
         }
 
         if (mode === "multiple") {
@@ -130,7 +129,7 @@ export const Select: FC<SelectProps> = ({
                     <Dropdown size={size}
                         options={options}
                         selectedSingleItem={selectedItems[0]}
-                        onChange={selectedDropdownItem}
+                        onChange={onSelectOption}
                         searchSingleValue={searchValue}
                         mode={mode}
                         selectedMultipleItems={selectedItems}

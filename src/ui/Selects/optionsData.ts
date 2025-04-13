@@ -1,7 +1,7 @@
 export const optionsData = [
-    { value: "Midnight Blue" },
-    { value: "Crimson Sky " },
-    { value: " Electric Lime" },
-    { value: " Golden Sun" },
-    { value: "Sapphire Sea " },
-    { value: " Ruby Rose" }]
+    { label: "Midnight Blue" },
+    { label: "Crimson Sky " },
+    { label: " Electric Lime" },
+    { label: " Golden Sun" },
+    { label: "Sapphire Sea " },
+    { label: " Ruby Rose" }]

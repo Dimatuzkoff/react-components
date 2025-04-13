@@ -1,5 +1,4 @@
 import "./App.scss";
-import { useState } from "react";
 import { Select } from "./ui/Selects/Select"
 import SearchIcon from "./assets/icons/SearchIcon.svg";
 import { optionsData } from "./ui/Selects/optionsData"
@@ -24,7 +23,7 @@ function App() {
                 helperText="Helper text"
                 iconBefore={SearchIcon}
                 options={optionsData}
-                changeValue={getSingleSelectValue} />
+                onChangeValue={getSingleSelectValue} />
             <h2>Multiple select</h2>
             <Select placeholder="Select ..."
                 label="What color you like?"
@@ -33,7 +32,7 @@ function App() {
                 options={optionsData}
                 mode="multiple"
                 size="48"
-                changeValue={getMultipleSelectValue} />
+                onChangeValue={getMultipleSelectValue} />
         </>
     )
 }

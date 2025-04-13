@@ -15,7 +15,7 @@ interface DropdownProps {
     isQuiet?: boolean;
     isDisabled?: boolean;
     isError?: boolean;
-    options?: [],
+    options?: { label: string }[],
     selectedSingleItem?: string,
     searchSingleValue?: string,
     selectedMultipleItems?: string[]
@@ -35,13 +35,13 @@ export const Dropdown: FC<DropdownProps> = ({
 
         if (mode === "multiple") {
             return items
-                .filter(elem => !selectedMultipleItems?.includes(elem.value))
-                .filter(elem => elem.value.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? ""));
+                .filter(elem => !selectedMultipleItems?.includes(elem.label))
+                .filter(elem => elem.label.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? ""));
         }
 
         if (mode === "single") {
             return items.filter(elem =>
-                elem.value.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? "")
+                elem.label.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? "")
             );
         }
 
@@ -64,10 +64,10 @@ export const Dropdown: FC<DropdownProps> = ({
             })}>
                 <ul>
                     {filteredDropdownItems.map((item) => (
-                        <li key={item.value} onClick={() => onChange?.(item.value)} className={clsx(styles.colorItem)}>
+                        <li key={item.label} onClick={() => onChange?.(item.label)} className={clsx(styles.colorItem)}>
                             <div className={clsx(styles.colorItem)}>
-                                <span>{item.value}</span>
-                                {(selectedSingleItem?.trim() === item.value.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
+                                <span>{item.label}</span>
+                                {(selectedSingleItem?.trim() === item.label.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
                             </div>
                         </li>
                     ))}
