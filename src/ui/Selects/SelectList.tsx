@@ -7,8 +7,8 @@ import styles from "./SelectList.module.scss";
 
 
 interface SelectListProps {
-    onClick?: (item: string) => void
-    selectedItems?: string[],
+    onClick?: (item: { label: "", value: "", note: "", icon: "" }) => void
+    selectedItems?: [{ label: "", value: "", note: "", icon: "" }],
     size?: "32" | "36" | "40" | "44" | "48";
 
 }
@@ -29,7 +29,7 @@ export const SelectList: FC<SelectListProps> = ({
                 [styles.size48]: size === "48",
             })}>
                 {selectedItems?.map(elem => (
-                    <span onClick={() => onClick?.(elem)} className={clsx(styles.selectedItem)} key={elem}>{elem}</span>
+                    <span onClick={() => onClick?.(elem)} className={clsx(styles.selectedItem)} key={elem.label}>{elem.label}</span>
                 ))}
             </div>
         </>

@@ -13,7 +13,7 @@ import { SelectOptionList } from "./SelectOptionList";
 import styles from "./Select.module.scss";
 
 interface SelectProps {
-    onChangeValue?: (value: string[]) => void
+    onChangeValue?: (value: [{ label: "", value: "", note: "", icon: "" }]) => void
     mode?: "single" | "multiple";
     iconBefore?: string;
     placeholder?: string;
@@ -48,7 +48,7 @@ export const Select: FC<SelectProps> = ({
 
     const [inputValue, setInputValue] = useState("");
 
-    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+    const [selectedItems, setSelectedItems] = useState([]);
 
     const [searchValue, setSearchValue] = useState("");
 
@@ -60,15 +60,18 @@ export const Select: FC<SelectProps> = ({
         setSelectedItems([]);
     };
 
-    const onSelectOption = (value: string) => {
+    const onSelectOption = (value: { label: "", value: "", note: "", icon: "" }) => {
         if (mode === "single") {
-            setInputValue(value);
+            setInputValue(value.label);
             setSelectedItems([value]);
             onChangeValue?.([value]);
         }
 
         if (mode === "multiple") {
-            setSelectedItems([...selectedItems, value]);
+            if (value.label) {
+                setSelectedItems([...selectedItems, value]);
+
+            }
             setInputValue("");
             onChangeValue?.([...selectedItems, value]);
         }
@@ -77,10 +80,11 @@ export const Select: FC<SelectProps> = ({
         setIsOpenDropdown(false)
     };
 
-    const removeSelectedItem = (value: string) => {
+    const removeSelectedItem = (value: { label: "", value: "", note: "", icon: "" }) => {
         setSelectedItems(selectedItems.filter(item => item !== value));
         onChangeValue?.(selectedItems.filter(item => item !== value));
     }
+
 
     const getInputValue = (value: string) => {
         setInputValue(value);
@@ -124,7 +128,10 @@ export const Select: FC<SelectProps> = ({
                     clearSelectedValue={clearValue}
                     toggleSelectDropdown={toggleDropdown}
                 >
-                    {mode === "multiple" && <SelectList onClick={removeSelectedItem} selectedItems={selectedItems} />}
+                    {mode === "multiple" && <SelectList
+                        onClick={removeSelectedItem}
+                        selectedItems={selectedItems}
+                    />}
                 </Input>
                 <Dropdown isOpen={isOpenDropdown}>
                     <SelectOptionList size={size}

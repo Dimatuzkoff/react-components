@@ -9,12 +9,12 @@ import styles from "./SelectOptionList.module.scss";
 
 interface SelectOptionListProps {
     mode?: "single" | "multiple";
-    onChange?: (value: string) => void
+    onChange?: (value: { label: "", value: "", note: "", icon: "" }) => void
     size?: "32" | "36" | "40" | "44" | "48";
-    options?: { label: string }[],
-    selectedSingleItem?: string,
+    options?: [{ label: "", value: "", note: "", icon: "" }],
+    selectedSingleItem?: { label: "", value: "", note: "", icon: "" },
     searchSingleValue?: string,
-    selectedMultipleItems?: string[]
+    selectedMultipleItems?: [{ label: "", value: "", note: "", icon: "" }]
 }
 
 export const SelectOptionList: FC<SelectOptionListProps> = ({
@@ -26,18 +26,31 @@ export const SelectOptionList: FC<SelectOptionListProps> = ({
     searchSingleValue,
     selectedMultipleItems
 }) => {
+    console.log('selectedMultipleItems', selectedMultipleItems);
+
     const filteredDropdownItems = useMemo(() => {
         const items = options ?? [];
 
         if (mode === "multiple") {
             return items
-                .filter(elem => !selectedMultipleItems?.includes(elem.label))
-                .filter(elem => elem.label.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? ""));
+                .filter(
+                    (opt) =>
+                        !selectedMultipleItems?.some(
+                            (selected) => selected.value === opt.value
+                        )
+                )
+                .filter((elem) =>
+                    elem.label
+                        .toLowerCase()
+                        .includes(searchSingleValue?.toLowerCase() ?? "")
+                );
         }
 
         if (mode === "single") {
-            return items.filter(elem =>
-                elem.label.toLowerCase().includes(searchSingleValue?.toLowerCase() ?? "")
+            return items.filter((elem) =>
+                elem.label
+                    .toLowerCase()
+                    .includes(searchSingleValue?.toLowerCase() ?? "")
             );
         }
 

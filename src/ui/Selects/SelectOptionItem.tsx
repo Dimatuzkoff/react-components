@@ -9,9 +9,9 @@ import styles from "./SelectOptionList.module.scss";
 
 
 interface SelectOptionItemProps {
-    onChange?: (value: string) => void
-    option?: { label: string },
-    selectedSingleItem?: string,
+    onChange?: (value: { label: "", value: "", note: "", icon: "" }) => void
+    option?: { label: "", value: "", note: "", icon: "" },
+    selectedSingleItem?: { label: "", value: "", note: "", icon: "" },
 }
 
 export const SelectOptionItem: FC<SelectOptionItemProps> = ({
@@ -21,10 +21,10 @@ export const SelectOptionItem: FC<SelectOptionItemProps> = ({
 }) => {
     return (
         <>
-            <li onClick={() => onChange?.(option.label)} className={clsx(styles.optionItemWrapper)}>
+            <li onClick={() => onChange?.(option)} className={clsx(styles.optionItemWrapper)}>
                 <div className={clsx(styles.optionItem)}>
-                    <span>{option.label}</span>
-                    {(selectedSingleItem?.trim() === option.label.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
+                    <span>{option?.label}</span>
+                    {(selectedSingleItem?.label.trim() === option?.label.trim()) && <img src={SelectedIcon} alt="SelectedIcon" />}
                 </div>
             </li>
         </>
