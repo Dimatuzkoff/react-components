@@ -1,5 +1,5 @@
 //react
-import { FC, useState, useRef } from "react";
+import { FC, ReactNode, useState, useRef } from "react";
 //libs
 import clsx from "clsx";
 //hooks
@@ -12,8 +12,14 @@ import { SelectOptionList } from "./SelectOptionList";
 //styles
 import styles from "./Select.module.scss";
 
+export interface OptionType {
+    label: string;
+    icon?: ReactNode;
+    [key: string]: any;
+}
+
 interface SelectProps {
-    onChangeValue?: (value: [{ label: "", value: "", note: "", icon: "" }]) => void
+    onChangeValue?: (value: OptionType[]) => void
     mode?: "single" | "multiple";
     iconBefore?: string;
     placeholder?: string;
@@ -24,7 +30,7 @@ interface SelectProps {
     isQuiet?: boolean;
     isDisabled?: boolean;
     isError?: boolean;
-    options?: [];
+    options?: OptionType[];
 }
 
 
@@ -44,13 +50,13 @@ export const Select: FC<SelectProps> = ({
 
 
 }) => {
-    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);
 
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState<string>("");
 
-    const [selectedItems, setSelectedItems] = useState([]);
+    const [selectedItems, setSelectedItems] = useState<OptionType[]>([]);
 
-    const [searchValue, setSearchValue] = useState("");
+    const [searchValue, setSearchValue] = useState<string>("");
 
     const divClickOutsideRef = useRef<HTMLDivElement | null>(null);
     useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
@@ -60,7 +66,7 @@ export const Select: FC<SelectProps> = ({
         setSelectedItems([]);
     };
 
-    const onSelectOption = (value: { label: "", value: "", note: "", icon: "" }) => {
+    const onSelectOption = (value: OptionType) => {
         if (mode === "single") {
             setInputValue(value.label);
             setSelectedItems([value]);
@@ -80,7 +86,7 @@ export const Select: FC<SelectProps> = ({
         setIsOpenDropdown(false)
     };
 
-    const removeSelectedItem = (value: { label: "", value: "", note: "", icon: "" }) => {
+    const removeSelectedItem = (value: OptionType) => {
         setSelectedItems(selectedItems.filter(item => item !== value));
         onChangeValue?.(selectedItems.filter(item => item !== value));
     }

@@ -4,11 +4,13 @@ import { FC } from "react";
 import clsx from "clsx";
 //styles
 import styles from "./SelectList.module.scss";
+//types
+import { OptionType } from "./Select";
 
 
 interface SelectListProps {
-    onClick?: (item: { label: "", value: "", note: "", icon: "" }) => void
-    selectedItems?: [{ label: "", value: "", note: "", icon: "" }],
+    onClick?: (value: OptionType) => void
+    selectedItems?: OptionType[],
     size?: "32" | "36" | "40" | "44" | "48";
 
 }

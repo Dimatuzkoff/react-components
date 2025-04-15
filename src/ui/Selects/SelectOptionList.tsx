@@ -6,15 +6,17 @@ import clsx from "clsx";
 import { SelectOptionItem } from "./SelectOptionItem";
 //styles
 import styles from "./SelectOptionList.module.scss";
+//types
+import { OptionType } from "./Select";
 
 interface SelectOptionListProps {
     mode?: "single" | "multiple";
-    onChange?: (value: { label: "", value: "", note: "", icon: "" }) => void
+    onChange: (value: OptionType) => void
     size?: "32" | "36" | "40" | "44" | "48";
-    options?: [{ label: "", value: "", note: "", icon: "" }],
-    selectedSingleItem?: { label: "", value: "", note: "", icon: "" },
+    options?: OptionType[],
+    selectedSingleItem?: OptionType,
     searchSingleValue?: string,
-    selectedMultipleItems?: [{ label: "", value: "", note: "", icon: "" }]
+    selectedMultipleItems?: OptionType[]
 }
 
 export const SelectOptionList: FC<SelectOptionListProps> = ({
@@ -26,8 +28,6 @@ export const SelectOptionList: FC<SelectOptionListProps> = ({
     searchSingleValue,
     selectedMultipleItems
 }) => {
-    console.log('selectedMultipleItems', selectedMultipleItems);
-
     const filteredDropdownItems = useMemo(() => {
         const items = options ?? [];
 
