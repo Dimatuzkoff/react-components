@@ -1,0 +1,22 @@
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    &.size32 {
+        width: 32px;
+    }
+
+    &.size36 {
+        width: 36px;
+    }
+
+    &.size40 {
+        width: 40px;
+    }
+
+    &.rotate {
+        transform: rotate(180deg);
+    }
+}

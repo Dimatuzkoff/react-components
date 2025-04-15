@@ -36,8 +36,9 @@ function App() {
                 setSelected={setMultiValue}
             />
             <h2>Tabs</h2>
-            <Tabs />
-
+            <div className="tabWrapper" style={{ width: "600px" }}>
+                <Tabs />
+            </div>
         </>
     )
 }

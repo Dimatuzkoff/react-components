@@ -1,0 +1,50 @@
+$text-primary-color: rgba(26, 26, 30, 1);
+$active-tab-color: rgba(21, 112, 239, 1);
+
+.tabItemWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    font-family: "Inter", sans-serif;
+    height: 100%;
+
+
+    &.size32 .tabItem {
+        font-size: 12px;
+        line-height: 20px;
+
+    }
+
+    &.size36 .tabItem {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    &.size40 .tabItem {
+        font-size: 14px;
+        line-height: 24px;
+
+
+    }
+
+    &.active {
+        border-bottom: 2px solid $active-tab-color;
+
+        & .tabItem {
+            color: $active-tab-color;
+        }
+    }
+
+
+    & .tabItem {
+        background-color: transparent;
+        cursor: pointer;
+        text-wrap: nowrap;
+        overflow: hidden;
+        font-weight: 600;
+        color: $text-primary-color;
+        height: 100%;
+
+    }
+}
