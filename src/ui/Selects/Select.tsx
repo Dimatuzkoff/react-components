@@ -1,5 +1,5 @@
 //react
-import { FC, ReactNode, useState, useRef } from "react";
+import { FC, ReactNode, useState, useRef, Dispatch, SetStateAction } from "react";
 //libs
 import clsx from "clsx";
 //hooks
@@ -19,7 +19,7 @@ export interface OptionType {
 }
 
 interface SelectProps {
-    onChangeValue?: (value: OptionType[]) => void
+    setSelected: Dispatch<SetStateAction<OptionType[]>>;
     mode?: "single" | "multiple";
     iconBefore?: string;
     placeholder?: string;
@@ -35,7 +35,7 @@ interface SelectProps {
 
 
 export const Select: FC<SelectProps> = ({
-    onChangeValue,
+    setSelected,
     mode = "single",
     iconBefore,
     placeholder,
@@ -70,7 +70,7 @@ export const Select: FC<SelectProps> = ({
         if (mode === "single") {
             setInputValue(value.label);
             setSelectedItems([value]);
-            onChangeValue?.([value]);
+            setSelected([value])
         }
 
         if (mode === "multiple") {
@@ -79,7 +79,7 @@ export const Select: FC<SelectProps> = ({
 
             }
             setInputValue("");
-            onChangeValue?.([...selectedItems, value]);
+            setSelected([...selectedItems, value]);
         }
 
         setSearchValue("");
@@ -88,7 +88,7 @@ export const Select: FC<SelectProps> = ({
 
     const removeSelectedItem = (value: OptionType) => {
         setSelectedItems(selectedItems.filter(item => item !== value));
-        onChangeValue?.(selectedItems.filter(item => item !== value));
+        setSelected(selectedItems.filter(item => item !== value))
     }
 
 
