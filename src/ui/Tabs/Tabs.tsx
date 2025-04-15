@@ -15,11 +15,11 @@ interface TabProps {
 }
 
 export const Tabs: FC<TabProps> = ({
-    variant = "underline",
-    isBadge = false,
-    isDisabled = false,
+    // variant = "underline",
+    // isBadge = false,
+    // isDisabled = false,
     size = "40",
-    behavior = "scrollable"
+    // behavior = "scrollable"
 }) => {
     return (
         <>
