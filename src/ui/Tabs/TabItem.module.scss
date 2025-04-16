@@ -8,6 +8,7 @@ $active-tab-color: rgba(21, 112, 239, 1);
     height: 100%;
     font-family: "Inter", sans-serif;
     height: 100%;
+    padding: 0px 8px;
 
 
     &.size32 .tabItem {
@@ -45,6 +46,6 @@ $active-tab-color: rgba(21, 112, 239, 1);
         font-weight: 600;
         color: $text-primary-color;
         height: 100%;
-
+        padding: 0px;
     }
 }

@@ -6,7 +6,6 @@ import clsx from "clsx";
 import { TabToolIcon } from "./TabToolIcon"
 import { TabList } from "./TabList"
 //assets
-import Arrow from "../../assets/icons/arrow.svg"
 //styles
 import styles from "./Tabs.module.scss";
 //data
@@ -29,7 +28,7 @@ export const Tabs: FC<TabProps> = ({
     // isBadge = false,
     // isDisabled = false,
     size = "40",
-    // behavior = "scrollable"
+    behavior = "scrollable"
 }) => {
     const [activeTab, setActiveTab] = useState<string>(tabsData[0].label);
 
@@ -41,13 +40,14 @@ export const Tabs: FC<TabProps> = ({
                     [styles.size36]: size === "36",
                     [styles.size40]: size === "40"
                 })}>
-                    <TabToolIcon iconSrc={Arrow} size={size} isRotate />
+                    <TabToolIcon position="left" isRotate behavior={behavior} size={size} />
                     <TabList
                         onTabClick={setActiveTab}
                         size={size}
+                        behavior={behavior}
                         options={tabsData}
                         activeTab={activeTab} />
-                    <TabToolIcon iconSrc={Arrow} size={size} />
+                    <TabToolIcon position="right" behavior={behavior} size={size} />
                 </div>
                 <div className={clsx(styles.content)}>
                     activeTab {activeTab}
