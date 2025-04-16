@@ -9,6 +9,7 @@ import OpenTabsDropdownIcon from "../../assets/icons/OpenTabsDropdownIcon.svg"
 import styles from "./TabToolIcon.module.scss";
 
 interface TabToolIconProps {
+    onClick?: (position: "left" | "right") => void
     behavior?: "scrollable" | "arrows" | "dropdown"
     size?: "32" | "36" | "40",
     isRotate?: boolean
@@ -17,6 +18,7 @@ interface TabToolIconProps {
 }
 
 export const TabToolIcon: FC<TabToolIconProps> = ({
+    onClick,
     size = "40",
     behavior,
     isRotate,
@@ -28,7 +30,7 @@ export const TabToolIcon: FC<TabToolIconProps> = ({
             {((behavior === "arrows" && position === "left") ||
                 (behavior === "arrows" && position === "right") ||
                 (behavior === "dropdown" && position === "right"))
-                && <div className={clsx(styles.icon, {
+                && <div onClick={() => onClick?.(position)} className={clsx(styles.icon, {
                     [styles.size32]: size === "32",
                     [styles.size36]: size === "36",
                     [styles.size40]: size === "40",

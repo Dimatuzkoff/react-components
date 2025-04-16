@@ -1,31 +1,47 @@
 $border-primary-color: rgba(209, 209, 214, 1);
 
-.tabsWrapper {
+.container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    border-bottom: 1px solid $border-primary-color;
+    flex-direction: column;
 
-    &.size32 {
-        height: 32px;
+    .tabsWrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid $border-primary-color;
+
+        &.size32 {
+            height: 32px;
+        }
+
+        &.size36 {
+            height: 36px;
+        }
+
+        &.size40 {
+            height: 40px;
+        }
     }
 
-    &.size36 {
-        height: 36px;
+    .dropdownPosition {
+        width: 200px;
+        position: relative;
+        text-align: center;
+        margin-left: auto;
+
+        ul {
+            background-color: white;
+        }
     }
 
-    &.size40 {
-        height: 40px;
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100px;
+
     }
-}
-
-.content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100px;
-
 }

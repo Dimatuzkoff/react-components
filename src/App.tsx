@@ -36,7 +36,7 @@ function App() {
                 setSelected={setMultiValue}
             />
             <h2>Tabs</h2>
-            <div className="tabWrapper" style={{ maxWidth: "600px" }}>
+            <div className="tabWrapper" style={{ maxWidth: "800px" }}>
                 <Tabs size="32" />
             </div>
         </>

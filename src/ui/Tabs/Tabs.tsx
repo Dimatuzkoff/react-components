@@ -5,6 +5,8 @@ import clsx from "clsx";
 //ui
 import { TabToolIcon } from "./TabToolIcon"
 import { TabList } from "./TabList"
+import { Dropdown } from "../Selects/Dropdown"
+import { TabDropdownList } from "./TabDropdownList"
 //assets
 //styles
 import styles from "./Tabs.module.scss";
@@ -30,12 +32,25 @@ export const Tabs: FC<TabProps> = ({
     size = "40",
     behavior = "dropdown"
 }) => {
+    const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);
+
     const [activeTab, setActiveTab] = useState<string>(tabsData[0].label);
 
     const [widthWrapperNav, setWidthWrapperNav] = useState<number>(0);
 
-    const wrapperNavRef = useRef<HTMLDivElement>(null);
+    const [dropDownTabs, setDropDownTabs] = useState<TabsData[]>([]);
 
+
+    const wrapperNavRef = useRef<HTMLDivElement>(null);
+    const toggleDropdown = () => {
+        setIsOpenDropdown(!isOpenDropdown);
+    }
+
+    const defineClick = (position: string) => {
+        if (position === "right" && behavior === "dropdown") {
+            toggleDropdown()
+        }
+    }
     useEffect(() => {
         const updateWidth = () => {
             if (wrapperNavRef.current) {
@@ -63,9 +78,15 @@ export const Tabs: FC<TabProps> = ({
                         behavior={behavior}
                         options={tabsData}
                         activeTab={activeTab}
-                        wrapperNavWidth={widthWrapperNav} />
-                    <TabToolIcon position="right" behavior={behavior} size={size} />
+                        wrapperNavWidth={widthWrapperNav} setDropDownTabs={setDropDownTabs} />
+                    <TabToolIcon onClick={defineClick}
+                        position="right" behavior={behavior} size={size} />
                 </div>
+                {behavior === "dropdown" && (<span className={clsx(styles.dropdownPosition)}>
+                    <Dropdown isOpen={isOpenDropdown}>
+                        <TabDropdownList size={size} options={dropDownTabs} />
+                    </Dropdown>
+                </span>)}
                 <div className={clsx(styles.content)}>
                     activeTab {activeTab}
                 </div>
