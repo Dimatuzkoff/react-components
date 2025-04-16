@@ -1,5 +1,7 @@
 //react
-import { FC, useRef, useEffect, useState } from "react";
+import { FC, useState, useEffect } from "react";
+//hooks
+import { getAmountElements } from "./getAmountElements"
 //libs
 import clsx from "clsx";
 //ui
@@ -9,6 +11,7 @@ import { TabItem } from "./TabItem"
 import styles from "./TabList.module.scss";
 //types
 import { TabsData } from "./Tabs"
+import { tabsData } from "./tabsData"
 
 interface TabListProps {
     onTabClick: (label: string) => void
@@ -27,27 +30,34 @@ export const TabList: FC<TabListProps> = ({
     activeTab,
     wrapperNavWidth
 }) => {
-    const navRef = useRef<HTMLDivElement>(null);
-    const [widths, setWidths] = useState<number[]>([]);
+    const [visibleTabs, setVisibleTabs] = useState<TabsData[]>([]);
+    const [dropDownTabs, setDropDownTabs] = useState<TabsData[]>([]);
+
     useEffect(() => {
-        if (wrapperNavWidth && navRef.current) {
-            const buttons = navRef.current.querySelectorAll("button");
-            const buttonWidths = Array.from(buttons).map(btn =>
-                (btn as HTMLElement).getBoundingClientRect().width
-            );
-            setWidths(buttonWidths);
-            console.log("wrapperNavWidth", wrapperNavWidth);
-            console.log(buttonWidths);
+        if (wrapperNavWidth) {
+            const amountTabs = getAmountElements(tabsData, wrapperNavWidth - 20, {
+                fontSize: 14,
+                paddingX: 8,
+                fontFamily: "Inter",
+                fontWeight: 600
+            });
+
+            console.log("Количество видимых табов:", amountTabs);
+            setVisibleTabs(options.slice(0, amountTabs));
+            setDropDownTabs(options.slice(amountTabs));
+            console.log("dropDownTabs", options.slice(amountTabs));
+
+
         }
-    }, [wrapperNavWidth]);
+    }, [wrapperNavWidth, options]);
 
     return (
         <>
-            <nav ref={navRef} className={clsx(styles.tabsWrapper, {
+            <nav className={clsx(styles.tabsWrapper, {
                 [styles.scrollable]: behavior === "scrollable",
                 [styles.dropdown]: behavior === "dropdown",
             })}>
-                {options.map((option, index) => (
+                {visibleTabs?.map((option, index) => (
                     <TabItem key={index} activeTab={activeTab} onClick={() => onTabClick(option.label)}
                         option={option} size={size} />
                 ))}
