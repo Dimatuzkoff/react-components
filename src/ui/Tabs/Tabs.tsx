@@ -30,7 +30,7 @@ export const Tabs: FC<TabProps> = ({
     // isBadge = false,
     // isDisabled = false,
     size = "40",
-    behavior = "dropdown"
+    behavior = "scrollable"
 }) => {
     const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);
 
@@ -38,7 +38,7 @@ export const Tabs: FC<TabProps> = ({
 
     const [widthWrapperNav, setWidthWrapperNav] = useState<number>(0);
 
-    const [dropDownTabs, setDropDownTabs] = useState<TabsData[]>([]);
+    const [dropdownTabs, setDropdownTabs] = useState<TabsData[]>([]);
 
 
     const wrapperNavRef = useRef<HTMLDivElement>(null);
@@ -73,18 +73,18 @@ export const Tabs: FC<TabProps> = ({
                 })}>
                     <TabToolIcon position="left" isRotate behavior={behavior} size={size} />
                     <TabList
-                        onTabClick={setActiveTab}
+                        onClick={setActiveTab}
                         size={size}
                         behavior={behavior}
                         options={tabsData}
                         activeTab={activeTab}
-                        wrapperNavWidth={widthWrapperNav} setDropDownTabs={setDropDownTabs} />
+                        wrapperNavWidth={widthWrapperNav} setDropdownTabs={setDropdownTabs} />
                     <TabToolIcon onClick={defineClick}
                         position="right" behavior={behavior} size={size} />
                 </div>
                 {behavior === "dropdown" && (<span className={clsx(styles.dropdownPosition)}>
                     <Dropdown isOpen={isOpenDropdown}>
-                        <TabDropdownList size={size} options={dropDownTabs} />
+                        <TabDropdownList onClick={setActiveTab} activeTab={activeTab} size={size} options={dropdownTabs} />
                     </Dropdown>
                 </span>)}
                 <div className={clsx(styles.content)}>

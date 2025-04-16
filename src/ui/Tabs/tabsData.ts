@@ -13,7 +13,5 @@ export const tabsData = [
     { label: "Tab8" },
     { label: "Tab9" },
     { label: "Tab10" },
-    { label: "Tab11" },
-    { label: "Tab12" },
-    { label: "Tab13" }
+    { label: "Tab11" }
 ];

@@ -3,6 +3,7 @@ import { FC } from "react";
 //libs
 import clsx from "clsx";
 //ui
+import { TabItem } from "./TabItem"
 //styles
 import styles from "./TabDropdownList.module.scss";
 //types
@@ -10,15 +11,17 @@ import { TabsData } from "./Tabs"
 
 
 interface TabDropdownListProps {
-    onChange?: (value: TabsData) => void
+    onClick?: (value: string) => void
     size: string;
-    options: TabsData[]
+    activeTab?: string,
+    options: TabsData[],
 
 }
 
 export const TabDropdownList: FC<TabDropdownListProps> = ({
-    onChange,
+    onClick,
     size,
+    activeTab,
     options
 }) => {
 
@@ -28,12 +31,7 @@ export const TabDropdownList: FC<TabDropdownListProps> = ({
                 <ul>
 
                     {options.map((item) => (
-                        // <SelectOptionItem
-                        //     key={item.label}
-                        //     option={item}
-                        //     selectedSingleItem={selectedSingleItem}
-                        //     onChange={onChange} />
-                        <li key={item.label}>{item.label}</li>
+                        <TabItem key={item.label} size={size} option={item} activeTab={activeTab} onClick={onClick} />
                     ))}
                 </ul>
             </div>

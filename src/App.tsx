@@ -35,9 +35,13 @@ function App() {
                 size="48"
                 setSelected={setMultiValue}
             />
-            <h2>Tabs</h2>
-            <div className="tabWrapper" style={{ maxWidth: "800px" }}>
-                <Tabs size="32" />
+            <h2>scrollable Tabs</h2>
+            <div className="tabWrapper" style={{ maxWidth: "700px" }}>
+                <Tabs size="36" />
+            </div>
+            <h2>dropdown Tabs</h2>
+            <div className="tabWrapper" style={{ maxWidth: "700px", paddingBottom: "250px" }}>
+                <Tabs size="40" behavior="dropdown" />
             </div>
         </>
     )

@@ -13,8 +13,8 @@ import styles from "./TabList.module.scss";
 import { TabsData } from "./Tabs"
 
 interface TabListProps {
-    onTabClick: (label: string) => void
-    setDropDownTabs: Dispatch<SetStateAction<TabsData[]>>;
+    onClick: (label: string) => void
+    setDropdownTabs: Dispatch<SetStateAction<TabsData[]>>;
     options: TabsData[],
     size?: string,
     behavior: string,
@@ -23,8 +23,8 @@ interface TabListProps {
 }
 
 export const TabList: FC<TabListProps> = ({
-    onTabClick,
-    setDropDownTabs,
+    onClick,
+    setDropdownTabs,
     options,
     size,
     behavior,
@@ -35,7 +35,7 @@ export const TabList: FC<TabListProps> = ({
 
     useEffect(() => {
         if (wrapperNavWidth && behavior === "dropdown") {
-            const amountTabs = getAmountElements(options, wrapperNavWidth - 20, {
+            const amountTabs = getAmountElements(options, wrapperNavWidth - 70, {
                 fontSize: 14,
                 paddingX: 8,
                 fontFamily: "Inter",
@@ -43,7 +43,7 @@ export const TabList: FC<TabListProps> = ({
             });
 
             setVisibleTabs(options.slice(0, amountTabs));
-            setDropDownTabs(options.slice(amountTabs));
+            setDropdownTabs(options.slice(amountTabs));
         }
         else {
             setVisibleTabs(options);
@@ -57,7 +57,7 @@ export const TabList: FC<TabListProps> = ({
                 [styles.dropdown]: behavior === "dropdown",
             })}>
                 {visibleTabs?.map((option, index) => (
-                    <TabItem key={index} activeTab={activeTab} onClick={() => onTabClick(option.label)}
+                    <TabItem key={index} activeTab={activeTab} onClick={onClick}
                         option={option} size={size} />
                 ))}
             </nav>

@@ -1,1 +1,15 @@
-.dropdownOptionsWrapper {}
+$border-color: rgba(242, 242, 242, 1);
+$bg-color: rgba(255, 255, 255, 1);
+
+.dropdownOptionsWrapper {
+    background-color: $bg-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 2px;
+
+    & div {
+        border: none ! important;
+    }
+}

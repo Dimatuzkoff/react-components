@@ -10,23 +10,22 @@ $active-tab-color: rgba(21, 112, 239, 1);
     height: 100%;
     padding: 0px 8px;
 
-
     &.size32 .tabItem {
         font-size: 12px;
         line-height: 20px;
-
+        height: 32px;
     }
 
     &.size36 .tabItem {
         font-size: 14px;
         line-height: 24px;
+        height: 36px;
     }
 
     &.size40 .tabItem {
         font-size: 14px;
         line-height: 24px;
-
-
+        height: 40px;
     }
 
     &.active {
@@ -36,7 +35,6 @@ $active-tab-color: rgba(21, 112, 239, 1);
             color: $active-tab-color;
         }
     }
-
 
     & .tabItem {
         background-color: transparent;
