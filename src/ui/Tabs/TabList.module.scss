@@ -9,4 +9,9 @@
     &.scrollable {
         overflow-x: auto;
     }
+
+    &.dropdown {
+        position: relative;
+        overflow: hidden;
+    }
 }

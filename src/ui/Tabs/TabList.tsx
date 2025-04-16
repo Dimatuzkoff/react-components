@@ -15,7 +15,8 @@ interface TabListProps {
     options: TabsData[],
     size?: string,
     behavior: string,
-    activeTab?: string
+    activeTab?: string,
+    wrapperNavWidth?: number
 }
 
 export const TabList: FC<TabListProps> = ({
@@ -23,28 +24,28 @@ export const TabList: FC<TabListProps> = ({
     options,
     size,
     behavior,
-    activeTab
+    activeTab,
+    wrapperNavWidth
 }) => {
-    const wrapperRef = useRef<HTMLDivElement>(null);
+    const navRef = useRef<HTMLDivElement>(null);
     const [widths, setWidths] = useState<number[]>([]);
-
     useEffect(() => {
-        if (wrapperRef.current) {
-
-            const buttons = wrapperRef.current.querySelectorAll("button");
+        if (wrapperNavWidth && navRef.current) {
+            const buttons = navRef.current.querySelectorAll("button");
             const buttonWidths = Array.from(buttons).map(btn =>
                 (btn as HTMLElement).getBoundingClientRect().width
             );
             setWidths(buttonWidths);
+            console.log("wrapperNavWidth", wrapperNavWidth);
             console.log(buttonWidths);
-
         }
-    }, [options]);
+    }, [wrapperNavWidth]);
 
     return (
         <>
-            <nav ref={wrapperRef} className={clsx(styles.tabsWrapper, {
+            <nav ref={navRef} className={clsx(styles.tabsWrapper, {
                 [styles.scrollable]: behavior === "scrollable",
+                [styles.dropdown]: behavior === "dropdown",
             })}>
                 {options.map((option, index) => (
                     <TabItem key={index} activeTab={activeTab} onClick={() => onTabClick(option.label)}
