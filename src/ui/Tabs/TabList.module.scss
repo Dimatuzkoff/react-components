@@ -14,4 +14,8 @@
         position: relative;
         overflow: hidden;
     }
+
+    &.arrows {
+        overflow-x: auto;
+    }
 }

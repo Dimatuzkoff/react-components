@@ -1,5 +1,5 @@
 //react
-import { FC, useState, useEffect, Dispatch, SetStateAction } from "react";
+import { FC, useState, RefObject, useEffect, Dispatch, SetStateAction } from "react";
 //hooks
 import { getAmountElements } from "./getAmountElements"
 //libs
@@ -21,7 +21,8 @@ interface TabListProps {
     behavior: string,
     activeTab?: string,
     wrapperNavWidth?: number,
-    isDisabled?: boolean
+    isDisabled?: boolean,
+    scrollRef: RefObject<HTMLDivElement | null>;
 }
 
 export const TabList: FC<TabListProps> = ({
@@ -33,7 +34,8 @@ export const TabList: FC<TabListProps> = ({
     behavior,
     activeTab,
     wrapperNavWidth,
-    isDisabled
+    isDisabled,
+    scrollRef
 }) => {
     const [visibleTabs, setVisibleTabs] = useState<TabsData[]>(options);
 
@@ -56,9 +58,10 @@ export const TabList: FC<TabListProps> = ({
 
     return (
         <>
-            <nav className={clsx(styles.tabsWrapper, {
+            <nav ref={scrollRef} className={clsx(styles.tabsWrapper, {
                 [styles.scrollable]: behavior === "scrollable",
                 [styles.dropdown]: behavior === "dropdown",
+                [styles.arrows]: behavior === "arrows",
             })}>
                 {visibleTabs?.map((option, index) => (
                     <TabItem

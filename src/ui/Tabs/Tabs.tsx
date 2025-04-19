@@ -46,6 +46,9 @@ export const Tabs: FC<TabProps> = ({
     useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
 
     const wrapperNavRef = useRef<HTMLDivElement>(null);
+
+    const containerRef = useRef<HTMLDivElement>(null);
+
     const toggleDropdown = () => {
         setIsOpenDropdown(!isOpenDropdown);
     }
@@ -55,9 +58,16 @@ export const Tabs: FC<TabProps> = ({
         setIsOpenDropdown(false);
     }
 
-    const defineClick = (position: string) => {
+    const onControlClick = (position: string) => {
         if (position === "right" && behavior === "dropdown") {
             toggleDropdown()
+        } else if (behavior === "arrows") {
+            const container = containerRef.current;
+            if (!container) return;
+            container.scrollBy({
+                left: position === "left" ? -50 : 50,
+                behavior: "smooth"
+            });
         }
     }
     useEffect(() => {
@@ -80,7 +90,7 @@ export const Tabs: FC<TabProps> = ({
                     [styles.size36]: size === "36",
                     [styles.size40]: size === "40"
                 })}>
-                    <TabToolIcon position="left" isDisabled={isDisabled} isRotate behavior={behavior} size={size} />
+                    <TabToolIcon onClick={onControlClick} position="left" isDisabled={isDisabled} isRotate behavior={behavior} size={size} />
                     <TabList
                         onClick={selectTab}
                         size={size}
@@ -89,8 +99,10 @@ export const Tabs: FC<TabProps> = ({
                         isDisabled={isDisabled}
                         options={tabsData}
                         activeTab={activeTab}
-                        wrapperNavWidth={widthWrapperNav} setDropdownTabs={setDropdownTabs} />
-                    <TabToolIcon onClick={defineClick}
+                        wrapperNavWidth={widthWrapperNav}
+                        setDropdownTabs={setDropdownTabs}
+                        scrollRef={containerRef} />
+                    <TabToolIcon onClick={onControlClick}
                         position="right" behavior={behavior} isDisabled={isDisabled} size={size} />
                 </div>
                 {behavior === "dropdown" && (<span ref={divClickOutsideRef} className={clsx(styles.dropdownPosition)}>
