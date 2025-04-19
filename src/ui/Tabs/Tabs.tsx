@@ -16,7 +16,8 @@ import styles from "./Tabs.module.scss";
 import { tabsData } from "./tabsData"
 
 export interface TabsData {
-    label: string
+    label: string,
+    badgeCount?: number
 }
 
 interface TabProps {
@@ -28,7 +29,7 @@ interface TabProps {
 }
 
 export const Tabs: FC<TabProps> = ({
-    // variant = "underline",
+    variant = "underline",
     // isBadge = false,
     // isDisabled = false,
     size = "40",
@@ -84,6 +85,7 @@ export const Tabs: FC<TabProps> = ({
                     <TabList
                         onClick={selectTab}
                         size={size}
+                        variant={variant}
                         behavior={behavior}
                         options={tabsData}
                         activeTab={activeTab}
@@ -93,7 +95,7 @@ export const Tabs: FC<TabProps> = ({
                 </div>
                 {behavior === "dropdown" && (<span ref={divClickOutsideRef} className={clsx(styles.dropdownPosition)}>
                     <Dropdown isOpen={isOpenDropdown}>
-                        <TabDropdownList onClick={selectTab} activeTab={activeTab} size={size} options={dropdownTabs} />
+                        <TabDropdownList onClick={selectTab} variant={variant} activeTab={activeTab} size={size} options={dropdownTabs} />
                     </Dropdown>
                 </span>)}
                 <div className={clsx(styles.content)}>

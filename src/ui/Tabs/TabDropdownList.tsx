@@ -11,8 +11,9 @@ import { TabsData } from "./Tabs"
 
 
 interface TabDropdownListProps {
-    onClick?: (value: string) => void
-    size: string;
+    onClick?: (value: string) => void,
+    size: string,
+    variant?: string,
     activeTab?: string,
     options: TabsData[],
 
@@ -21,6 +22,7 @@ interface TabDropdownListProps {
 export const TabDropdownList: FC<TabDropdownListProps> = ({
     onClick,
     size,
+    variant,
     activeTab,
     options
 }) => {
@@ -31,7 +33,7 @@ export const TabDropdownList: FC<TabDropdownListProps> = ({
                 <ul>
 
                     {options.map((item) => (
-                        <TabItem key={item.label} size={size} option={item} activeTab={activeTab === item.label} onClick={onClick} />
+                        <TabItem key={item.label} variant={variant} size={size} option={item} activeTab={activeTab === item.label} onClick={onClick} />
                     ))}
                 </ul>
             </div>

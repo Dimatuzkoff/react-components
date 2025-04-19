@@ -17,6 +17,7 @@ interface TabListProps {
     setDropdownTabs: Dispatch<SetStateAction<TabsData[]>>;
     options: TabsData[],
     size?: string,
+    variant?: string
     behavior: string,
     activeTab?: string,
     wrapperNavWidth?: number
@@ -27,6 +28,7 @@ export const TabList: FC<TabListProps> = ({
     setDropdownTabs,
     options,
     size,
+    variant,
     behavior,
     activeTab,
     wrapperNavWidth
@@ -57,7 +59,7 @@ export const TabList: FC<TabListProps> = ({
                 [styles.dropdown]: behavior === "dropdown",
             })}>
                 {visibleTabs?.map((option, index) => (
-                    <TabItem key={index} activeTab={activeTab === option.label} onClick={onClick}
+                    <TabItem key={index} variant={variant} activeTab={activeTab === option.label} onClick={onClick}
                         option={option} size={size} />
                 ))}
             </nav>

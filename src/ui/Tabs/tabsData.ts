@@ -3,10 +3,16 @@ export const tabsData = [
     { label: "Profile" },
     { label: "Password" },
     { label: "Team" },
-    { label: "Plan" },
+    {
+        label: "Plan",
+        badgeCount: 2
+    },
     { label: "Billing" },
     { label: "Email" },
-    { label: "Notifications" },
+    {
+        label: "Notifications",
+        badgeCount: 5
+    },
     { label: "Tab5" },
     { label: "Tab6" },
     { label: "Tab7" },

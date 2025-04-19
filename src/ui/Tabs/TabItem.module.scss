@@ -1,5 +1,8 @@
 $text-primary-color: rgba(26, 26, 30, 1);
 $active-tab-color: rgba(21, 112, 239, 1);
+$active-badge-border-color: rgba(178, 221, 255, 1);
+$badge-border-color: rgba(228, 228, 231, 1);
+$bg-color-underlineFilled: rgba(239, 248, 255, 1);
 
 .tabItemWrapper {
     display: flex;
@@ -34,6 +37,16 @@ $active-tab-color: rgba(21, 112, 239, 1);
         & .tabItem {
             color: $active-tab-color;
         }
+
+        & .tabBadge {
+            border-color: $active-badge-border-color;
+            color: $active-tab-color;
+            background-color: $bg-color-underlineFilled;
+        }
+
+        &.underlineFilled {
+            background-color: $bg-color-underlineFilled;
+        }
     }
 
     & .tabItem {
@@ -46,4 +59,20 @@ $active-tab-color: rgba(21, 112, 239, 1);
         height: 100%;
         padding: 0px;
     }
+
+    .tabBadge {
+        width: 20px;
+        height: 20px;
+        margin-left: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $badge-border-color;
+        border-radius: 4px;
+        color: $text-primary-color;
+        font-size: 12px;
+        line-height: 20px;
+        font-weight: 500;
+    }
+
 }
