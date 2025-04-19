@@ -1,5 +1,7 @@
 //react
 import { FC, useState, useRef, useEffect } from "react";
+//hooks
+import { useClickOutside } from "../../hooks/useClickOutside"
 //libs
 import clsx from "clsx";
 //ui
@@ -40,10 +42,17 @@ export const Tabs: FC<TabProps> = ({
 
     const [dropdownTabs, setDropdownTabs] = useState<TabsData[]>([]);
 
+    const divClickOutsideRef = useRef<HTMLDivElement | null>(null);
+    useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
 
     const wrapperNavRef = useRef<HTMLDivElement>(null);
     const toggleDropdown = () => {
         setIsOpenDropdown(!isOpenDropdown);
+    }
+
+    const selectTab = (tab: string) => {
+        setActiveTab(tab);
+        setIsOpenDropdown(false);
     }
 
     const defineClick = (position: string) => {
@@ -73,7 +82,7 @@ export const Tabs: FC<TabProps> = ({
                 })}>
                     <TabToolIcon position="left" isRotate behavior={behavior} size={size} />
                     <TabList
-                        onClick={setActiveTab}
+                        onClick={selectTab}
                         size={size}
                         behavior={behavior}
                         options={tabsData}
@@ -82,9 +91,9 @@ export const Tabs: FC<TabProps> = ({
                     <TabToolIcon onClick={defineClick}
                         position="right" behavior={behavior} size={size} />
                 </div>
-                {behavior === "dropdown" && (<span className={clsx(styles.dropdownPosition)}>
+                {behavior === "dropdown" && (<span ref={divClickOutsideRef} className={clsx(styles.dropdownPosition)}>
                     <Dropdown isOpen={isOpenDropdown}>
-                        <TabDropdownList onClick={setActiveTab} activeTab={activeTab} size={size} options={dropdownTabs} />
+                        <TabDropdownList onClick={selectTab} activeTab={activeTab} size={size} options={dropdownTabs} />
                     </Dropdown>
                 </span>)}
                 <div className={clsx(styles.content)}>

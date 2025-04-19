@@ -57,7 +57,7 @@ export const TabList: FC<TabListProps> = ({
                 [styles.dropdown]: behavior === "dropdown",
             })}>
                 {visibleTabs?.map((option, index) => (
-                    <TabItem key={index} activeTab={activeTab} onClick={onClick}
+                    <TabItem key={index} activeTab={activeTab === option.label} onClick={onClick}
                         option={option} size={size} />
                 ))}
             </nav>

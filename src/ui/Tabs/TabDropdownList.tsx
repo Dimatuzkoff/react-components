@@ -31,7 +31,7 @@ export const TabDropdownList: FC<TabDropdownListProps> = ({
                 <ul>
 
                     {options.map((item) => (
-                        <TabItem key={item.label} size={size} option={item} activeTab={activeTab} onClick={onClick} />
+                        <TabItem key={item.label} size={size} option={item} activeTab={activeTab === item.label} onClick={onClick} />
                     ))}
                 </ul>
             </div>
