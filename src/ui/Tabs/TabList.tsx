@@ -20,7 +20,8 @@ interface TabListProps {
     variant?: string
     behavior: string,
     activeTab?: string,
-    wrapperNavWidth?: number
+    wrapperNavWidth?: number,
+    isDisabled?: boolean
 }
 
 export const TabList: FC<TabListProps> = ({
@@ -31,7 +32,8 @@ export const TabList: FC<TabListProps> = ({
     variant,
     behavior,
     activeTab,
-    wrapperNavWidth
+    wrapperNavWidth,
+    isDisabled
 }) => {
     const [visibleTabs, setVisibleTabs] = useState<TabsData[]>(options);
 
@@ -59,8 +61,14 @@ export const TabList: FC<TabListProps> = ({
                 [styles.dropdown]: behavior === "dropdown",
             })}>
                 {visibleTabs?.map((option, index) => (
-                    <TabItem key={index} variant={variant} isActiveTab={activeTab === option.label} onClick={onClick}
-                        option={option} size={size} />
+                    <TabItem
+                        key={index}
+                        variant={variant}
+                        isActiveTab={activeTab === option.label}
+                        onClick={onClick}
+                        option={option}
+                        size={size}
+                        isDisabled={isDisabled} />
                 ))}
             </nav>
         </>

@@ -3,6 +3,7 @@ $active-tab-color: rgba(21, 112, 239, 1);
 $active-badge-border-color: rgba(178, 221, 255, 1);
 $badge-border-color: rgba(228, 228, 231, 1);
 $bg-color-underlineFilled: rgba(239, 248, 255, 1);
+$color-disabled: #D1D1D6;
 
 .tabItemWrapper {
     display: flex;
@@ -31,24 +32,6 @@ $bg-color-underlineFilled: rgba(239, 248, 255, 1);
         height: 40px;
     }
 
-    &.active {
-        border-bottom: 2px solid $active-tab-color;
-
-        & .tabItem {
-            color: $active-tab-color;
-        }
-
-        & .tabBadge {
-            border-color: $active-badge-border-color;
-            color: $active-tab-color;
-            background-color: $bg-color-underlineFilled;
-        }
-
-        &.underlineFilled {
-            background-color: $bg-color-underlineFilled;
-        }
-    }
-
     & .tabItem {
         background-color: transparent;
         cursor: pointer;
@@ -75,4 +58,46 @@ $bg-color-underlineFilled: rgba(239, 248, 255, 1);
         font-weight: 500;
     }
 
+    &.active {
+        border-bottom: 2px solid $active-tab-color;
+
+        & .tabItem {
+            color: $active-tab-color;
+        }
+
+        & .tabBadge {
+            border-color: $active-badge-border-color;
+            color: $active-tab-color;
+            background-color: $bg-color-underlineFilled;
+        }
+
+        &.underlineFilled {
+            background-color: $bg-color-underlineFilled;
+
+            &.disabled {
+                background-color: transparent;
+            }
+        }
+
+        &.disabled {
+            border: none;
+        }
+    }
+
+    &.disabled {
+
+
+        & .tabItem {
+            cursor: not-allowed;
+            color: $color-disabled;
+        }
+
+        & .tabBadge {
+            border-color: $color-disabled;
+            color: $color-disabled;
+            background-color: transparent
+        }
+
+
+    }
 }

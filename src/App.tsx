@@ -12,11 +12,11 @@ function App() {
 
     return (
         <>
-            <h2>scrollable Tabs</h2>
+            <h2 style={{ marginBottom: "50px" }}>scrollable Tabs</h2>
             <div className="tabWrapper" style={{ maxWidth: "700px" }}>
                 <Tabs size="36" variant="underlineFilled" />
             </div>
-            <h2>dropdown Tabs</h2>
+            <h2 style={{ marginBottom: "50px" }}>dropdown Tabs</h2>
             <div className="tabWrapper" style={{ maxWidth: "700px", paddingBottom: "250px" }}>
                 <Tabs size="40" behavior="dropdown" />
             </div>

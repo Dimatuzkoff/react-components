@@ -22,7 +22,6 @@ export interface TabsData {
 
 interface TabProps {
     variant?: "underline" | "underlineFilled",
-    isBadge?: boolean,
     isDisabled?: boolean,
     size?: "32" | "36" | "40",
     behavior?: "scrollable" | "arrows" | "dropdown"
@@ -30,10 +29,10 @@ interface TabProps {
 
 export const Tabs: FC<TabProps> = ({
     variant = "underline",
-    // isBadge = false,
-    // isDisabled = false,
+    isDisabled,
     size = "40",
-    behavior = "scrollable"
+    behavior = "scrollable",
+
 }) => {
     const [isOpenDropdown, setIsOpenDropdown] = useState<boolean>(false);
 
@@ -81,26 +80,27 @@ export const Tabs: FC<TabProps> = ({
                     [styles.size36]: size === "36",
                     [styles.size40]: size === "40"
                 })}>
-                    <TabToolIcon position="left" isRotate behavior={behavior} size={size} />
+                    <TabToolIcon position="left" isDisabled={isDisabled} isRotate behavior={behavior} size={size} />
                     <TabList
                         onClick={selectTab}
                         size={size}
                         variant={variant}
                         behavior={behavior}
+                        isDisabled={isDisabled}
                         options={tabsData}
                         activeTab={activeTab}
                         wrapperNavWidth={widthWrapperNav} setDropdownTabs={setDropdownTabs} />
                     <TabToolIcon onClick={defineClick}
-                        position="right" behavior={behavior} size={size} />
+                        position="right" behavior={behavior} isDisabled={isDisabled} size={size} />
                 </div>
                 {behavior === "dropdown" && (<span ref={divClickOutsideRef} className={clsx(styles.dropdownPosition)}>
                     <Dropdown isOpen={isOpenDropdown}>
                         <TabDropdownList onClick={selectTab} variant={variant} activeTab={activeTab} size={size} options={dropdownTabs} />
                     </Dropdown>
                 </span>)}
-                <div className={clsx(styles.content)}>
+                {!isDisabled && (<div className={clsx(styles.content)}>
                     activeTab {activeTab}
-                </div>
+                </div>)}
             </div>
         </>
     )
