@@ -1,7 +1,8 @@
 //react
-import { FC, useState, useRef, useEffect } from "react";
+import { FC, useState, useRef } from "react";
 //hooks
 import { useClickOutside } from "../../hooks/useClickOutside"
+import { useContainerWidth } from "../../hooks/useContainerWidth"
 //libs
 import clsx from "clsx";
 //ui
@@ -9,7 +10,6 @@ import { TabToolIcon } from "./TabToolIcon"
 import { TabList } from "./TabList"
 import { Dropdown } from "../Selects/Dropdown"
 import { TabDropdownList } from "./TabDropdownList"
-//assets
 //styles
 import styles from "./Tabs.module.scss";
 //data
@@ -38,16 +38,15 @@ export const Tabs: FC<TabProps> = ({
 
     const [activeTab, setActiveTab] = useState<string>(tabsData[0].label);
 
-    const [widthWrapperNav, setWidthWrapperNav] = useState<number>(0);
-
     const [dropdownTabs, setDropdownTabs] = useState<TabsData[]>([]);
 
     const divClickOutsideRef = useRef<HTMLDivElement | null>(null);
     useClickOutside(divClickOutsideRef, () => setIsOpenDropdown(false));
 
-    const wrapperNavRef = useRef<HTMLDivElement>(null);
-
     const containerRef = useRef<HTMLDivElement>(null);
+
+    const wrapperNavRef = useRef<HTMLDivElement | null>(null);
+    const widthWrapperNav = useContainerWidth(wrapperNavRef);
 
     const toggleDropdown = () => {
         setIsOpenDropdown(!isOpenDropdown);
@@ -70,18 +69,6 @@ export const Tabs: FC<TabProps> = ({
             });
         }
     }
-    useEffect(() => {
-        const updateWidth = () => {
-            if (wrapperNavRef.current) {
-                const width = wrapperNavRef.current.getBoundingClientRect().width;
-                setWidthWrapperNav(width);
-            }
-        };
-        updateWidth();
-        window.addEventListener("resize", updateWidth);
-
-        return () => window.removeEventListener("resize", updateWidth);
-    }, []);
     return (
         <>
             <div ref={wrapperNavRef} className={clsx(styles.container)}>

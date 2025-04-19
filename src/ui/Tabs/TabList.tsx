@@ -1,7 +1,7 @@
 //react
-import { FC, useState, RefObject, useEffect, Dispatch, SetStateAction } from "react";
+import { FC, useState, RefObject, Dispatch, SetStateAction } from "react";
 //hooks
-import { getAmountElements } from "./getAmountElements"
+import { useTabsVisibility } from "../../hooks/useTabsVisibility"
 //libs
 import clsx from "clsx";
 //ui
@@ -39,22 +39,20 @@ export const TabList: FC<TabListProps> = ({
 }) => {
     const [visibleTabs, setVisibleTabs] = useState<TabsData[]>(options);
 
-    useEffect(() => {
-        if (wrapperNavWidth && behavior === "dropdown") {
-            const amountTabs = getAmountElements(options, wrapperNavWidth - 70, {
-                fontSize: 14,
-                paddingX: 8,
-                fontFamily: "Inter",
-                fontWeight: 600
-            });
-
-            setVisibleTabs(options.slice(0, amountTabs));
-            setDropdownTabs(options.slice(amountTabs));
-        }
-        else {
-            setVisibleTabs(options);
-        }
-    }, [wrapperNavWidth, options, behavior]);
+    const settings = {
+        fontSize: 14,
+        paddingX: 8,
+        fontFamily: "Inter",
+        fontWeight: 600,
+    }
+    useTabsVisibility({
+        wrapperNavWidth,
+        behavior,
+        options,
+        settings,
+        setVisibleTabs,
+        setDropdownTabs,
+    });
 
     return (
         <>
