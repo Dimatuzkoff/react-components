@@ -12,7 +12,7 @@ interface TabItemProps {
     option: TabsData,
     size?: string,
     variant?: string,
-    activeTab: boolean,
+    isActiveTab: boolean,
 }
 
 export const TabItem: FC<TabItemProps> = ({
@@ -20,7 +20,7 @@ export const TabItem: FC<TabItemProps> = ({
     option,
     size,
     variant,
-    activeTab,
+    isActiveTab,
 }) => {
     return (
         <>
@@ -31,7 +31,7 @@ export const TabItem: FC<TabItemProps> = ({
                     [styles.size36]: size === "36",
                     [styles.size40]: size === "40",
                     [styles.underlineFilled]: variant === "underlineFilled",
-                    [styles.active]: activeTab
+                    [styles.active]: isActiveTab
                 })}>
                 <button type="button" className={clsx(styles.tabItem)}>{option.label}</button>
                 {option.badgeCount && (<span className={clsx(styles.tabBadge)}> {option.badgeCount}</span>)}
