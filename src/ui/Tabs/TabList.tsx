@@ -59,6 +59,9 @@ export const TabList: FC<TabListProps> = ({
     return (
         <>
             <nav ref={scrollRef} className={clsx(styles.tabsWrapper, {
+                [styles.size32]: size === "32",
+                [styles.size36]: size === "36",
+                [styles.size40]: size === "40",
                 [styles.scrollable]: behavior === "scrollable",
                 [styles.dropdown]: behavior === "dropdown",
                 [styles.arrows]: behavior === "arrows",

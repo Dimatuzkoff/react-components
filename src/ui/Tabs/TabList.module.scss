@@ -1,12 +1,23 @@
 .tabsWrapper {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
     overflow-y: hidden;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+
+    &.size32 {
+        height: 32px;
+    }
+
+    &.size36 {
+        height: 36px;
+    }
+
+    &.size40 {
+        height: 40px;
+    }
 
     &.scrollable {
         overflow-x: auto;

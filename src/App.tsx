@@ -7,7 +7,7 @@ function App() {
         <>
             <h2 style={{ marginBottom: "50px" }}>scrollable Tabs</h2>
             <div className="tabWrapper" style={{ maxWidth: "700px" }}>
-                <Tabs size="36" variant="underlineFilled" />
+                <Tabs size="32" variant="underlineFilled" />
             </div>
             <h2 style={{ marginBottom: "50px" }}>dropdown Tabs</h2>
             <div className="tabWrapper" style={{ maxWidth: "700px" }}>
