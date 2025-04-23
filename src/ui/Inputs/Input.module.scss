@@ -1,5 +1,5 @@
 $placeholder-color: rgba(160, 160, 171, 1);
-$text-color: rgba(26, 26, 30, 1);
+
 $prompt-color: rgba(81, 82, 92, 1);
 $border-color: rgba(209, 209, 214, 1);
 $fill-bg: rgba(255, 255, 255, 1);
@@ -10,6 +10,8 @@ $error-color: rgba(217, 45, 32, 1);
 $border-error-color: rgba(253, 162, 155, 1);
 $focus-error-color: rgba(240, 68, 56, 0.24);
 $label-disabled-color: rgba(112, 112, 123, 1);
+@import "../../styles/mixins/index.scss";
+@import "../../styles/variables/colors.scss";
 
 .wrapper {
     width: 323px;

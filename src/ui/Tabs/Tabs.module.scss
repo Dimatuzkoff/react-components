@@ -1,5 +1,6 @@
 $border-primary-color: rgba(209, 209, 214, 1);
 @import "../../styles/mixins/index.scss";
+@import "../../styles/variables/colors.scss";
 
 .container {
     display: flex;

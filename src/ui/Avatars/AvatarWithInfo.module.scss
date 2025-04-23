@@ -7,8 +7,9 @@ $avatar-bg-image-color: rgba(221, 208, 190, 1);
 $avatar-border-image-color: rgb(192, 181, 166);
 $focus-border-color: rgba(46, 144, 250, 0.24);
 $indicator-bg-color: rgba(23, 178, 106, 1);
-$heading-text-color: rgba(26, 26, 30, 1);
 $paragraph-text-color: rgba(81, 82, 92, 1);
+@import "../../styles/mixins/index.scss";
+@import "../../styles/variables/colors.scss";
 
 .avatarWrapper {
     display: flex;

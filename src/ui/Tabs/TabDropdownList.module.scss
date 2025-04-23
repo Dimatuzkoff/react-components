@@ -1,5 +1,7 @@
 $border-color: rgba(242, 242, 242, 1);
 $bg-color: rgba(255, 255, 255, 1);
+@import "../../styles/mixins/index.scss";
+@import "../../styles/variables/colors.scss";
 
 .dropdownOptionsWrapper {
     background-color: $bg-color;

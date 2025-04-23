@@ -1,6 +1,7 @@
 $color-tooltip-background: rgba(19, 19, 22, 1);
 $fill-bg: rgba(255, 255, 255, 1);
-
+@import "../../styles/mixins/index.scss";
+@import "../../styles/variables/colors.scss";
 
 .infoTooltipWrapper {
     position: relative;

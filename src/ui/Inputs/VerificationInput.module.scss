@@ -2,6 +2,8 @@ $label-text-color: rgba(63, 63, 70, 1);
 $helper-text-color: rgba(81, 82, 92, 1);
 $focus-color: rgba(21, 112, 239, 1);
 $text-input-color: rgba(209, 209, 214, 1);
+@import "../../styles/mixins/index.scss";
+@import "../../styles/variables/colors.scss";
 
 .verificationInputWrapper {
     display: flex;
