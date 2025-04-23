@@ -1,13 +1,12 @@
 $border-primary-color: rgba(209, 209, 214, 1);
+@import "../../styles/mixins/index.scss";
 
 .container {
     display: flex;
     flex-direction: column;
 
     .tabsWrapper {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        @include flexContainer(row);
         justify-content: space-between;
         width: 100%;
         border-bottom: 1px solid $border-primary-color;
@@ -30,15 +29,11 @@ $border-primary-color: rgba(209, 209, 214, 1);
         position: relative;
         text-align: center;
         margin-left: auto;
-
     }
 
     .content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flexCenter(row);
         width: 100%;
         height: 100px;
-
     }
 }

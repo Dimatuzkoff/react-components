@@ -1,7 +1,7 @@
+@import "../../styles/mixins/index.scss";
+
 .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexCenter(row);
     height: 100%;
     cursor: pointer;
 
