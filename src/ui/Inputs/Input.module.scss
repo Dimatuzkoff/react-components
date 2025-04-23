@@ -1,15 +1,5 @@
-$placeholder-color: rgba(160, 160, 171, 1);
-
-$prompt-color: rgba(81, 82, 92, 1);
-$border-color: rgba(209, 209, 214, 1);
-$fill-bg: rgba(255, 255, 255, 1);
-$outline-bg: transparent;
-$focus-color: rgba(132, 202, 255, 1);
 $focus-outline-color: rgba(46, 144, 250, 0.24);
-$error-color: rgba(217, 45, 32, 1);
-$border-error-color: rgba(253, 162, 155, 1);
 $focus-error-color: rgba(240, 68, 56, 0.24);
-$label-disabled-color: rgba(112, 112, 123, 1);
 @import "../../styles/mixins/index.scss";
 @import "../../styles/variables/colors.scss";
 
@@ -216,20 +206,20 @@ $label-disabled-color: rgba(112, 112, 123, 1);
 
         &.error {
             & .inputWrapper {
-                border: 1px solid $border-error-color !important;
+                border: 1px solid $error-300 !important;
 
                 &:focus-within {
-                    border: 1px solid $border-error-color !important;
+                    border: 1px solid $error-300 !important;
                     outline: 4px solid $focus-error-color;
                 }
 
                 &:hover {
-                    border: 1px solid $border-error-color !important;
+                    border: 1px solid $error-300 !important;
                 }
             }
 
             & .helperTextWrapper .helperText {
-                color: $error-color;
+                color: $error-600;
             }
 
         }
@@ -244,31 +234,31 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             border-radius: 4px;
 
             &:hover {
-                border: 1px solid $border-color !important;
+                border: 1px solid $gray-300 !important;
             }
 
             &:focus-within {
-                border: 1px solid $focus-color !important;
+                border: 1px solid $brand-300 !important;
                 outline: 4px solid $focus-outline-color;
             }
 
             &.fillNoQuiet {
-                background-color: $fill-bg;
-                border: 1px solid $border-color;
+                background-color: $white;
+                border: 1px solid $gray-300;
             }
 
             &.outlineNoQuiet {
-                background-color: $outline-bg;
-                border: 1px solid $border-color;
+                background-color: transparent;
+                border: 1px solid $gray-300;
             }
 
             &.fillQuiet {
-                background-color: $fill-bg;
+                background-color: $white;
                 border: 1px solid transparent;
             }
 
             &.outlineQuiet {
-                background-color: $outline-bg;
+                background-color: transparent;
                 border: 1px solid transparent;
             }
 
@@ -284,7 +274,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
                 text-overflow: ellipsis;
 
                 &::placeholder {
-                    color: $placeholder-color;
+                    color: $gray-400;
                 }
 
                 &.leftAlignment {
@@ -310,7 +300,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
                 justify-content: center;
                 width: 32px;
                 height: 20px;
-                border: 1px solid $border-color;
+                border: 1px solid $gray-300;
                 border-radius: 4px;
                 font-size: 12px;
                 line-height: 20px;
@@ -350,7 +340,7 @@ $label-disabled-color: rgba(112, 112, 123, 1);
             display: block;
             text-align: left;
             font-weight: 400;
-            color: $prompt-color;
+            color: $gray-600;
             margin-top: 4px;
             word-wrap: break-word;
             overflow-wrap: break-word;
@@ -364,11 +354,11 @@ $label-disabled-color: rgba(112, 112, 123, 1);
     }
 
     &.disabled .labelWrapper .label {
-        color: $label-disabled-color;
+        color: $gray-500;
     }
 
     &.disabled .inputWrapper {
-        border: 1px solid $border-color;
+        border: 1px solid $gray-300;
     }
 
 

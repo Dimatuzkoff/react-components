@@ -1,11 +1,9 @@
-$border-color: rgba(242, 242, 242, 1);
-$bg-color: rgba(255, 255, 255, 1);
 @import "../../styles/mixins/index.scss";
 @import "../../styles/variables/colors.scss";
 
 .dropdownOptionsWrapper {
-    background-color: $bg-color;
-    border: 1px solid $border-color;
+    background-color: $white;
+    border: 1px solid $gray-100;
     border-radius: 4px;
     display: flex;
     flex-direction: column;

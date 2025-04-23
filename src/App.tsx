@@ -1,4 +1,5 @@
 import "./App.scss";
+import Button from "./ui/Buttons/Button";
 import { Tabs } from "./ui/Tabs/Tabs"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <div className="tabWrapper" style={{ maxWidth: "700px" }}>
                 <Tabs size="40" behavior="arrows" />
             </div>
+            <Button uiColor="primary"> jjerke</Button>
         </>
     )
 }

@@ -8,7 +8,7 @@ $accent-focus-outline: #2e90fa26;
 // fill-primary(bg)
 $primary-color: rgba(38, 39, 43, 1);
 $primary-hover-color: rgba(63, 63, 70, 1);
-
+$primary-active-color: rgba(26, 26, 30, 1);
 $primary-focus-outline: rgba(38, 39, 43, 0.2);
 // fill-secondary(bg)
 $secondary-color: rgba(242, 242, 242, 1);
@@ -69,7 +69,7 @@ $ghost-accent-focus-outline: rgba(46, 144, 250, 0.15);
 // ghost-primary(bg)
 $ghost-primary-color: transparent;
 $ghost-primary-hover-color: rgba(38, 39, 43, 1);
-
+$ghost-primary-active-color: rgba(26, 26, 30, 1);
 $ghost-primary-focus-outline: rgba(38, 39, 43, 0.2);
 // ghost-secondary(bg)
 $ghost-secondary-color: transparent;
@@ -98,6 +98,7 @@ $text-accent-hover-color: rgba(23, 92, 211, 1);
 $text-accent-active-color: rgba(24, 73, 169, 1);
 $text-accent-focus-outline: rgba(46, 144, 250, 0.15);
 // text-primary(color)
+$text-primary-color: rgba(26, 26, 30, 1);
 $text-primary-hover-color: rgba(112, 112, 123, 1);
 $text-primary-active-color: rgba(81, 82, 92, 1);
 $text-primary-focus-outline: rgba(38, 39, 43, 0.2);
@@ -121,8 +122,6 @@ $text-warning-color: rgba(220, 104, 3, 1);
 $text-warning-hover-color: rgba(181, 71, 8, 1);
 $text-warning-active-color: rgba(181, 71, 8, 1);
 $text-warning-focus-outline: rgba(247, 144, 9, 0.2);
-@import "../../styles/mixins/index.scss";
-@import "../../styles/variables/colors.scss";
 
 .button {
     display: flex;
@@ -599,11 +598,11 @@ $text-warning-focus-outline: rgba(247, 144, 9, 0.2);
     }
 
     &.ghostPrimary {
-        color: $text-primary;
+        color: rgba(26, 26, 30, 1);
         background-color: $ghost-primary-color;
 
         & .icon {
-            border-color: $text-primary;
+            border-color: rgba(26, 26, 30, 1);
         }
 
         &:hover {
@@ -638,12 +637,12 @@ $text-warning-focus-outline: rgba(247, 144, 9, 0.2);
         &.loading {
             background-color: $ghost-primary-color;
             cursor: progress;
-            color: $text-primary;
+            color: rgba(26, 26, 30, 1);
 
         }
 
         & .loadingIcon .dot {
-            background-color: $text-primary;
+            background-color: rgba(26, 26, 30, 1);
         }
 
 
