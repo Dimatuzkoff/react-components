@@ -25,6 +25,13 @@ interface TabListProps {
     scrollRef: RefObject<HTMLDivElement | null>;
 }
 
+const settings = {
+    fontSize: 14,
+    paddingX: 8,
+    fontFamily: "Inter",
+    fontWeight: 600,
+}
+
 export const TabList: FC<TabListProps> = ({
     onClick,
     setDropdownTabs,
@@ -39,12 +46,7 @@ export const TabList: FC<TabListProps> = ({
 }) => {
     const [visibleTabs, setVisibleTabs] = useState<TabsData[]>(options);
 
-    const settings = {
-        fontSize: 14,
-        paddingX: 8,
-        fontFamily: "Inter",
-        fontWeight: 600,
-    }
+
     useTabsVisibility({
         wrapperNavWidth,
         behavior,

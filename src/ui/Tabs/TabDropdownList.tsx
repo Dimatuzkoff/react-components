@@ -9,14 +9,12 @@ import styles from "./TabDropdownList.module.scss";
 //types
 import { TabsData } from "./Tabs"
 
-
 interface TabDropdownListProps {
     onClick?: (value: string) => void,
     size: string,
     variant?: string,
     activeTab?: string,
     options: TabsData[],
-
 }
 
 export const TabDropdownList: FC<TabDropdownListProps> = ({
@@ -26,12 +24,10 @@ export const TabDropdownList: FC<TabDropdownListProps> = ({
     activeTab,
     options
 }) => {
-
     return (
         <>
             <div className={clsx(styles.dropdownOptionsWrapper)}>
                 <ul>
-
                     {options.map((item) => (
                         <TabItem key={item.label} variant={variant} size={size} option={item} isActiveTab={activeTab === item.label} onClick={onClick} />
                     ))}
