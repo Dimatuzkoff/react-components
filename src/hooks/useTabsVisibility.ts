@@ -26,7 +26,7 @@ export const useTabsVisibility = ({
 }: UseTabsVisibilityProps) => {
     useEffect(() => {
         if (wrapperNavWidth && behavior === "dropdown") {
-            const amountTabs = getAmountElements(options, wrapperNavWidth - 70, settings);
+            const amountTabs = getAmountElements(options, wrapperNavWidth - 100, settings);
 
             setVisibleTabs(options.slice(0, amountTabs));
             setDropdownTabs(options.slice(amountTabs));

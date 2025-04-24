@@ -11,9 +11,9 @@ export const useContainerWidth = (ref: RefObject<HTMLElement | null>) => {
             }
         };
         updateWidth();
-        document.addEventListener("resize", updateWidth);
+        window.addEventListener("resize", updateWidth);
 
-        return () => document.removeEventListener("resize", updateWidth);
+        return () => window.removeEventListener("resize", updateWidth);
     }, [ref]);
 
     return width;
