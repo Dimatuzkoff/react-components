@@ -1,0 +1,169 @@
+@mixin display8($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 0.5em;
+    line-height: 0.75em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display10($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 0.625em;
+    line-height: 1em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display12($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 0.75em;
+    line-height: 1.125em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display13($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display14($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display16($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display18($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display20($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display22($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.375em;
+    line-height: 1.75em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display24($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display26($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.625em;
+    line-height: 2em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display28($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.75em;
+    line-height: 2.25em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display30($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display32($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 2em;
+    line-height: 2.5em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display36($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display40($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 2.5em;
+    line-height: 3.25em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+//////
+/// 
+@mixin display48($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 3rem;
+    line-height: 3.75rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display56($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 3.5em;
+    line-height: 4em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display60($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 3.75rem;
+    line-height: 4.5rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display64($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 4em;
+    line-height: 4.5em;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
+
+@mixin display40($weight: 500) {
+    font-family: "Inter", sans-serif;
+    font-size: 4.5rem;
+    line-height: 5.625rem;
+    font-weight: $weight;
+    letter-spacing: -0.02em;
+}
