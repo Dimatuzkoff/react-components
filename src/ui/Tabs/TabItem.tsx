@@ -13,7 +13,8 @@ interface TabItemProps {
     size?: string,
     variant?: string,
     isActiveTab: boolean,
-    isDisabled?: boolean
+    isDisabled?: boolean,
+    isHover?: boolean
 }
 
 export const TabItem: FC<TabItemProps> = ({
@@ -22,7 +23,8 @@ export const TabItem: FC<TabItemProps> = ({
     size,
     variant,
     isActiveTab,
-    isDisabled
+    isDisabled,
+    isHover
 }) => {
     return (
         <>
@@ -33,6 +35,7 @@ export const TabItem: FC<TabItemProps> = ({
                     [styles.size36]: size === "36",
                     [styles.size40]: size === "40",
                     [styles.underlineFilled]: variant === "underlineFilled",
+                    [styles.itemHover]: isHover,
                     [styles.active]: isActiveTab,
                     [styles.disabled]: isDisabled
                 })}>

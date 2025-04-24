@@ -29,7 +29,7 @@ export const TabDropdownList: FC<TabDropdownListProps> = ({
             <div className={clsx(styles.dropdownOptionsWrapper)}>
                 <ul>
                     {options.map((item) => (
-                        <TabItem key={item.label} variant={variant} size={size} option={item} isActiveTab={activeTab === item.label} onClick={onClick} />
+                        <TabItem key={item.label} isHover variant={variant} size={size} option={item} isActiveTab={activeTab === item.label} onClick={onClick} />
                     ))}
                 </ul>
             </div>
