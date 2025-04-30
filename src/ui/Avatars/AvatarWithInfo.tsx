@@ -1,7 +1,12 @@
-import clsx from "clsx";
+//react
 import { ReactNode, FC } from "react";
+//libs
+import clsx from "clsx";
+//styles
 import styles from "./AvatarWithInfo.module.scss";
+//ui
 import Avatar from "./Avatar";
+//helpers
 import { getInitials } from "../../helpers/getInitials"
 
 interface AvatarWithInfoProps {

@@ -1,15 +1,18 @@
-import clsx from "clsx";
+//react
 import { ReactNode, FC } from "react";
+//libs
+import clsx from "clsx";
+//styles
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
     onClick?: () => void;
     children: ReactNode;
     type?: "submit" | "button";
-    disabled?: boolean;
+    isDisabled?: boolean;
     isLoading?: boolean;
-    leftIcon?: boolean;
-    rightIcon?: boolean;
+    isLeftIcon?: boolean;
+    isRightIcon?: boolean;
     shape?: "rectangle" | "rounded" | "pill";
     size?: "32" | "36" | "40" | "44" | "48" | "56";
     uiType?: "fill" | "outline" | "ghost" | "text";
@@ -20,10 +23,10 @@ const Button: FC<ButtonProps> = ({
     onClick,
     children,
     type = "button",
-    disabled = false,
+    isDisabled = false,
     isLoading = false,
-    leftIcon,
-    rightIcon,
+    isLeftIcon,
+    isRightIcon,
     shape = "rounded",
     size = "40",
     uiType = "fill",
@@ -75,7 +78,7 @@ const Button: FC<ButtonProps> = ({
                 })}
                 type={type}
                 onClick={onClick}
-                disabled={disabled}
+                disabled={isDisabled}
             >
                 {isLoading && (
                     <span className={styles.loadingIcon}>
@@ -84,13 +87,13 @@ const Button: FC<ButtonProps> = ({
                     </span>
                 )}
 
-                {leftIcon && !isLoading && (
+                {isLeftIcon && !isLoading && (
                     <span className={styles.icon} />
                 )}
 
                 <span>{children}</span>
 
-                {rightIcon && !isLoading && (
+                {isRightIcon && !isLoading && (
                     <span className={styles.icon} />
                 )}
             </button>

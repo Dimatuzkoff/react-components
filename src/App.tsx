@@ -18,7 +18,7 @@ function App() {
             <div className="tabWrapper" style={{ maxWidth: "700px" }}>
                 <Tabs size="40" behavior="arrows" />
             </div>
-            <Button uiColor="primary"> jjerke</Button>
+            <Button uiColor="primary" isLeftIcon isRightIcon> jjerke</Button>
         </>
     )
 }

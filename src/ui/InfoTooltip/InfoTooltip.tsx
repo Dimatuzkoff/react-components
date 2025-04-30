@@ -1,5 +1,8 @@
+//react
 import { ReactNode, FC, useState } from "react";
+//styles
 import styles from "./InfoTooltip.module.scss";
+//assets
 import icon from "../../assets/icons/inputInfoIcon.svg";
 
 interface InfoTooltipProps {
